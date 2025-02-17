@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // Checa se está no chão
-        isGrounded = Physics.CheckSphere(groundCheck.position, 0.2f, groundLayer);
+        isGrounded = Physics.CheckSphere(groundCheck.position, 0.1f, groundLayer);
 
         //Verifica se o personagem está correndo ou não para multiplicar a velocidade
         isRunning = Input.GetKey(KeyCode.LeftShift);
