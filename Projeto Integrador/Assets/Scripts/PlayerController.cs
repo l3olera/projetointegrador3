@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
      [Tooltip("Velocidade de rotação")]
     public float rotationSpeed = 10f; //Velocidade de rotação
 
-    public bool isRunning; // Armazena se o jogador está correndo ou não
+    public bool isRunning; // Armazena s e o jogador está correndo ou não
 
 
     //Variaveis responsáveis pelo pulo
@@ -76,5 +76,10 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
+    }
+
+    void LateUpdate()
+    {
+        
     }
 }
