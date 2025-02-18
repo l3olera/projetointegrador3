@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     public float moveSpeedSide = 7f; //Velocidade do movimento para o lado do player
     [Tooltip("Multiplicador de velocidade ao correr")]
     public float runMultiplier = 1.5f; //Multiplicador de velocidade ao correr
+     [Tooltip("Velocidade de rotação")]
+    public float rotationSpeed = 10f; //Velocidade de rotação
 
     public bool isRunning; // Armazena se o jogador está correndo ou não
 
@@ -28,11 +30,13 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rb;
     private bool isGrounded; // Verifica se o jogador está no chão
+    private Transform cameraTransform; // Adicionando referência à câmera
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody>(); //Obtém o rigbody do player
+        cameraTransform = Camera.main.transform; // Obtém a câmera principal
     }
 
     // Update is called once per frame
@@ -49,10 +53,23 @@ public class PlayerController : MonoBehaviour
         float inputForward = Input.GetAxis("Vertical"); //Recebe o input quando o usuário pressionar para ir pra frente ou pra trás (Retorna entre 0 a 1)
         float inputRight = Input.GetAxis("Horizontal"); //Recebe o input quando o usuário pressionar para ir pra direita ou pra esquerda (Retorna entre 0 a 1)
 
-        // Aplica o movimento com o multiplicador de velocidade
-        Vector3 moveDirection = new Vector3(inputRight * moveSpeedSide, rb.linearVelocity.y, inputForward * moveSpeedForward) * speedMultiplier;
-        rb.linearVelocity = moveDirection;
-        //transform.Translate(moveDirection * Time.deltaTime);
+        // Cria um vetor de movimento baseado no input do jogador (espaço local)
+        Vector3 moveDirection = new Vector3(inputRight * moveSpeedSide, 0, inputForward * moveSpeedForward);
+        
+
+        // Converte o vetor para o espaço global com base na rotação da câmera
+        moveDirection = cameraTransform.TransformDirection(moveDirection);
+        moveDirection.y = rb.linearVelocity.y; // Mantém a gravidade
+
+        // Aplica a movimentação no Rigidbody
+        rb.linearVelocity = moveDirection * speedMultiplier;
+
+        //Faz o personagem olhar na direção que está andando
+        if (new Vector3(moveDirection.x, 0, moveDirection.z) != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(new Vector3(moveDirection.x, 0, moveDirection.z));
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+        }
 
         // Pulo
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
