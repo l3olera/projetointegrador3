@@ -211,7 +211,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 524965160}
   m_LocalEulerAnglesHint: {x: 46.4, y: 0, z: 0}
 --- !u!114 &55541942
 MonoBehaviour:
@@ -347,6 +347,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5859692174226542703, guid: 47a44d4926cb4a342b33f4ebec491ca5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 960668693}
+    - targetCorrespondingSourceObject: {fileID: 5859692174226542703, guid: 47a44d4926cb4a342b33f4ebec491ca5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 55541941}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6332589239754808445, guid: 47a44d4926cb4a342b33f4ebec491ca5, type: 3}
       insertIndex: -1
@@ -379,7 +382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeedForward: 10
-  moveSpeedSide: 7
+  moveSpeedSide: 5
   runMultiplier: 1.5
   rotationSpeed: 10
   isRunning: 0
@@ -603,7 +606,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.8641, y: 1, z: 3.0558}
+  m_LocalScale: {x: 18.792927, y: 1, z: 23.43246}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -733,7 +736,6 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 55541941}
   - {fileID: 2060704710}
   - {fileID: 1980711198}
   - {fileID: 524965157}

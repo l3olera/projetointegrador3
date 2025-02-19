@@ -55,6 +55,38 @@ public class PlayerController : MonoBehaviour
 
         // Cria um vetor de movimento baseado no input do jogador (espaço local)
         Vector3 moveDirection = new Vector3(inputRight * moveSpeedSide, 0, inputForward * moveSpeedForward);
+
+        // Converte o vetor para o espaço global com base na rotação da câmera
+        moveDirection = cameraTransform.TransformDirection(moveDirection);
+        moveDirection.y = rb.linearVelocity.y; // Mantém a gravidade
+
+        // Se o jogador não estiver pressionando nenhum movimento lateral (só para frente/trás),
+        // garantimos que a direção lateral seja 0 para evitar desvios indesejados
+        if (Mathf.Abs(Input.GetAxis("Horizontal")) < 0.1f) 
+        {
+            moveDirection.x = 0;
+        }
+
+        // Se o jogador não estiver pressionando nenhum movimento para frente/trás,
+        // garantimos que a direção para frente/trás seja 0 para evitar desvios indesejados
+        if (Mathf.Abs(Input.GetAxis("Vertical")) < 0.1f)
+        {
+            moveDirection.z = 0;
+        }
+
+        // Aplica a movimentação no Rigidbody
+        rb.linearVelocity = moveDirection * speedMultiplier;
+
+        // Gira o personagem para a direção do movimento
+        if (moveDirection.magnitude > 0.1f)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(new Vector3(moveDirection.x, 0, moveDirection.z));
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+        }
+
+        /*
+        // Cria um vetor de movimento baseado no input do jogador (espaço local)
+        Vector3 moveDirection = new Vector3(inputRight * moveSpeedSide, 0, inputForward * moveSpeedForward);
         
 
         // Converte o vetor para o espaço global com base na rotação da câmera
@@ -63,23 +95,34 @@ public class PlayerController : MonoBehaviour
 
         // Aplica a movimentação no Rigidbody
         rb.linearVelocity = moveDirection * speedMultiplier;
+        
+        Vector3 direction = new Vector3(moveDirection.x, 0, moveDirection.z);
 
-        //Faz o personagem olhar na direção que está andando
-        if (new Vector3(moveDirection.x, 0, moveDirection.z) != Vector3.zero)
+        // Se o jogador está apenas indo para um lado, eliminamos variações na frente/trás
+        if (Mathf.Abs(Input.GetAxis("Vertical")) < 0.1f)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(new Vector3(moveDirection.x, 0, moveDirection.z));
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+            direction.z = 0;
         }
 
+        // Se o jogador está apenas indo para frente/trás, eliminamos variações laterais
+        if (Mathf.Abs(Input.GetAxis("Horizontal")) < 0.1f)
+        {
+            direction.x = 0;
+        }
+
+        direction.Normalize(); // Normaliza após eliminar ruídos
+
+        // Apenas gira se houver uma direção válida de movimento
+        if (direction.magnitude > 0.01f)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+        }
+        */
         // Pulo
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
-    }
-
-    void LateUpdate()
-    {
-        
     }
 }
