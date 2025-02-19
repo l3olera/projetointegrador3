@@ -384,7 +384,7 @@ MonoBehaviour:
   moveSpeedForward: 10
   moveSpeedSide: 5
   runMultiplier: 1.5
-  rotationSpeed: 10
+  rotationSpeed: 7
   isRunning: 0
   jumpForce: 8
   groundLayer:

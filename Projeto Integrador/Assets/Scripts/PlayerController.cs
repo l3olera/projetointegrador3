@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour
         cameraTransform = Camera.main.transform; // Obtém a câmera principal
     }
 
+    
+    
     // Update is called once per frame
     void Update()
     {
@@ -53,6 +55,7 @@ public class PlayerController : MonoBehaviour
         float inputForward = Input.GetAxis("Vertical"); //Recebe o input quando o usuário pressionar para ir pra frente ou pra trás (Retorna entre 0 a 1)
         float inputRight = Input.GetAxis("Horizontal"); //Recebe o input quando o usuário pressionar para ir pra direita ou pra esquerda (Retorna entre 0 a 1)
 
+        /*
         // Cria um vetor de movimento baseado no input do jogador (espaço local)
         Vector3 moveDirection = new Vector3(inputRight * moveSpeedSide, 0, inputForward * moveSpeedForward);
 
@@ -83,8 +86,7 @@ public class PlayerController : MonoBehaviour
             Quaternion targetRotation = Quaternion.LookRotation(new Vector3(moveDirection.x, 0, moveDirection.z));
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
         }
-
-        /*
+        */
         // Cria um vetor de movimento baseado no input do jogador (espaço local)
         Vector3 moveDirection = new Vector3(inputRight * moveSpeedSide, 0, inputForward * moveSpeedForward);
         
@@ -98,6 +100,7 @@ public class PlayerController : MonoBehaviour
         
         Vector3 direction = new Vector3(moveDirection.x, 0, moveDirection.z);
 
+        /*
         // Se o jogador está apenas indo para um lado, eliminamos variações na frente/trás
         if (Mathf.Abs(Input.GetAxis("Vertical")) < 0.1f)
         {
@@ -109,8 +112,8 @@ public class PlayerController : MonoBehaviour
         {
             direction.x = 0;
         }
-
-        direction.Normalize(); // Normaliza após eliminar ruídos
+        */
+        //direction.Normalize(); // Normaliza após eliminar ruídos
 
         // Apenas gira se houver uma direção válida de movimento
         if (direction.magnitude > 0.01f)
@@ -118,7 +121,6 @@ public class PlayerController : MonoBehaviour
             Quaternion targetRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
         }
-        */
         // Pulo
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
