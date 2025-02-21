@@ -1,5 +1,6 @@
 using System;
 using NUnit.Framework;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public float rotationSpeed = 10f; //Velocidade de rotação
 
     public bool isRunning; // Armazena se o jogador está correndo ou não
+    private float speedMultiplier;
 
 
     //Variaveis responsáveis pelo pulo
@@ -31,12 +33,23 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private bool isGrounded; // Verifica se o jogador está no chão
     private Transform cameraTransform; // Adicionando referência à câmera
+    [SerializeField] private CinemachineCamera cinemachineCamera; //Referência a cinemachine
+    [SerializeField] private float normalFOV = 80f; //Guarda o fov normal do cachorro andando
+    [SerializeField] private float speedFOV = 45f; //Guarda o fov de quando o cachorro corre
+    [SerializeField] private float transitionSpeed = 5f; //Velocidade de transição suave do fov
+    private float targetFOV; //Alvo de fov que será colocado a cada update
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody>(); //Obtém o rigbody do player
         cameraTransform = Camera.main.transform; // Obtém a câmera principal
+        targetFOV = normalFOV;
+
+        //Coloca o fov normal na camera
+        if(cinemachineCamera != null){
+            cinemachineCamera.Lens.FieldOfView = normalFOV;
+        }
     }
 
     
@@ -45,9 +58,15 @@ public class PlayerController : MonoBehaviour
     // Checa se está no chão
     isGrounded = Physics.CheckSphere(groundCheck.position, 0.1f, groundLayer);
 
-    // Verifica se o personagem está correndo ou não para multiplicar a velocidade
+    // Verifica se o personagem está correndo ou não para multiplicar a velocidade e definir qual FOV usar
     isRunning = Input.GetKey(KeyCode.LeftShift);
-    float speedMultiplier = isRunning ? runMultiplier : 1f;
+    if (isRunning){
+       speedMultiplier = runMultiplier;
+       targetFOV = speedFOV;
+    }else{
+        speedMultiplier = 1f;
+        targetFOV = normalFOV;
+    }
 
     // Obtém os inputs
     float inputForward = Input.GetAxis("Vertical"); // Input para frente/trás
@@ -65,6 +84,12 @@ public class PlayerController : MonoBehaviour
 
     // Aplica a movimentação no Rigidbody
     rb.linearVelocity = new Vector3(moveDirection.x * moveSpeedSide * speedMultiplier, rb.linearVelocity.y, moveDirection.z * moveSpeedForward * speedMultiplier);
+
+    // Transição suave entre os valores de FOV
+    if (cinemachineCamera != null)
+    {
+        cinemachineCamera.Lens.FieldOfView = Mathf.Lerp(cinemachineCamera.Lens.FieldOfView, targetFOV, transitionSpeed * Time.deltaTime);
+    }
 
     // Apenas gira se houver uma direção válida de movimento
     if (moveDirection.magnitude > 0.1f)

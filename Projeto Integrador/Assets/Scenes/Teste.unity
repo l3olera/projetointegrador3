@@ -563,6 +563,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   groundCheck: {fileID: 960668693}
+  cinemachineCamera: {fileID: 40556898}
+  normalFOV: 80
+  speedFOV: 60
+  transitionSpeed: 5
 --- !u!4 &524965160 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5859692174226542703, guid: 47a44d4926cb4a342b33f4ebec491ca5, type: 3}
