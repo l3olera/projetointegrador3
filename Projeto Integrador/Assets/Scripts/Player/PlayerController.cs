@@ -9,13 +9,13 @@ public class PlayerController : MonoBehaviour
     [Header("Configurações de movimentação")]
 
     [Tooltip("Velocidade do movimento para frente do player")]
-    public float moveSpeedForward = 10f; //Velocidade do movimento para frente do player
+    public float moveSpeedForward; //Velocidade do movimento para frente do player
     [Tooltip("Velocidade do movimento para o lado do player")]
-    public float moveSpeedSide = 7f; //Velocidade do movimento para o lado do player
+    public float moveSpeedSide; //Velocidade do movimento para o lado do player
     [Tooltip("Multiplicador de velocidade ao correr")]
-    public float runMultiplier = 1.5f; //Multiplicador de velocidade ao correr
+    public float runMultiplier; //Multiplicador de velocidade ao correr
      [Tooltip("Velocidade de rotação")]
-    public float rotationSpeed = 10f; //Velocidade de rotação
+    public float rotationSpeed; //Velocidade de rotação
 
     public bool isRunning; // Armazena se o jogador está correndo ou não
     private float speedMultiplier;
@@ -34,9 +34,9 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded; // Verifica se o jogador está no chão
     private Transform cameraTransform; // Adicionando referência à câmera
     [SerializeField] private CinemachineCamera cinemachineCamera; //Referência a cinemachine
-    [SerializeField] private float normalFOV = 80f; //Guarda o fov normal do cachorro andando
-    [SerializeField] private float speedFOV = 45f; //Guarda o fov de quando o cachorro corre
-    [SerializeField] private float transitionSpeed = 5f; //Velocidade de transição suave do fov
+    [SerializeField] private float normalFOV; //Guarda o fov normal do cachorro andando
+    [SerializeField] private float speedFOV; //Guarda o fov de quando o cachorro corre
+    [SerializeField] private float transitionSpeed; //Velocidade de transição suave do fov
     private float targetFOV; //Alvo de fov que será colocado a cada update
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

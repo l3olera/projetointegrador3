@@ -554,9 +554,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeedForward: 10
-  moveSpeedSide: 5
+  moveSpeedSide: 4
   runMultiplier: 1.5
-  rotationSpeed: 7
+  rotationSpeed: 1
   isRunning: 0
   jumpForce: 8
   groundLayer:
@@ -565,8 +565,8 @@ MonoBehaviour:
   groundCheck: {fileID: 960668693}
   cinemachineCamera: {fileID: 40556898}
   normalFOV: 80
-  speedFOV: 60
-  transitionSpeed: 5
+  speedFOV: 45
+  transitionSpeed: 1
 --- !u!4 &524965160 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5859692174226542703, guid: 47a44d4926cb4a342b33f4ebec491ca5, type: 3}
