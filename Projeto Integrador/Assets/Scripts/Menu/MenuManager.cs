@@ -12,6 +12,8 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private SceneLoader sceneLoader;
     [Tooltip("Referência ao GameObject credits")]
     [SerializeField] private GameObject credits;
+    [Tooltip("Referência ao GameObject popupControls")]
+    [SerializeField] private GameObject popupControls;
 
     void Start()
     {
@@ -21,14 +23,17 @@ public class MenuManager : MonoBehaviour
                 credits.SetActive(false);
             }
         }    
+
+        if(popupControls != null){
+            if(popupControls.activeSelf){
+                popupControls.SetActive(false);
+            }
+        }
+        
     }
 
     public void ButtonStart(){
         sceneLoader.Transition(nextSceneStart); //Responsável por fazer transição entre a tela de menu e o a cena do jogo
-    }
-
-    public void ButtonControls(){
-
     }
     
     public void ButtonOptions(){
@@ -39,10 +44,10 @@ public class MenuManager : MonoBehaviour
     {
         //Verifica se créditos está instanciado e mostra e esconde os créditos
         if(credits != null){
-            if(credits.activeSelf){
-                credits.SetActive(false);
-            }else{
+            if(!credits.activeSelf){
                 credits.SetActive(true);
+            }else{
+                credits.SetActive(false);
             }
         }    
     }
@@ -54,5 +59,23 @@ public class MenuManager : MonoBehaviour
         #else
             Application.Quit();
         #endif
+    }
+
+    public void OpenPopUp(GameObject objectPopUp){
+        //Deixa ativo um gameObject que é um popUp
+        if(objectPopUp != null){
+            if(!objectPopUp.activeSelf){
+                objectPopUp.SetActive(true);
+            }
+        }
+    }
+
+    public void ClosePopUp(GameObject objectPopUp){
+        //Deixa desativado um gameObject que é um popUp
+        if(objectPopUp != null){
+            if(objectPopUp.activeSelf){
+                objectPopUp.SetActive(false);
+            }
+        }
     }
 }
