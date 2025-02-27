@@ -14,6 +14,8 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject credits;
     [Tooltip("Referência ao GameObject popupControls")]
     [SerializeField] private GameObject popupControls;
+    [Tooltip("Referência ao GameObject popupOptions")]
+    [SerializeField] private GameObject popupOptions;
 
     void Start()
     {
@@ -21,6 +23,7 @@ public class MenuManager : MonoBehaviour
         if(credits != null){
             if(credits.activeSelf){
                 credits.SetActive(false);
+                credits.GetComponent<TextOscillator>().enabled = false;
             }
         }    
 
@@ -30,14 +33,15 @@ public class MenuManager : MonoBehaviour
             }
         }
         
+        if(popupOptions != null){
+            if(popupOptions.activeSelf){
+                popupOptions.SetActive(false);
+            }
+        }
     }
 
     public void ButtonStart(){
         sceneLoader.Transition(nextSceneStart); //Responsável por fazer transição entre a tela de menu e o a cena do jogo
-    }
-    
-    public void ButtonOptions(){
-
     }
 
     public void ButtonCredits()
@@ -46,8 +50,10 @@ public class MenuManager : MonoBehaviour
         if(credits != null){
             if(!credits.activeSelf){
                 credits.SetActive(true);
+                credits.GetComponent<TextOscillator>().enabled = true;
             }else{
                 credits.SetActive(false);
+                credits.GetComponent<TextOscillator>().enabled = false;
             }
         }    
     }
