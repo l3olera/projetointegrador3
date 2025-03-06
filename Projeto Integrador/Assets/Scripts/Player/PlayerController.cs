@@ -38,6 +38,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speedFOV; //Guarda o fov de quando o cachorro corre
     [SerializeField] private float transitionSpeed; //Velocidade de transição suave do fov
     private float targetFOV; //Alvo de fov que será colocado a cada update
+    
+    [Header("Configurações de empurrar")]
+    public float pushForce = 5f; // Força aplicada ao empurrar
+    private GameObject pushingObject = null;
+    private Rigidbody pushingRb = null;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -54,54 +59,78 @@ public class PlayerController : MonoBehaviour
 
     
     void Update()
-{
-    // Checa se está no chão
-    isGrounded = Physics.CheckSphere(groundCheck.position, 0.1f, groundLayer);
-
-    // Verifica se o personagem está correndo ou não para multiplicar a velocidade e definir qual FOV usar
-    isRunning = Input.GetKey(KeyCode.LeftShift);
-    if (isRunning){
-       speedMultiplier = runMultiplier;
-       targetFOV = speedFOV;
-    }else{
-        speedMultiplier = 1f;
-        targetFOV = normalFOV;
-    }
-
-    // Obtém os inputs
-    float inputForward = Input.GetAxis("Vertical"); // Input para frente/trás
-    float inputRight = Input.GetAxis("Horizontal"); // Input para esquerda/direita
-
-    // Cria um vetor de movimento baseado no input do jogador (espaço local)
-    Vector3 moveDirection = new Vector3(inputRight, 0, inputForward).normalized;
-
-    /*
-    VER SE VAI MANTER ESSA TRANSFORMAÇÃO DE DIREÇÃO OU NÃO
-    */
-    // Converte o vetor para o espaço global com base na rotação da câmera
-    moveDirection = cameraTransform.TransformDirection(moveDirection); 
-    moveDirection.y = 0; // Remove qualquer componente vertical
-
-    // Aplica a movimentação no Rigidbody
-    rb.linearVelocity = new Vector3(moveDirection.x * moveSpeedSide * speedMultiplier, rb.linearVelocity.y, moveDirection.z * moveSpeedForward * speedMultiplier);
-
-    // Transição suave entre os valores de FOV
-    if (cinemachineCamera != null)
     {
-        cinemachineCamera.Lens.FieldOfView = Mathf.Lerp(cinemachineCamera.Lens.FieldOfView, targetFOV, transitionSpeed * Time.deltaTime);
+        // Checa se está no chão
+        isGrounded = Physics.CheckSphere(groundCheck.position, 0.1f, groundLayer);
+
+        // Verifica se o personagem está correndo ou não para multiplicar a velocidade e definir qual FOV usar
+        isRunning = Input.GetKey(KeyCode.LeftShift);
+        if (isRunning){
+            speedMultiplier = runMultiplier;
+            targetFOV = speedFOV;
+        }else{
+            speedMultiplier = 1f;
+            targetFOV = normalFOV;
+        }
+
+        // Obtém os inputs
+        float inputForward = Input.GetAxis("Vertical"); // Input para frente/trás
+        float inputRight = Input.GetAxis("Horizontal"); // Input para esquerda/direita
+
+        // Cria um vetor de movimento baseado no input do jogador (espaço local)
+        Vector3 moveDirection = new Vector3(inputRight, 0, inputForward).normalized;
+
+        /*
+        VER SE VAI MANTER ESSA TRANSFORMAÇÃO DE DIREÇÃO OU NÃO
+        */
+        // Converte o vetor para o espaço global com base na rotação da câmera
+        moveDirection = cameraTransform.TransformDirection(moveDirection); 
+        moveDirection.y = 0; // Remove qualquer componente vertical
+
+        // Aplica a movimentação no Rigidbody
+        rb.linearVelocity = new Vector3(moveDirection.x * moveSpeedSide * speedMultiplier, rb.linearVelocity.y, moveDirection.z * moveSpeedForward * speedMultiplier);
+
+        // Transição suave entre os valores de FOV
+        if (cinemachineCamera != null)
+        {
+            cinemachineCamera.Lens.FieldOfView = Mathf.Lerp(cinemachineCamera.Lens.FieldOfView, targetFOV, transitionSpeed * Time.deltaTime);
+        }
+
+        // Apenas gira se houver uma direção válida de movimento
+        if (moveDirection.magnitude > 0.1f)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+        }
+
+        // Pulo
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
+
+        // Se estiver empurrando algo, aplicar força
+        if (pushingRb != null)
+        {
+            pushingRb.linearVelocity = new Vector3(rb.linearVelocity.x * pushForce, pushingRb.linearVelocity.y, rb.linearVelocity.z * pushForce);
+        }
     }
 
-    // Apenas gira se houver uma direção válida de movimento
-    if (moveDirection.magnitude > 0.1f)
+    private void OnCollisionEnter(Collision collision)
     {
-        Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+        if (collision.gameObject.CompareTag("Pushable"))
+        {
+            pushingObject = collision.gameObject;
+            pushingRb = pushingObject.GetComponent<Rigidbody>();
+        }
     }
 
-    // Pulo
-    if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+    private void OnCollisionExit(Collision collision)
     {
-        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        if (collision.gameObject == pushingObject)
+        {
+            pushingObject = null;
+            pushingRb = null;
+        }
     }
-}
 }
