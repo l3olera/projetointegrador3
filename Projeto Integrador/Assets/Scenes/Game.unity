@@ -313,7 +313,7 @@ GameObject:
   - component: {fileID: 1967232872}
   m_Layer: 0
   m_Name: Obstacle
-  m_TagString: Pushable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -681,6 +681,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7733531302821105528, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
+      propertyPath: jumpForce
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7733531302821105528, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
       propertyPath: pushForce
       value: 1
       objectReference: {fileID: 0}
@@ -731,6 +735,14 @@ PrefabInstance:
     - target: {fileID: 8423214076081959907, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
       propertyPath: m_Name
       value: Dog_Test
+      objectReference: {fileID: 0}
+    - target: {fileID: 8591717951986739414, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
+      propertyPath: m_Size.z
+      value: 1.1852508
+      objectReference: {fileID: 0}
+    - target: {fileID: 8591717951986739414, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
+      propertyPath: m_Center.z
+      value: 0.092625454
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

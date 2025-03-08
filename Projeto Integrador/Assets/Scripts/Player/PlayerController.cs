@@ -38,11 +38,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speedFOV; //Guarda o fov de quando o cachorro corre
     [SerializeField] private float transitionSpeed; //Velocidade de transição suave do fov
     private float targetFOV; //Alvo de fov que será colocado a cada update
-    
-    [Header("Configurações de empurrar")]
-    public float pushForce = 5f; // Força aplicada ao empurrar
-    private GameObject pushingObject = null;
-    private Rigidbody pushingRb = null;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -107,30 +102,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        }
-
-        // Se estiver empurrando algo, aplicar força
-        if (pushingRb != null)
-        {
-            pushingRb.linearVelocity = new Vector3(rb.linearVelocity.x * pushForce, pushingRb.linearVelocity.y, rb.linearVelocity.z * pushForce);
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Pushable"))
-        {
-            pushingObject = collision.gameObject;
-            pushingRb = pushingObject.GetComponent<Rigidbody>();
-        }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject == pushingObject)
-        {
-            pushingObject = null;
-            pushingRb = null;
         }
     }
 }
