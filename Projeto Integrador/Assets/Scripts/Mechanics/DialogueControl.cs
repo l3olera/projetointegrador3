@@ -1,53 +1,58 @@
-using System;
 using System.Collections;
-using NUnit.Framework;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DialogueControl : MonoBehaviour
 {
-    [Header("Components")]
-    public GameObject dialogueObj; //Referencia o game Object que irá aparecer o dialogo
-    public Image profile; //Referencia o objeto imagem que aparecera o sprite do personagem npc
-    public TextMeshProUGUI speechText; //Referencia o objeto texto que vai aparecer o discurso
-    public TextMeshProUGUI actorNameText; //Referencia o objeto texto que vai mostrar o nome do npc
-    public bool canInteract = true;
+    [Header("Components")] // Cria uma seção no Inspector para melhor organização
+    public GameObject dialogueObj; // Referência ao GameObject da caixa de diálogo
+    public Image profile; // Referência à imagem do personagem (NPC ou player)
+    public TextMeshProUGUI speechText; // Referência ao campo de texto onde aparecerá o diálogo
+    public TextMeshProUGUI actorNameText; // Referência ao campo de texto onde aparecerá o nome do personagem
 
-    [Header("Settings")]
-    public float typingSpeed; //Controla a velocidade que as palavras aparecerão
-    private string[] sentences;
-    private int index;
+    [Header("Settings")] // Seção para configurações no Inspector
+    public float typingSpeed; // Velocidade com que as letras aparecem na tela
+    public bool canInteract = true; // Controla se o jogador pode interagir com o NPC para evitar que ele fica floodando o botão
+    private string[] sentences; // Armazena as falas do NPC
+    private int index; // Índice da frase atual no array de sentenças
 
-    //Responsável por mostrar o discurso de um determinado npc
+    // Método responsável por exibir o diálogo na tela
     public void Speech(Sprite p, string[] txt, string actorName){
-        canInteract = false;
-        dialogueObj.SetActive(true); //Deixa amostra a caixa de dialago
-        profile.sprite = p; //Coloca o sprite do npc
-        sentences = txt; //Coloca o texto do discurso
-        actorNameText.text = actorName; //Coloca o nome do npc
-        StartCoroutine(TypeSentence());
+        canInteract = false; // Impede o jogador de interagir enquanto o diálogo está ativo
+        dialogueObj.SetActive(true); // Ativa a caixa de diálogo na tela
+        speechText.text = ""; // Garante que o texto será limpo antes de começar a digitação
+        profile.sprite = p; // Define a imagem do NPC ou personagem que está falando
+        sentences = txt; // Define as falas do NPC
+        actorNameText.text = actorName; // Define o nome do NPC na caixa de diálogo
+        StartCoroutine(TypeSentence()); // Inicia a corrotina para exibir o texto gradualmente
     }
 
+    // Corrotina para exibir as letras do diálogo uma por uma, simulando digitação
     IEnumerator TypeSentence(){
-        foreach(char letter in sentences[index].ToCharArray()){
-            speechText.text += letter;
-            yield return new WaitForSeconds(typingSpeed);
+        foreach(char letter in sentences[index].ToCharArray()) // Converte a frase atual em um array de caracteres
+        { 
+            speechText.text += letter; // Adiciona cada letra ao texto na tela
+            yield return new WaitForSeconds(typingSpeed); // Aguarda um pequeno intervalo entre as letras
         }
     }
 
-    public void NextSentence(){
-        if(speechText.text == sentences[index]){
-            //ainda há textos
-            if(index < sentences.Length - 1){
-                index++;
-                speechText.text = "";
-                StartCoroutine(TypeSentence());
-            }else{ //lido quando acaba os textos
-                canInteract = true;
-                speechText.text = "";
-                index = 0;
-                dialogueObj.SetActive(false);
+    // Método chamado para avançar para a próxima frase do diálogo
+    public void NextSentence()
+    {
+        if(speechText.text == sentences[index]) // Verifica se a frase foi completamente exibida
+        { 
+            if(index < sentences.Length - 1) // Se ainda houver frases restantes
+            { 
+                index++; // Passa para a próxima frase
+                speechText.text = ""; // Limpa o texto antes de exibir a nova frase
+                StartCoroutine(TypeSentence()); // Inicia a digitação da próxima frase
+            }else // Se todas as frases foram exibidas
+            { 
+                speechText.text = ""; // Limpa o texto
+                index = 0; // Reseta o índice do diálogo
+                dialogueObj.SetActive(false); // Esconde a caixa de diálogo
+                canInteract = true; // Permite que o jogador interaja novamente
             }
         }
     }
