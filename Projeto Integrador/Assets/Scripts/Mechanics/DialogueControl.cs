@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using NUnit.Framework;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +12,7 @@ public class DialogueControl : MonoBehaviour
     public Image profile; //Referencia o objeto imagem que aparecera o sprite do personagem npc
     public TextMeshProUGUI speechText; //Referencia o objeto texto que vai aparecer o discurso
     public TextMeshProUGUI actorNameText; //Referencia o objeto texto que vai mostrar o nome do npc
+    public bool canInteract = true;
 
     [Header("Settings")]
     public float typingSpeed; //Controla a velocidade que as palavras aparecerão
@@ -19,6 +21,7 @@ public class DialogueControl : MonoBehaviour
 
     //Responsável por mostrar o discurso de um determinado npc
     public void Speech(Sprite p, string[] txt, string actorName){
+        canInteract = false;
         dialogueObj.SetActive(true); //Deixa amostra a caixa de dialago
         profile.sprite = p; //Coloca o sprite do npc
         sentences = txt; //Coloca o texto do discurso
@@ -41,6 +44,7 @@ public class DialogueControl : MonoBehaviour
                 speechText.text = "";
                 StartCoroutine(TypeSentence());
             }else{ //lido quando acaba os textos
+                canInteract = true;
                 speechText.text = "";
                 index = 0;
                 dialogueObj.SetActive(false);
