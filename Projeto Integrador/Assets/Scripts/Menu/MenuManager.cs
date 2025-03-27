@@ -1,5 +1,7 @@
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.Localization.Settings;
 
 public class MenuManager : MonoBehaviour
 {
@@ -16,6 +18,10 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject popupControls;
     [Tooltip("Referência ao GameObject popupOptions")]
     [SerializeField] private GameObject popupOptions;
+    [Tooltip("Referência ao Image do button_English")]
+    [SerializeField] private Image bgEnglish;
+    [Tooltip("Referência ao Image do button_Portuguese")]
+    [SerializeField] private Image bgPortuguese;
 
     void Start()
     {
@@ -38,6 +44,10 @@ public class MenuManager : MonoBehaviour
                 popupOptions.SetActive(false);
             }
         }
+
+        //Verifica e aplica o idioma salvo
+        int savedLanguage = PlayerPrefs.GetInt("Language", 0); //0 - Português, 1 - Inglês (Se não existir, usa 0 como padrão)
+        SetLanguage(savedLanguage);
     }
 
     public void ButtonStart(){
@@ -83,5 +93,18 @@ public class MenuManager : MonoBehaviour
                 objectPopUp.SetActive(false);
             }
         }
+    }
+
+    public void SetLanguage(int languageIndex){
+        // Define o idioma na Unity Localization
+        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[languageIndex];
+
+        //Salva a escolha do jogador
+        PlayerPrefs.SetInt("Language", languageIndex);
+        PlayerPrefs.Save();
+
+        //Atualiza a aparência dos botões
+        bgEnglish.enabled = languageIndex == 1;
+        bgPortuguese.enabled = languageIndex == 0;
     }
 }

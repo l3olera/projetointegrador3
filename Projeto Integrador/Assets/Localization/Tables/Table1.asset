@@ -17,21 +17,21 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0b70912f56ca867478078747d39bb57f, type: 2}
   - {fileID: 11400000, guid: e48004ed353e5344fbdedac8e4c23a52, type: 2}
   m_Extensions:
-  - rid: 8896663645749248243
+  - rid: 8896663780260315205
   m_Group: String Table
   references:
     version: 2
     RefIds:
-    - rid: 8896663645749248243
+    - rid: 8896663780260315205
       type: {class: CsvExtension, ns: UnityEditor.Localization.Plugins.CSV, asm: Unity.Localization.Editor}
       data:
         m_Collection: {fileID: 11400000}
         m_ColumnsList:
-        - rid: 8896663645749248244
-        - rid: 8896663645749248245
-        - rid: 8896663645749248246
-        m_ConnectedFile: "Assets/Localization/Csv/Tradu\xE7\xF5es dos textos - P\xE1gina1.csv"
-    - rid: 8896663645749248244
+        - rid: 8896663780260315206
+        - rid: 8896663780260315207
+        - rid: 8896663780260315208
+        m_ConnectedFile: "Assets/Localization/Csv/Tradu\xE7\xF5es dos textos.csv"
+    - rid: 8896663780260315206
       type: {class: KeyIdColumns, ns: UnityEditor.Localization.Plugins.CSV.Columns, asm: Unity.Localization.Editor}
       data:
         m_IncludeId: 1
@@ -39,7 +39,7 @@ MonoBehaviour:
         m_KeyFieldName: Key
         m_IdFieldName: Id
         m_CommentFieldName: Shared Comments
-    - rid: 8896663645749248245
+    - rid: 8896663780260315207
       type: {class: LocaleColumns, ns: UnityEditor.Localization.Plugins.CSV.Columns, asm: Unity.Localization.Editor}
       data:
         m_LocaleIdentifier:
@@ -47,7 +47,7 @@ MonoBehaviour:
         m_FieldName: Portuguese (Brazil)(pt-BR)
         m_CommentFieldName: Portuguese (Brazil)(pt-BR) Comments
         m_IncludeComments: 1
-    - rid: 8896663645749248246
+    - rid: 8896663780260315208
       type: {class: LocaleColumns, ns: UnityEditor.Localization.Plugins.CSV.Columns, asm: Unity.Localization.Editor}
       data:
         m_LocaleIdentifier:
