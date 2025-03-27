@@ -306,9 +306,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6332589239754808445, guid: 47a44d4926cb4a342b33f4ebec491ca5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2957097825208503643}
-    - targetCorrespondingSourceObject: {fileID: 6261830797036979195, guid: 47a44d4926cb4a342b33f4ebec491ca5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8950242481471747788}
   m_SourcePrefab: {fileID: 100100000, guid: 47a44d4926cb4a342b33f4ebec491ca5, type: 3}
 --- !u!4 &8238607859782025201 stripped
 Transform:
@@ -343,6 +340,7 @@ MonoBehaviour:
     m_Bits: 8
   groundCheck: {fileID: 4213734826134395756}
   cinemachineCamera: {fileID: 0}
+  anim: {fileID: 0}
   normalFOV: 80
   speedFOV: 45
   transitionSpeed: 1
@@ -394,30 +392,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!1 &8494590581506911333 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6261830797036979195, guid: 47a44d4926cb4a342b33f4ebec491ca5, type: 3}
-  m_PrefabInstance: {fileID: 2523322897110708126}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &8950242481471747788
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8494590581506911333}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e534cfb9775ad8d4b94dbb7cecc4f61d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0

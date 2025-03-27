@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded; // Verifica se o jogador está no chão
     private Transform cameraTransform; // Adicionando referência à câmera
     [SerializeField] private CinemachineCamera cinemachineCamera; //Referência a cinemachine
+    [SerializeField] private Animator anim; //Referência ao animator do personagem
     [SerializeField] private float normalFOV; //Guarda o fov normal do cachorro andando
     [SerializeField] private float speedFOV; //Guarda o fov de quando o cachorro corre
     [SerializeField] private float transitionSpeed; //Velocidade de transição suave do fov
@@ -82,8 +83,14 @@ public class PlayerController : MonoBehaviour
         moveDirection = cameraTransform.TransformDirection(moveDirection); 
         moveDirection.y = 0; // Remove qualquer componente vertical
 
+
         // Aplica a movimentação no Rigidbody
         rb.linearVelocity = new Vector3(moveDirection.x * moveSpeedSide * speedMultiplier, rb.linearVelocity.y, moveDirection.z * moveSpeedForward * speedMultiplier);
+
+        // Definir os parâmetros da animação
+        bool isWalking = moveDirection.magnitude > 0.1f;
+        anim.SetBool("isWalking", isWalking);
+        anim.SetBool("isRunning", isWalking && isRunning);
 
         // Transição suave entre os valores de FOV
         if (cinemachineCamera != null)
@@ -92,9 +99,9 @@ public class PlayerController : MonoBehaviour
         }
 
         // Apenas gira se houver uma direção válida de movimento
-        if (moveDirection.magnitude > 0.1f)
+        if (isWalking)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
+            Quaternion targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
         }
 
