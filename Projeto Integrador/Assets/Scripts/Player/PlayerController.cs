@@ -2,7 +2,7 @@ using System;
 using NUnit.Framework;
 using Unity.Cinemachine;
 using UnityEngine;
-
+//COMENTARIO NOVO
 public class PlayerController : MonoBehaviour
 {
     //Variáveis responsáveis pela movimentação
