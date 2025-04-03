@@ -62307,6 +62307,7 @@ GameObject:
   - component: {fileID: 2108195227}
   - component: {fileID: 2108195226}
   - component: {fileID: 2108195225}
+  - component: {fileID: 2108195229}
   - component: {fileID: 2108195224}
   - component: {fileID: 2108195228}
   m_Layer: 0
@@ -62466,6 +62467,18 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
+--- !u!114 &2108195229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108195223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a9865b6fc35de247aa81ca1774e034a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2108767598
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63799,7 +63812,7 @@ PrefabInstance:
       objectReference: {fileID: 734835274}
     - target: {fileID: 7733531302821105528, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
       propertyPath: jumpForce
-      value: 15
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7733531302821105528, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
       propertyPath: pushForce
@@ -63812,7 +63825,7 @@ PrefabInstance:
     - target: {fileID: 7733531302821105528, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
       propertyPath: cinemachineCamera
       value: 
-      objectReference: {fileID: 40556898}
+      objectReference: {fileID: 1744388356}
     - target: {fileID: 7938711073458304171, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
       propertyPath: m_Layer
       value: 7
