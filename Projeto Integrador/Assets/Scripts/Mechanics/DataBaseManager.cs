@@ -2,6 +2,7 @@ using System;
 using System.Data;
 using System.IO;
 using Mono.Data.Sqlite;
+using UnityEditor.Experimental;
 using UnityEngine;
 
 public class DatabaseManager : MonoBehaviour
@@ -20,38 +21,32 @@ public class DatabaseManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        // Exemplo de uso: Mostrar todos os itens do banco de dados
+        if (Input.GetKeyDown(KeyCode.I))
         {
-            GetComponent<DatabaseManager>().AddItem("Gate Key", "Key to open the gate");
+            ShowItems();
         }
 
-        if (Input.GetKeyDown(KeyCode.M))
+        // Exemplo de uso: Mostrar o inventário
+        if (Input.GetKeyDown(KeyCode.O))
         {
-            GetComponent<DatabaseManager>().ShowItems();
-            Debug.Log("Mostrando itens no banco de dados...");
+            ShowInventory();
         }
 
-        if (Input.GetKeyDown(KeyCode.T))
+        // Exemplo de uso: Alterar um item no inventário
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            GetComponent<DatabaseManager>().ShowTableInfo("items");
+            AlterItemInventory(1, 2); // Altera o item do inventário 1 para o item 2
+        }
+
+        // Exemplo de uso: Mostrar a junção entre itens e inventário
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            JoinItemsAndInventory();
         }
     }
 
-    public void AddItem(string name, string description)
-    {
-        using var connection = new SqliteConnection(dbPath);
-        connection.Open();
-        using (var command = connection.CreateCommand())
-        {
-            command.CommandText = "INSERT INTO items (name, description) VALUES (@name, @description);";
-            command.Parameters.Add(new SqliteParameter("@name", name));
-            command.Parameters.Add(new SqliteParameter("@description", description));
-            command.ExecuteNonQuery();
-            Debug.Log($"Item '{name}' adicionado com sucesso!");
-        }
-        connection.Close();
-    }
-
+    //ITEMS
     public void ShowItems()
     {
         using var connection = new SqliteConnection(dbPath);
@@ -71,20 +66,82 @@ public class DatabaseManager : MonoBehaviour
         connection.Close();
     }
 
-    public void ShowTableInfo(string tableName)
+    public void ShowItemsById(int id_item){
+        using var connection = new SqliteConnection(dbPath);
+        connection.Open();
+        using (var command = connection.CreateCommand())
+        {
+            command.CommandText = "SELECT * FROM Items WHERE id_item = @id_item;";
+            command.Parameters.Add(new SqliteParameter("@id_item", id_item));
+            using IDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                int id = reader.GetInt32(0);
+                string name = reader.GetString(1);
+                string description = reader.GetString(2);
+                Debug.Log($"ID: {id} - Nome: {name} - Descrição: {description}");
+            }
+        }
+        connection.Close();
+    }
+
+    //INVENTORY
+    public void ShowInventory()
     {
         using var connection = new SqliteConnection(dbPath);
         connection.Open();
         using (var command = connection.CreateCommand())
         {
-            command.CommandText = $"PRAGMA table_info({tableName});";
+            command.CommandText = "SELECT * FROM Inventory;";
             using IDataReader reader = command.ExecuteReader();
-            Debug.Log($"Estrutura da tabela '{tableName}':");
+            while (reader.Read())
+            { 
+                int id_inventory = reader.GetInt32(0); 
+
+                // Verifica o tipo da coluna id_item
+                object id_itemValue = reader.IsDBNull(1) ? null : reader.GetValue(1);
+                string id_item = id_itemValue != null ? id_itemValue.ToString() : "NULL";
+                Debug.Log($"ID Item: {id_item} - ID Inventário: {id_inventory}");
+            }
+        }
+        connection.Close();
+    }
+
+    public void AlterItemInventory(int id_inventory, int? id_item)
+    {
+        using var connection = new SqliteConnection(dbPath);
+        connection.Open();
+        using (var command = connection.CreateCommand())
+        {
+            command.CommandText = "UPDATE Inventory SET id_item = @id_item WHERE id_inventory = @id_inventory;";
+            
+            command.Parameters.Add(new SqliteParameter("@id_inventory", id_inventory));
+            command.Parameters.Add(new SqliteParameter("@id_item", id_item ?? (object)DBNull.Value));
+            command.ExecuteNonQuery();
+            Debug.Log($"Item '{id_item}' alterado no inventário '{id_inventory}' com sucesso!");
+        }
+        connection.Close();
+    }
+
+    public void JoinItemsAndInventory()
+    {
+        using var connection = new SqliteConnection(dbPath);
+        connection.Open();
+        using (var command = connection.CreateCommand())
+        {
+            // Comando SQL para realizar a junção
+            command.CommandText = @"
+                SELECT Items.name 
+                FROM Inventory 
+                INNER JOIN Items ON Inventory.id_item = Items.id;
+            ";
+
+            using IDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-                string columnName = reader.GetString(1); // Nome da coluna
-                string columnType = reader.GetString(2); // Tipo da coluna
-                Debug.Log($"Coluna: {columnName}, Tipo: {columnType}");
+                string item_name = reader.GetString(1); // Nome do item
+
+                Debug.Log($"Nome do Item: {item_name}");
             }
         }
         connection.Close();
