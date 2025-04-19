@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Localization.Settings;
@@ -7,41 +6,41 @@ public class MenuManager : MonoBehaviour
 {
     [Header("Cenas")]
     [Tooltip("Cena que o jogadora irá ao clicar em Jogar")]
-    [SerializeField] private string nextSceneStart;
+    [SerializeField] private string _nextSceneStart;
 
     [Header("Referências de classes e objetos")]
     [Tooltip("Referência a classe sceneLoader")]
-    [SerializeField] private SceneLoader sceneLoader;
+    [SerializeField] private SceneLoader _sceneLoader;
     [Tooltip("Referência ao GameObject credits")]
-    [SerializeField] private GameObject credits;
+    [SerializeField] private GameObject _credits;
     [Tooltip("Referência ao GameObject popupControls")]
-    [SerializeField] private GameObject popupControls;
+    [SerializeField] private GameObject _popupControls;
     [Tooltip("Referência ao GameObject popupOptions")]
-    [SerializeField] private GameObject popupOptions;
+    [SerializeField] private GameObject _popupOptions;
     [Tooltip("Referência ao Image do button_English")]
-    [SerializeField] private Image bgEnglish;
+    [SerializeField] private Image _bgEnglish;
     [Tooltip("Referência ao Image do button_Portuguese")]
-    [SerializeField] private Image bgPortuguese;
+    [SerializeField] private Image _bgPortuguese;
 
     void Start()
     {
         //Verifica se créditos foi instanciado e se ele está ativo quando inicia a cena. Assim, escondendo-o caso for verdadeiro
-        if(credits != null){
-            if(credits.activeSelf){
-                credits.SetActive(false);
-                credits.GetComponent<TextOscillator>().enabled = false;
+        if(_credits != null){
+            if(_credits.activeSelf){
+                _credits.SetActive(false);
+                _credits.GetComponent<TextOscillator>().enabled = false;
             }
         }    
 
-        if(popupControls != null){
-            if(popupControls.activeSelf){
-                popupControls.SetActive(false);
+        if(_popupControls != null){
+            if(_popupControls.activeSelf){
+                _popupControls.SetActive(false);
             }
         }
         
-        if(popupOptions != null){
-            if(popupOptions.activeSelf){
-                popupOptions.SetActive(false);
+        if(_popupOptions != null){
+            if(_popupOptions.activeSelf){
+                _popupOptions.SetActive(false);
             }
         }
 
@@ -51,19 +50,19 @@ public class MenuManager : MonoBehaviour
     }
 
     public void ButtonStart(){
-        sceneLoader.Transition(nextSceneStart); //Responsável por fazer transição entre a tela de menu e o a cena do jogo
+        _sceneLoader.Transition(_nextSceneStart); //Responsável por fazer transição entre a tela de menu e o a cena do jogo
     }
 
     public void ButtonCredits()
     {
         //Verifica se créditos está instanciado e mostra e esconde os créditos
-        if(credits != null){
-            if(!credits.activeSelf){
-                credits.SetActive(true);
-                credits.GetComponent<TextOscillator>().enabled = true;
+        if(_credits != null){
+            if(!_credits.activeSelf){
+                _credits.SetActive(true);
+                _credits.GetComponent<TextOscillator>().enabled = true;
             }else{
-                credits.SetActive(false);
-                credits.GetComponent<TextOscillator>().enabled = false;
+                _credits.SetActive(false);
+                _credits.GetComponent<TextOscillator>().enabled = false;
             }
         }    
     }
@@ -104,7 +103,7 @@ public class MenuManager : MonoBehaviour
         PlayerPrefs.Save();
 
         //Atualiza a aparência dos botões
-        bgEnglish.enabled = languageIndex == 1;
-        bgPortuguese.enabled = languageIndex == 0;
+        _bgEnglish.enabled = languageIndex == 1;
+        _bgPortuguese.enabled = languageIndex == 0;
     }
 }

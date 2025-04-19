@@ -8,7 +8,8 @@ public class PauseControl : MonoBehaviour
     public GameObject pauseCanvas; //Instancia o canvas do pause
     public SceneLoader sceneLoader; //Instancia o sceneLoader
     public String nextScene; //Nome da próxima cena
-    bool isPause = false; //Armazena se o jogo está pausado ou não
+    bool _isPause = false; //Armazena se o jogo está pausado ou não
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,7 +25,7 @@ public class PauseControl : MonoBehaviour
     }
 
     //Despausa o jogo e esconde o canva do Pause
-    public void UnPause(){
+    void UnPause(){
         Time.timeScale = 1;
 
         EnableCanvas(false);
@@ -50,13 +51,17 @@ public class PauseControl : MonoBehaviour
     {
         //Executa o pause se o jogador pressionar a tecla ESC
         if(Input.GetKeyDown(KeyCode.Escape)){
-            isPause = !isPause;
+            TooglePause();
+        }
+    }
 
-            if(isPause){
-                Pause();
-            }else {
-                UnPause();
-            }
+    public void TooglePause(){
+        _isPause = !_isPause;
+
+        if(_isPause){
+            Pause();
+        }else {
+            UnPause();
         }
     }
 }
