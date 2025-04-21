@@ -119,201 +119,213 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 26
+    m_Localized: "Controle do port\xE3o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 27
+    m_Localized: "Novelo de l\xE3"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28
+    m_Localized: Pepito
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29
     m_Localized: "Pepito? Onde voc\xEA est\xE1, maninho? Isso n\xE3o \xE9 hora de
       brincadeiras\u2026!"
     m_Metadata:
       m_Items: []
-  - m_Id: 27
+  - m_Id: 30
     m_Localized: "Seu cheiro... vai at\xE9 o port\xE3o! Voc\xEA saiu? Oh n\xE3o,
       preciso te encontrar!"
     m_Metadata:
       m_Items: []
-  - m_Id: 28
+  - m_Id: 31
     m_Localized: "Se eu empurrar esse pneu at\xE9 o m\xF3vel\u2026 pronto! Agora
       s\xF3 preciso subir e pegar o controle..."
     m_Metadata:
       m_Items: []
-  - m_Id: 29
+  - m_Id: 32
     m_Localized: "Aguenta firme, Pepito! Sua irm\xE3 est\xE1 indo te buscar!"
     m_Metadata:
       m_Items: []
-  - m_Id: 30
+  - m_Id: 33
     m_Localized: "Oi, senhor! Voc\xEA viu um cachorrinho pequeno e assustado passar
       por aqui?"
     m_Metadata:
       m_Items: []
-  - m_Id: 31
+  - m_Id: 34
     m_Localized: "Ahh, minha vista n\xE3o \xE9 como antigamente, querida\u2026 Mas
       ouvi barulho na rua de tr\xE1s. Talvez ele tenha ido pra l\xE1."
     m_Metadata:
       m_Items: []
-  - m_Id: 32
+  - m_Id: 35
     m_Localized: "Muito obrigada! Voc\xEA \xE9 muito gentil!"
     m_Metadata:
       m_Items: []
-  - m_Id: 33
+  - m_Id: 36
     m_Localized: "Oi, amigos de pena! Algum de voc\xEAs viu um cachorrinho pequeno
       e peludo correndo por aqui?"
     m_Metadata:
       m_Items: []
-  - m_Id: 34
+  - m_Id: 37
     m_Localized: "Hmmm... cachorro? Cachorro... Ahhh, eu conhe\xE7o essa palavra!
       \xC9 aquele bicho peludo que late, n\xE9?"
     m_Metadata:
       m_Items: []
-  - m_Id: 35
+  - m_Id: 38
     m_Localized: "Todos os bichos s\xE3o peludos, Fred..."
     m_Metadata:
       m_Items: []
-  - m_Id: 36
+  - m_Id: 39
     m_Localized: "Nem todos! E os peixes? Eles s\xE3o molhados!"
     m_Metadata:
       m_Items: []
-  - m_Id: 37
+  - m_Id: 40
     m_Localized: Errr... Foco, pessoal! Um cachorrinho pequeno, peludo, passou por
       aqui?
     m_Metadata:
       m_Items: []
-  - m_Id: 38
+  - m_Id: 41
     m_Localized: "Eu vi algo se mexendo! Mas pode ter sido um cachorro... ou um saco
       pl\xE1stico..."
     m_Metadata:
       m_Items: []
-  - m_Id: 39
+  - m_Id: 42
     m_Localized: "Nossa, que coincid\xEAncia! Eu tamb\xE9m vi um saco pl\xE1stico!
       Ele tava correndo igualzinho!"
     m_Metadata:
       m_Items: []
-  - m_Id: 40
+  - m_Id: 43
     m_Localized: "Ei, e se o cachorro FOR o saco pl\xE1stico??"
     m_Metadata:
       m_Items: []
-  - m_Id: 41
+  - m_Id: 44
     m_Localized: ".... Voc\xEAs s\xE3o muito confusos."
     m_Metadata:
       m_Items: []
-  - m_Id: 42
+  - m_Id: 45
     m_Localized: "Mas voc\xEA gosta da gente, n\xE9?"
     m_Metadata:
       m_Items: []
-  - m_Id: 43
+  - m_Id: 46
     m_Localized: "\xC9, gosta sim! Eu tenho certeza disso."
     m_Metadata:
       m_Items: []
-  - m_Id: 44
+  - m_Id: 47
     m_Localized: "\"Sim, sim, voc\xEAs s\xE3o \xF3timos! Agora podem me dizer para
       onde o cachorro foi?"
     m_Metadata:
       m_Items: []
-  - m_Id: 45
+  - m_Id: 48
     m_Localized: "Ahh, por que n\xE3o perguntou antes? Ele foi por ali!"
     m_Metadata:
       m_Items: []
-  - m_Id: 46
+  - m_Id: 49
     m_Localized: "S\xE9rio?!"
     m_Metadata:
       m_Items: []
-  - m_Id: 47
+  - m_Id: 50
     m_Localized: "N\xE3o sei. Mas parece uma boa resposta!"
     m_Metadata:
       m_Items: []
-  - m_Id: 48
+  - m_Id: 51
     m_Localized: "Na verdade, acho que foi pra l\xE1."
     m_Metadata:
       m_Items: []
-  - m_Id: 49
+  - m_Id: 52
     m_Localized: "Se eu n\xE3o vejo nada, ent\xE3o nada aconteceu!"
     m_Metadata:
       m_Items: []
-  - m_Id: 50
+  - m_Id: 53
     m_Localized: Suspiro... Obrigada, eu acho.
     m_Metadata:
       m_Items: []
-  - m_Id: 51
+  - m_Id: 54
     m_Localized: "Ei, voc\xEA! Voc\xEA viu um cachorrinho chamado Pepito?"
     m_Metadata:
       m_Items: []
-  - m_Id: 52
+  - m_Id: 55
     m_Localized: "Pepito? Nome engra\xE7ado. Talvez eu tenha visto, talvez\u2026
       Depende."
     m_Metadata:
       m_Items: []
-  - m_Id: 53
+  - m_Id: 56
     m_Localized: "Depende do qu\xEA?"
     m_Metadata:
       m_Items: []
-  - m_Id: 54
+  - m_Id: 57
     m_Localized: "Ah, minha querida, informa\xE7\xE3o tem pre\xE7o! Um objeto muito
       precioso caiu no quintal de um cachorro chato. Se voc\xEA pegar para mim, quem
       sabe eu lembre onde Pepito foi visto pela \xFAltima vez?"
     m_Metadata:
       m_Items: []
-  - m_Id: 55
+  - m_Id: 58
     m_Localized: "Voc\xEA s\xF3 quer se aproveitar\u2026 Mas tudo bem. Pepito vale
       qualquer esfor\xE7o!"
     m_Metadata:
       m_Items: []
-  - m_Id: 56
+  - m_Id: 59
     m_Localized: "Aqui est\xE1. Agora, me diga onde Pepito est\xE1!"
     m_Metadata:
       m_Items: []
-  - m_Id: 57
+  - m_Id: 60
     m_Localized: "Ahh, uma boa negociadora! Ele foi levado por aquele tal de Rufus.
       Um c\xE3o que n\xE3o brinca em servi\xE7o. Se fosse voc\xEA, eu voltava pra
       casa."
     m_Metadata:
       m_Items: []
-  - m_Id: 58
+  - m_Id: 61
     m_Localized: Nunca! Eu vou salvar Pepito!
     m_Metadata:
       m_Items: []
-  - m_Id: 59
+  - m_Id: 62
     m_Localized: "Bom, escolha sua\u2026 Mas se sobreviver, passa aqui depois. Sempre
       posso precisar de mais uma patinha amiga, sabe?"
     m_Metadata:
       m_Items: []
-  - m_Id: 60
+  - m_Id: 63
     m_Localized: "Lakshmi! Eu sabia que voc\xEA viria!"
     m_Metadata:
       m_Items: []
-  - m_Id: 61
+  - m_Id: 64
     m_Localized: "Maninho! Estou aqui! Eu vou te tirar da\xED, prometo!"
     m_Metadata:
       m_Items: []
-  - m_Id: 62
+  - m_Id: 65
     m_Localized: "Consegui! Vem, r\xE1pido!"
     m_Metadata:
       m_Items: []
-  - m_Id: 63
+  - m_Id: 66
     m_Localized: Mas... e o Rufus?
     m_Metadata:
       m_Items: []
-  - m_Id: 64
+  - m_Id: 67
     m_Localized: "Acho que ele ainda n\xE3o acordou... Vamos sair daqui antes que
       ele..."
     m_Metadata:
       m_Items: []
-  - m_Id: 65
+  - m_Id: 68
     m_Localized: "Aonde pensam que v\xE3o, ratinhos?"
     m_Metadata:
       m_Items: []
-  - m_Id: 66
+  - m_Id: 69
     m_Localized: Corre!!!
     m_Metadata:
       m_Items: []
-  - m_Id: 67
+  - m_Id: 70
     m_Localized: "N\xF3s conseguimos..."
     m_Metadata:
       m_Items: []
-  - m_Id: 68
+  - m_Id: 71
     m_Localized: Eu disse que nunca ia te abandonar.
     m_Metadata:
       m_Items: []
-  - m_Id: 69
+  - m_Id: 72
     m_Localized: "Vamos descansar, maninho. Voc\xEA me deu um baita susto hoje!"
     m_Metadata:
       m_Items: []
-  - m_Id: 70
+  - m_Id: 73
     m_Localized: Prometo que nunca mais fujo... Talvez.
     m_Metadata:
       m_Items: []

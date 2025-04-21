@@ -119,198 +119,210 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 26
-    m_Localized: "Pepito? Where are you, little brother? This is no time for games\u2026!"
+    m_Localized: Gate control
     m_Metadata:
       m_Items: []
   - m_Id: 27
+    m_Localized: Ball of wool
+    m_Metadata:
+      m_Items: []
+  - m_Id: 28
+    m_Localized: Pepito
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29
+    m_Localized: "Pepito? Where are you, little brother? This is no time for games\u2026!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 30
     m_Localized: "Your scent\u2026 goes all the way to the gate! You went outside?
       Oh no, I need to find you!"
     m_Metadata:
       m_Items: []
-  - m_Id: 28
+  - m_Id: 31
     m_Localized: "If I push this tire up to the furniture\u2026 there! Now I just
       need to climb up and grab the remote..."
     m_Metadata:
       m_Items: []
-  - m_Id: 29
+  - m_Id: 32
     m_Localized: Hang in there, Pepito! Your sister is coming to get you!
     m_Metadata:
       m_Items: []
-  - m_Id: 30
+  - m_Id: 33
     m_Localized: Excuse me, sir! Have you seen a small, scared little dog pass by?
     m_Metadata:
       m_Items: []
-  - m_Id: 31
+  - m_Id: 34
     m_Localized: "Ahh, my eyesight isn\u2019t what it used to be, dear\u2026 But
       I heard some noise in the back street. Maybe he went that way."
     m_Metadata:
       m_Items: []
-  - m_Id: 32
+  - m_Id: 35
     m_Localized: Thank you so much! You're very kind!
     m_Metadata:
       m_Items: []
-  - m_Id: 33
+  - m_Id: 36
     m_Localized: Hey, feathered friends! Have any of you seen a small, furry dog
       running around here?
     m_Metadata:
       m_Items: []
-  - m_Id: 34
+  - m_Id: 37
     m_Localized: "Hmmm\u2026 dog? Dog... Ahhh, I know that word! It's that furry
       thing that barks, right?"
     m_Metadata:
       m_Items: []
-  - m_Id: 35
+  - m_Id: 38
     m_Localized: All animals are furry, Fred...
     m_Metadata:
       m_Items: []
-  - m_Id: 36
+  - m_Id: 39
     m_Localized: "Not all! What about fish? They\u2019re wet!"
     m_Metadata:
       m_Items: []
-  - m_Id: 37
+  - m_Id: 40
     m_Localized: "Errr\u2026 Focus, guys! A small, furry dog, did he pass through
       here?"
     m_Metadata:
       m_Items: []
-  - m_Id: 38
+  - m_Id: 41
     m_Localized: "I saw something moving! But it could\u2019ve been a dog\u2026 or
       a plastic bag..."
     m_Metadata:
       m_Items: []
-  - m_Id: 39
+  - m_Id: 42
     m_Localized: Wow, what a coincidence! I also saw a plastic bag! It was running
       just like that!
     m_Metadata:
       m_Items: []
-  - m_Id: 40
+  - m_Id: 43
     m_Localized: Hey, what if the dog IS the plastic bag??
     m_Metadata:
       m_Items: []
-  - m_Id: 41
+  - m_Id: 44
     m_Localized: "\u2026 You guys are really confusing."
     m_Metadata:
       m_Items: []
-  - m_Id: 42
+  - m_Id: 45
     m_Localized: But you like us, right?
     m_Metadata:
       m_Items: []
-  - m_Id: 43
+  - m_Id: 46
     m_Localized: "Yeah, you do! I\u2019m sure of it."
     m_Metadata:
       m_Items: []
-  - m_Id: 44
+  - m_Id: 47
     m_Localized: "Yes, yes, you\u2019re great! Now, can you tell me where the dog
       went?"
     m_Metadata:
       m_Items: []
-  - m_Id: 45
+  - m_Id: 48
     m_Localized: "Ohh, why didn\u2019t you ask before? He went that way!"
     m_Metadata:
       m_Items: []
-  - m_Id: 46
+  - m_Id: 49
     m_Localized: Really?!
     m_Metadata:
       m_Items: []
-  - m_Id: 47
+  - m_Id: 50
     m_Localized: "I don\u2019t know. But it sounds like a good answer!"
     m_Metadata:
       m_Items: []
-  - m_Id: 48
+  - m_Id: 51
     m_Localized: Actually, I think he went that way.
     m_Metadata:
       m_Items: []
-  - m_Id: 49
+  - m_Id: 52
     m_Localized: "If I don\u2019t see anything, then nothing happened!"
     m_Metadata:
       m_Items: []
-  - m_Id: 50
+  - m_Id: 53
     m_Localized: "Sigh\u2026 Thanks, I guess."
     m_Metadata:
       m_Items: []
-  - m_Id: 51
+  - m_Id: 54
     m_Localized: Hey, you! Have you seen a little dog named Pepito?
     m_Metadata:
       m_Items: []
-  - m_Id: 52
+  - m_Id: 55
     m_Localized: "Pepito? Funny name. Maybe I saw him, maybe\u2026 it depends."
     m_Metadata:
       m_Items: []
-  - m_Id: 53
+  - m_Id: 56
     m_Localized: Depends on what?
     m_Metadata:
       m_Items: []
-  - m_Id: 54
+  - m_Id: 57
     m_Localized: Ah, my dear, information has a price! A very precious item fell
       into the yard of an annoying dog. If you fetch it for me, who knows? I might
       remember where Pepito was last seen.
     m_Metadata:
       m_Items: []
-  - m_Id: 55
+  - m_Id: 58
     m_Localized: "You're just trying to take advantage of me\u2026 But fine. Pepito
       is worth any effort!"
     m_Metadata:
       m_Items: []
-  - m_Id: 56
+  - m_Id: 59
     m_Localized: Here it is. Now tell me where Pepito is!
     m_Metadata:
       m_Items: []
-  - m_Id: 57
+  - m_Id: 60
     m_Localized: "Ahh, a good negotiator! He was taken by that Rufus guy. A dog who
       doesn\u2019t play around. If I were you, I\u2019d go back home."
     m_Metadata:
       m_Items: []
-  - m_Id: 58
+  - m_Id: 61
     m_Localized: "Never! I\u2019m going to save Pepito!"
     m_Metadata:
       m_Items: []
-  - m_Id: 59
+  - m_Id: 62
     m_Localized: "Well, your choice\u2026 But if you survive, drop by later. I could
       always use an extra helping paw, you know?"
     m_Metadata:
       m_Items: []
-  - m_Id: 60
+  - m_Id: 63
     m_Localized: "Lakshmi! I knew you\u2019d come!"
     m_Metadata:
       m_Items: []
-  - m_Id: 61
+  - m_Id: 64
     m_Localized: "Little brother! I\u2019m here! I\u2019ll get you out of there,
       I promise!"
     m_Metadata:
       m_Items: []
-  - m_Id: 62
+  - m_Id: 65
     m_Localized: I did it! Come on, quick!
     m_Metadata:
       m_Items: []
-  - m_Id: 63
+  - m_Id: 66
     m_Localized: "But\u2026 what about Rufus?"
     m_Metadata:
       m_Items: []
-  - m_Id: 64
+  - m_Id: 67
     m_Localized: "I think he\u2019s still asleep\u2026 Let\u2019s get out of here
       before he\u2014"
     m_Metadata:
       m_Items: []
-  - m_Id: 65
+  - m_Id: 68
     m_Localized: "Where do you think you\u2019re going, little rats?"
     m_Metadata:
       m_Items: []
-  - m_Id: 66
+  - m_Id: 69
     m_Localized: Run!!!
     m_Metadata:
       m_Items: []
-  - m_Id: 67
+  - m_Id: 70
     m_Localized: We made it...
     m_Metadata:
       m_Items: []
-  - m_Id: 68
+  - m_Id: 71
     m_Localized: "I told you I\u2019d never leave you behind."
     m_Metadata:
       m_Items: []
-  - m_Id: 69
+  - m_Id: 72
     m_Localized: "Let\u2019s rest, little brother. You really scared me today!"
     m_Metadata:
       m_Items: []
-  - m_Id: 70
+  - m_Id: 73
     m_Localized: "I promise I\u2019ll never run away again\u2026 Maybe."
     m_Metadata:
       m_Items: []
