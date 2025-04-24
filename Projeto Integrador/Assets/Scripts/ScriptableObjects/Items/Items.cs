@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Localization;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "New Item", menuName = "Inventoy Items/Create New")]
 public class Items : ScriptableObject
@@ -8,7 +9,7 @@ public class Items : ScriptableObject
     
     public LocalizedString itemName;
 
-    public Sprite itemSprite; //Sprite do item
+    public Image itemSprite; //Sprite do item
 
     public string GetName(){
         return itemName.GetLocalizedString(); //Retorna o nome do item

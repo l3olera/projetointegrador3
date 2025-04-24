@@ -16,7 +16,6 @@ public class DatabaseManager : MonoBehaviour
         
         // String de conexão para o banco de dados
         dbPath = $"URI=file:{filePath}";
-        Debug.Log($"Conectando ao banco de dados em: {dbPath}");
     }
 
     void Update()
@@ -60,7 +59,6 @@ public class DatabaseManager : MonoBehaviour
                 int id = reader.GetInt32(0);
                 string name = reader.GetString(1);
                 string description = reader.GetString(2);
-                Debug.Log($"ID: {id} - Nome: {name} - Descrição: {description}");
             }
         }
         connection.Close();
@@ -79,7 +77,6 @@ public class DatabaseManager : MonoBehaviour
                 int id = reader.GetInt32(0);
                 string name = reader.GetString(1);
                 string description = reader.GetString(2);
-                Debug.Log($"ID: {id} - Nome: {name} - Descrição: {description}");
             }
         }
         connection.Close();
@@ -101,7 +98,6 @@ public class DatabaseManager : MonoBehaviour
                 // Verifica o tipo da coluna id_item
                 object id_itemValue = reader.IsDBNull(1) ? null : reader.GetValue(1);
                 string id_item = id_itemValue != null ? id_itemValue.ToString() : "NULL";
-                Debug.Log($"ID Item: {id_item} - ID Inventário: {id_inventory}");
             }
         }
         connection.Close();
@@ -118,7 +114,6 @@ public class DatabaseManager : MonoBehaviour
             command.Parameters.Add(new SqliteParameter("@id_inventory", id_inventory));
             command.Parameters.Add(new SqliteParameter("@id_item", id_item ?? (object)DBNull.Value));
             command.ExecuteNonQuery();
-            Debug.Log($"Item '{id_item}' alterado no inventário '{id_inventory}' com sucesso!");
         }
         connection.Close();
     }
@@ -140,8 +135,6 @@ public class DatabaseManager : MonoBehaviour
             while (reader.Read())
             {
                 string item_name = reader.GetString(1); // Nome do item
-
-                Debug.Log($"Nome do Item: {item_name}");
             }
         }
         connection.Close();
