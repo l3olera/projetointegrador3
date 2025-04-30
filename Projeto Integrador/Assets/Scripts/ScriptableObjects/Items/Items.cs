@@ -9,9 +9,5 @@ public class Items : ScriptableObject
     
     public LocalizedString itemName;
 
-    public Image itemSprite; //Sprite do item
-
-    public string GetName(){
-        return itemName.GetLocalizedString(); //Retorna o nome do item
-    }
+    public Sprite itemSprite; //Sprite do item
 }

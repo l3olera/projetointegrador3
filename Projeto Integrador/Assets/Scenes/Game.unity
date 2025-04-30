@@ -1806,7 +1806,7 @@ Transform:
   m_GameObject: {fileID: 40556893}
   serializedVersion: 2
   m_LocalRotation: {x: 0.2597828, y: -3.5056298e-16, z: 4.169783e-16, w: 0.96566707}
-  m_LocalPosition: {x: -25.59, y: 1.53, z: 9.719999}
+  m_LocalPosition: {x: -25.59, y: 1.183, z: 9.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8465,7 +8465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slot: {fileID: 0}
-  slotImage: {fileID: 2013654632}
+  _slotImageUI: {fileID: 2013654632}
 --- !u!1001 &190817881
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23488,7 +23488,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &576304163
 RectTransform:
   m_ObjectHideFlags: 0
@@ -23505,7 +23505,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -499, y: 444}
+  m_AnchoredPosition: {x: -501, y: -488}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &576304164
@@ -23528,7 +23528,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Pressione E ou Z para interagir
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -23537,8 +23537,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278247167
-  m_fontColor: {r: 1, g: 0.8700229, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -23562,8 +23562,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -23593,7 +23593,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -622.5123, w: 0}
+  m_margin: {x: 0, y: 0, z: -1222.6234, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -71560,7 +71560,7 @@ Transform:
   m_GameObject: {fileID: 1744388351}
   serializedVersion: 2
   m_LocalRotation: {x: 0.17930414, y: 0.013683451, z: -0.0024941661, w: 0.9836954}
-  m_LocalPosition: {x: -25.629251, y: 1.4821174, z: 9.8393955}
+  m_LocalPosition: {x: -25.629251, y: 1.1351175, z: 9.8393955}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -78460,7 +78460,7 @@ GameObject:
   - component: {fileID: 1923991658}
   m_Layer: 0
   m_Name: Item
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78548,7 +78548,7 @@ Transform:
   m_GameObject: {fileID: 1923991657}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -24.818, y: 0.052, z: 14.879999}
+  m_LocalPosition: {x: -24.818, y: 0.06, z: 14.879999}
   m_LocalScale: {x: 0.17250194, y: 0.10650642, z: 0.29139715}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -85257,7 +85257,7 @@ Transform:
   m_GameObject: {fileID: 2108195223}
   serializedVersion: 2
   m_LocalRotation: {x: 0.17930415, y: 0.013683452, z: -0.0024941661, w: 0.9836954}
-  m_LocalPosition: {x: -25.629251, y: 1.4821174, z: 9.8393955}
+  m_LocalPosition: {x: -25.629251, y: 1.1351175, z: 9.8393955}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -86719,7 +86719,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7069505520918420298, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.063
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7069505520918420298, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
       propertyPath: m_LocalPosition.z
@@ -86999,7 +86999,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8238607859782025201, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.35
+      value: 0.003
       objectReference: {fileID: 0}
     - target: {fileID: 8238607859782025201, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -87098,7 +87098,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff3ec607bcba84c4ab0e1a86798eca16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactText: {fileID: 576304162}
+  _interactText: {fileID: 576304164}
+  _textTranslateInteract: 
   _ic: {fileID: 190077498}
   isInteractable: 0
 --- !u!1001 &4086825298327280142
