@@ -87035,7 +87035,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2957097825208503643, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
     m_RemovedGameObjects:
     - {fileID: 6160413372447162291, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
     m_AddedGameObjects: []
@@ -87043,6 +87044,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8423214076081959907, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
       insertIndex: 2
       addedObject: {fileID: 1926700927331372384}
+    - targetCorrespondingSourceObject: {fileID: 8423214076081959907, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1926700927331372388}
     - targetCorrespondingSourceObject: {fileID: 6613053740270026510, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 734835274}
@@ -87068,6 +87072,31 @@ MonoBehaviour:
   _textTranslateInteract: 
   _ic: {fileID: 190077498}
   isInteractable: 0
+--- !u!143 &1926700927331372388
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926700927331372383}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 0.6
+  m_Radius: 0.6
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.69, z: 0.12}
 --- !u!1001 &4086825298327280142
 PrefabInstance:
   m_ObjectHideFlags: 0

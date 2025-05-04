@@ -79,11 +79,11 @@ public class PlayerController : MonoBehaviour
 
         /*
         VER SE VAI MANTER ESSA TRANSFORMAÇÃO DE DIREÇÃO OU NÃO
-        
+        */
         // Converte o vetor para o espaço global com base na rotação da câmera
         moveDirection = _cameraTransform.TransformDirection(moveDirection); 
         moveDirection.y = 0; // Remove qualquer componente vertical
-        */
+        
 
 
         // Aplica a movimentação no Rigidbody
@@ -120,5 +120,3 @@ public class PlayerController : MonoBehaviour
         }
     }
 }
-
-
