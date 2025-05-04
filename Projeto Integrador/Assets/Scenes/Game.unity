@@ -13939,7 +13939,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 2d5fb229ae2945742b900a405a5e7a0b, type: 3}
       propertyPath: m_Name
-      value: "Port\xE3o"
+      value: Gate
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2d5fb229ae2945742b900a405a5e7a0b, type: 3}
       propertyPath: m_LocalScale.x
@@ -13989,6 +13989,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 2d5fb229ae2945742b900a405a5e7a0b, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 2cf196f1e2c03a3498cef4c199667a9c, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -43147,7 +43151,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -71648,8 +71652,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1744388351}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.079360254, y: 0.8822039, z: -0.16080461, w: 0.43538508}
-  m_LocalPosition: {x: -0.8050587, y: 1.1351175, z: -7.2926197}
+  m_LocalRotation: {x: 0.17932056, y: -0.0031352604, z: 0.0005714829, w: 0.98378557}
+  m_LocalPosition: {x: 0.3239944, y: 1.1351175, z: -9.562122}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -85223,8 +85227,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2108195223}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.079360254, y: 0.8822039, z: -0.1608046, w: 0.43538508}
-  m_LocalPosition: {x: -0.80505824, y: 1.1351175, z: -7.29262}
+  m_LocalRotation: {x: 0.17932057, y: -0.0031352607, z: 0.00057148305, w: 0.98378557}
+  m_LocalPosition: {x: 0.3239944, y: 1.1351175, z: -9.562122}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -87072,31 +87076,33 @@ MonoBehaviour:
   _textTranslateInteract: 
   _ic: {fileID: 190077498}
   isInteractable: 0
---- !u!143 &1926700927331372388
-CharacterController:
+--- !u!54 &1926700927331372388
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1926700927331372383}
-  m_Material: {fileID: 0}
+  serializedVersion: 4
+  m_Mass: 2
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 0.6
-  m_Radius: 0.6
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.69, z: 0.12}
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1001 &4086825298327280142
 PrefabInstance:
   m_ObjectHideFlags: 0
