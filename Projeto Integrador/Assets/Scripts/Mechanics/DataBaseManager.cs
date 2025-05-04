@@ -18,33 +18,6 @@ public class DatabaseManager : MonoBehaviour
         dbPath = $"URI=file:{filePath}";
     }
 
-    void Update()
-    {
-        // Exemplo de uso: Mostrar todos os itens do banco de dados
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            ShowItems();
-        }
-
-        // Exemplo de uso: Mostrar o inventário
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            ShowInventory();
-        }
-
-        // Exemplo de uso: Alterar um item no inventário
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            AlterItemInventory(1, 2); // Altera o item do inventário 1 para o item 2
-        }
-
-        // Exemplo de uso: Mostrar a junção entre itens e inventário
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            JoinItemsAndInventory();
-        }
-    }
-
     //ITEMS
     public void ShowItems()
     {

@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     public float runMultiplier; //Multiplicador de velocidade ao correr
     [Tooltip("Velocidade de rotação")]
     public float rotationSpeed; //Velocidade de rotação
-
+    public bool isWalking; // Armazena se o jogador está andando ou não
     public bool isRunning; // Armazena se o jogador está correndo ou não
     private float speedMultiplier;
 
@@ -53,8 +53,8 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Run(); // Chama a função de correr
         Movement(); // Chama a função de movimentação
+        Run(); // Chama a função de correr
         Jump(); // Chama a função de pulo
     }
 
@@ -79,17 +79,18 @@ public class PlayerController : MonoBehaviour
 
         /*
         VER SE VAI MANTER ESSA TRANSFORMAÇÃO DE DIREÇÃO OU NÃO
-        */
+        
         // Converte o vetor para o espaço global com base na rotação da câmera
         moveDirection = _cameraTransform.TransformDirection(moveDirection); 
         moveDirection.y = 0; // Remove qualquer componente vertical
+        */
 
 
         // Aplica a movimentação no Rigidbody
         _rb.linearVelocity = new Vector3(moveDirection.x * moveSpeedSide * speedMultiplier, _rb.linearVelocity.y, moveDirection.z * moveSpeedForward * speedMultiplier);
 
         // Definir os parâmetros da animação
-        bool isWalking = moveDirection.magnitude > 0.1f;
+        isWalking = moveDirection.magnitude > 0.1f;
         _anim.SetBool("isWalking", isWalking);
         _anim.SetBool("isRunning", isWalking && isRunning);
 
@@ -110,7 +111,7 @@ public class PlayerController : MonoBehaviour
     void Run(){
         // Verifica se o personagem está correndo ou não para multiplicar a velocidade e definir qual FOV usar
         isRunning = Input.GetKey(KeyCode.LeftShift);
-        if (isRunning){
+        if (isRunning && isWalking){
             speedMultiplier = runMultiplier;
             _targetFOV = _speedFOV;
         }else{

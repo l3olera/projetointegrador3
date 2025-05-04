@@ -52,6 +52,7 @@ public class InteractItem : MonoBehaviour
             _ic.slot = _item.GetComponent<ItemType>().itemType; // Adiciona o item ao inventário
             _ic.SlotImage = _item.GetComponent<ItemType>().itemType.itemSprite; // Adiciona a imagem do item ao inventário
             Destroy(_item); // Destroi o objeto após a interação
+            _interactText.text = "";
         }
     }
 }
