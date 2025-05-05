@@ -3,7 +3,18 @@ using UnityEngine.UI;
 
 public class InventoryController : MonoBehaviour
 {
-    public Items slot; // Prefab do slot do inventário
+    private Items _slot; // Campo privado para armazenar o valor atual do slot
+    public Items slot{
+        get => _slot; // Retorna o valor atual
+        set
+        {
+            if (_slot != value) // Verifica se o valor mudou
+            {
+                _slot = value; // Atualiza o valor
+                OnSlotChanged(); // Chama a função quando o valor muda
+            }
+        }
+    } // Referência ao slot do inventário
 
     private Sprite _slotImage; // Campo privado para armazenar o valor atual da imagem do slot
     public Sprite SlotImage
@@ -25,5 +36,10 @@ public class InventoryController : MonoBehaviour
     private void OnSlotImageChanged()
     {
         _slotImageUI.sprite = _slotImage; // Atualiza a imagem do slot na UI
+    }
+
+    private void OnSlotChanged()
+    {
+        
     }
 }

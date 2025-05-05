@@ -18,6 +18,14 @@ public class DatabaseManager : MonoBehaviour
         dbPath = $"URI=file:{filePath}";
     }
 
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.I))
+        {
+            ShowInventory();
+        }
+    }
+
     //ITEMS
     public void ShowItems()
     {

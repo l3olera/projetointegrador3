@@ -29,7 +29,6 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheck; // Objeto auxiliar para detectar o chão
 
     private Rigidbody _rb;
-    private bool _isGrounded; // Verifica se o jogador está no chão
     private Transform _cameraTransform; // Adicionando referência à câmera
     [SerializeField] private CinemachineCamera _cinemachineCamera; //Referência a cinemachine
     [SerializeField] private Animator _anim; //Referência ao animator do personagem
@@ -55,20 +54,8 @@ public class PlayerController : MonoBehaviour
     {
         Movement(); // Chama a função de movimentação
         Run(); // Chama a função de correr
-        Jump(); // Chama a função de pulo
     }
-
-    void Jump(){
-        // Checa se está no chão
-        _isGrounded = Physics.CheckSphere(groundCheck.position, 0.1f, groundLayer);
-
-        // Pulo
-        if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
-        {
-            _rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        }
-    }
-
+    
     void Movement(){
         // Obtém os inputs
         float inputForward = Input.GetAxis("Vertical"); // Input para frente/trás
