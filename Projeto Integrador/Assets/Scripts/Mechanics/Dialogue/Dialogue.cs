@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Dialogue : MonoBehaviour
 {
-    public Sprite profile; // Imagem do personagem que será mostrada na caixa de diálogo
     public string[] speechText; // Array contendo as falas do NPC
     public string actorName; // Nome do NPC que será exibido na caixa de diálogo
 
@@ -27,7 +26,7 @@ public class Dialogue : MonoBehaviour
         // Se o jogador pressionar "E" ou "Z", estiver no raio de interação e puder interagir
         if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Z)) && onRadious && dc.canInteract)
         {
-            dc.Speech(profile, speechText, actorName); // Chama o diálogo do NPC
+            dc.Speech(speechText, actorName); // Chama o diálogo do NPC
         }
     }
 

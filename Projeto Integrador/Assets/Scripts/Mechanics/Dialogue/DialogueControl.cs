@@ -7,7 +7,6 @@ public class DialogueControl : MonoBehaviour
 {
     [Header("Components")] // Cria uma seção no Inspector para melhor organização
     public GameObject dialogueObj; // Referência ao GameObject da caixa de diálogo
-    public Image profile; // Referência à imagem do personagem (NPC ou player)
     public TextMeshProUGUI speechText; // Referência ao campo de texto onde aparecerá o diálogo
     public TextMeshProUGUI actorNameText; // Referência ao campo de texto onde aparecerá o nome do personagem
 
@@ -18,11 +17,10 @@ public class DialogueControl : MonoBehaviour
     private int index; // Índice da frase atual no array de sentenças
 
     // Método responsável por exibir o diálogo na tela
-    public void Speech(Sprite p, string[] txt, string actorName){
+    public void Speech(string[] txt, string actorName){
         canInteract = false; // Impede o jogador de interagir enquanto o diálogo está ativo
         dialogueObj.SetActive(true); // Ativa a caixa de diálogo na tela
         speechText.text = ""; // Garante que o texto será limpo antes de começar a digitação
-        profile.sprite = p; // Define a imagem do NPC ou personagem que está falando
         sentences = txt; // Define as falas do NPC
         actorNameText.text = actorName; // Define o nome do NPC na caixa de diálogo
         StartCoroutine(TypeSentence()); // Inicia a corrotina para exibir o texto gradualmente

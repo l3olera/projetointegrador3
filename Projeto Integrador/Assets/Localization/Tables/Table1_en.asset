@@ -119,11 +119,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 26
-    m_Localized: Gate control
+    m_Localized: gate control
     m_Metadata:
       m_Items: []
   - m_Id: 27
-    m_Localized: Ball of wool
+    m_Localized: ball of wool
     m_Metadata:
       m_Items: []
   - m_Id: 28

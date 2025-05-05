@@ -119,11 +119,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 26
-    m_Localized: "Controle do port\xE3o"
+    m_Localized: "controle do port\xE3o"
     m_Metadata:
       m_Items: []
   - m_Id: 27
-    m_Localized: "Novelo de l\xE3"
+    m_Localized: "novelo de l\xE3"
     m_Metadata:
       m_Items: []
   - m_Id: 28
@@ -131,7 +131,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 29
-    m_Localized: Pressione E ou Z para coletar
+    m_Localized: Pressione E ou Z para coletar o
     m_Metadata:
       m_Items: []
   - m_Id: 30
