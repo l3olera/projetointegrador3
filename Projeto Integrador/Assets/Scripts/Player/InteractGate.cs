@@ -9,6 +9,7 @@ public class InteractGate : MonoBehaviour
     [SerializeField] private InventoryController _inventoryController; // Referência ao InventoryController
     [SerializeField] private TextMeshProUGUI _interactText; // Referência ao texto de interação
     [SerializeField] private LocalizedString _textTranslateInteract; // Referência ao texto que vai traduzir na interação 
+    [SerializeField] private ObjectivesController _objectivesController; // Referência ao ObjectivesController
 
     void Update()
     {
@@ -36,9 +37,14 @@ public class InteractGate : MonoBehaviour
             }
         }
 
-        if(other.CompareTag("TriggerClose")){
+        if(other.CompareTag("TriggerClose"))
+        {
             _gateController.CloseGate(); // Chama a função CloseGate do GateController
-            _gateController.canOpen = false; // Define que o portão não pode mais ser aber to
+            _gateController.canOpen = false; // Define que o portão não pode mais ser aberto
+            
+            if(_objectivesController.CurrentObjective == 1){
+                _objectivesController.IncreaseActIndex(); // Chama a função para aumentar o índice do objetivo atual. Trocando, assim, o ato.
+            }
         }
     }
 
