@@ -15,15 +15,22 @@ public class DialogueControl : MonoBehaviour
  
     private string[] _sentences; // Armazena as falas do NPC
     private int _index; // Índice da frase atual no array de sentenças
+    private PlayerMovement _playerMovement; // Referência ao script que controla o movimento do jogador
+
+    void Awake()
+    {
+        ReferenceManager.Instance.dialogueControl = this; // Inicializa a referência ao DialogueControl no ReferenceManager
+    }
 
     void Start()
     {
-        ReferenceManager.Instance.dialogueControl = this; // Inicializa a referência ao DialogueControl no ReferenceManager
+        _playerMovement = ReferenceManager.Instance.playerMovement; // Inicializa a referência ao PlayerMovement no ReferenceManager
     }
 
     // Método responsável por exibir o diálogo na tela
     public void Speech(string[] txt, string actorName){
         canInteract = false; // Impede o jogador de interagir enquanto o diálogo está ativo
+        _playerMovement.canMove = false; // Desativa a movimentação do jogador durante o diálogo
         dialogueObj.SetActive(true); // Ativa a caixa de diálogo na tela
         speechText.text = ""; // Garante que o texto será limpo antes de começar a digitação
         _sentences = txt; // Define as falas do NPC
@@ -56,6 +63,7 @@ public class DialogueControl : MonoBehaviour
                 _index = 0; // Reseta o índice do diálogo
                 dialogueObj.SetActive(false); // Esconde a caixa de diálogo
                 canInteract = true; // Permite que o jogador interaja novamente
+                _playerMovement.canMove = true; // Reativa a movimentação do jogador
             }
         }
     }

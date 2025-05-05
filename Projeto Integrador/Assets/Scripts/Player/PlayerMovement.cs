@@ -1,7 +1,7 @@
 using Unity.Cinemachine;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     //Variáveis responsáveis pela movimentação
     [Header("Configurações de movimentação")]
@@ -16,28 +16,28 @@ public class PlayerController : MonoBehaviour
     public float rotationSpeed; //Velocidade de rotação
     public bool isWalking; // Armazena se o jogador está andando ou não
     public bool isRunning; // Armazena se o jogador está correndo ou não
+    public bool canMove = true; // Armazena se o jogador pode se mover ou não, útil para pausar o jogo ou desativar a movimentação em certas situações, como durante um diálogo
+
     private float speedMultiplier;
-
-
-    //Variaveis responsáveis pelo pulo
-    [Header("Configurações de pulo")]
-    [Tooltip("Força do pulo")]
-    public float jumpForce = 8f; // Força do pulo
-    [Tooltip("Define o que é considerado 'chão'")]
-    public LayerMask groundLayer; // Define o que é considerado "chão"
-    [Tooltip("Objeto auxiliar para detectar o chão")]
-    public Transform groundCheck; // Objeto auxiliar para detectar o chão
 
     private Rigidbody _rb;
     private Transform _cameraTransform; // Adicionando referência à câmera
+    
+    [Header("Referências")]
     [SerializeField] private CinemachineCamera _cinemachineCamera; //Referência a cinemachine
     [SerializeField] private Animator _anim; //Referência ao animator do personagem
+
+    [Header("Configurações de FOV")]
     [SerializeField] private float _normalFOV; //Guarda o fov normal do cachorro andando
     [SerializeField] private float _speedFOV; //Guarda o fov de quando o cachorro corre
     [SerializeField] private float _transitionSpeed; //Velocidade de transição suave do fov
     private float _targetFOV; //Alvo de fov que será colocado a cada update
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Awake()
+    {
+        ReferenceManager.Instance.playerMovement = this; // Inicializa a referência ao PlayerMovement no ReferenceManager
+    }
+
     void Start()
     {
         _rb = GetComponent<Rigidbody>(); //Obtém o rigbody do player
@@ -52,8 +52,12 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Movement(); // Chama a função de movimentação
-        Run(); // Chama a função de correr
+        if(canMove){ // Verifica se o jogador pode se mover
+            Movement(); // Chama a função de movimentação
+            Run(); // Chama a função de correr
+        }else{
+            _anim.SetBool("isWalking", false); // Para a animação de andar se o jogador não puder se mover
+        }
     }
     
     void Movement(){

@@ -7,6 +7,7 @@ public class ReferenceManager : MonoBehaviour
     [Header("Referências Globais")]
     // Referências a outros componentes ou objetos do jogo
     public DialogueControl dialogueControl;
+    public PlayerMovement playerMovement;
 
     void Awake()
     {
