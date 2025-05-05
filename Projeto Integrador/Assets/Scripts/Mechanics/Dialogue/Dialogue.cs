@@ -8,12 +8,12 @@ public class Dialogue : MonoBehaviour
     public LayerMask playerLayer; // Define a camada do jogador para detectar proximidade
     public float radious; // Raio da detecção de proximidade do NPC
 
-    private DialogueControl dc; // Referência ao script que controla os diálogos
-    bool onRadious; // Indica se o jogador está dentro do raio de interação
+    private DialogueControl _dc; // Referência ao script que controla os diálogos
+    private bool _onRadious; // Indica se o jogador está dentro do raio de interação
 
     void Start()
     {
-        dc = FindFirstObjectByType<DialogueControl>(); // Encontra automaticamente o objeto que contém DialogueControl na cena
+        _dc = ReferenceManager.Instance.dialogueControl; // Encontra automaticamente o objeto que contém DialogueControl na cena
     }
 
     void FixedUpdate()
@@ -24,9 +24,9 @@ public class Dialogue : MonoBehaviour
     void Update()
     {
         // Se o jogador pressionar "E" ou "Z", estiver no raio de interação e puder interagir
-        if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Z)) && onRadious && dc.canInteract)
+        if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Z)) && _onRadious && _dc.canInteract)
         {
-            dc.Speech(speechText, actorName); // Chama o diálogo do NPC
+            _dc.Speech(speechText, actorName); // Chama o diálogo do NPC
         }
     }
 
@@ -34,13 +34,13 @@ public class Dialogue : MonoBehaviour
     public void Interact()
     {
         Collider[] hits = Physics.OverlapSphere(transform.position, radious, playerLayer); // Cria uma esfera invisível que detecta colisões dentro do raio definido
-        onRadious = false; // Assume que o jogador não está perto
+        _onRadious = false; // Assume que o jogador não está perto
 
         foreach (Collider hit in hits) // Percorre todos os objetos detectados na esfera
         {
             if (hit.CompareTag("Player")) // Verifica se o objeto detectado é o jogador
             {
-                onRadious = true; // Marca que o jogador está dentro do raio
+                _onRadious = true; // Marca que o jogador está dentro do raio
                 break; // Sai do loop assim que encontrar o jogador, evitando verificações desnecessárias
             }
         }
