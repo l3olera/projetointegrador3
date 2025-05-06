@@ -17,11 +17,6 @@ public class DialogueControl : MonoBehaviour
     private int _index; // Índice da frase atual no array de sentenças
     private PlayerMovement _playerMovement; // Referência ao script que controla o movimento do jogador
 
-    void Awake()
-    {
-        
-    }
-
     void Start()
     {
         ReferenceManager.Instance.dialogueControl = this; // Inicializa a referência ao DialogueControl no ReferenceManager
