@@ -33,13 +33,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _transitionSpeed; //Velocidade de transição suave do fov
     private float _targetFOV; //Alvo de fov que será colocado a cada update
 
-    void Awake()
-    {
-        ReferenceManager.Instance.playerMovement = this; // Inicializa a referência ao PlayerMovement no ReferenceManager
-    }
 
     void Start()
     {
+        ReferenceManager.Instance.playerMovement = this; // Inicializa a referência ao PlayerMovement no ReferenceManager
         _rb = GetComponent<Rigidbody>(); //Obtém o rigbody do player
         _cameraTransform = Camera.main.transform; // Obtém a câmera principal
         _targetFOV = _normalFOV;
@@ -74,7 +71,6 @@ public class PlayerMovement : MonoBehaviour
         // Converte o vetor para o espaço global com base na rotação da câmera
         moveDirection = _cameraTransform.TransformDirection(moveDirection); 
         moveDirection.y = 0; // Remove qualquer componente vertical
-        
 
 
         // Aplica a movimentação no Rigidbody
