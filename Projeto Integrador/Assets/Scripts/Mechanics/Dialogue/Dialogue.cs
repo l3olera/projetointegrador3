@@ -2,15 +2,14 @@ using UnityEngine;
 
 public class Dialogue : MonoBehaviour
 {
-    public string[] speechText; // Array contendo as falas do NPC
-    public string actorName; // Nome do NPC que será exibido na caixa de diálogo
+    public DialogueLine[] dialogueLines; // Array contendo as linhas de dialogo com o NPC
 
     public LayerMask playerLayer; // Define a camada do jogador para detectar proximidade
     public float radious; // Raio da detecção de proximidade do NPC
 
     private DialogueControl _dc; // Referência ao script que controla os diálogos
     private bool _onRadious; // Indica se o jogador está dentro do raio de interação
-    
+
     void FixedUpdate()
     {
         Interact(); // Chama a verificação de interação com o NPC a cada atualização da física do jogo
@@ -25,7 +24,7 @@ public class Dialogue : MonoBehaviour
         // Se o jogador pressionar "E" ou "Z", estiver no raio de interação e puder interagir
         if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Z)) && _onRadious && _dc.canInteract)
         {
-            _dc.Speech(speechText, actorName); // Chama o diálogo do NPC
+            _dc.Speech(dialogueLines); // Passa o array de falas para o DialogueControl
         }
     }
 

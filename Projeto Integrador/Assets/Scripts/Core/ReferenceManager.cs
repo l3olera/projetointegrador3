@@ -1,3 +1,4 @@
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class ReferenceManager : MonoBehaviour
@@ -8,6 +9,7 @@ public class ReferenceManager : MonoBehaviour
     // Referências a outros componentes ou objetos do jogo
     public DialogueControl dialogueControl;
     public PlayerMovement playerMovement;
+    public CinemachineInputAxisController cinemachineCameraIn;
 
     void Awake()
     {

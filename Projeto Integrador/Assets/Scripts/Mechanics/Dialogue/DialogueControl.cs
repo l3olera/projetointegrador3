@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using TMPro;
+using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.Localization;
 
 public class DialogueControl : MonoBehaviour
 {
@@ -12,55 +15,122 @@ public class DialogueControl : MonoBehaviour
     [Header("Settings")] // Seção para configurações no Inspector
     public float typingSpeed; // Velocidade com que as letras aparecem na tela
     public bool canInteract = true; // Controla se o jogador pode interagir com o NPC para evitar que ele fica floodando o botão
- 
-    private string[] _sentences; // Armazena as falas do NPC
-    private int _index; // Índice da frase atual no array de sentenças
+    
+    private bool _isTyping; // Indica se o diálogo está sendo digitado
+    private float _typingSpeed; // Velocidade de digitação do texto privada para ser possível alterar a velocidade de digitação durante o código
+    private DialogueLine[] _dialogueLines; // Array de falas do NPC
+    private String[] _speechTranslate; // Array para armazenar as falas traduzidas
+    private int _indexSpeechTranslate; // Índice da fala traduzida atual
+    private int _currentLineIndex; // Índice da linha atual do diálogo
     private PlayerMovement _playerMovement; // Referência ao script que controla o movimento do jogador
+    private CinemachineInputAxisController _cinemachineCameraIn; // Referência à câmera cinemática
 
     void Start()
     {
         ReferenceManager.Instance.dialogueControl = this; // Inicializa a referência ao DialogueControl no ReferenceManager 
         _playerMovement = ReferenceManager.Instance.playerMovement; // Inicializa a referência ao PlayerMovement no ReferenceManager
+        _cinemachineCameraIn = ReferenceManager.Instance.cinemachineCameraIn; // Inicializa a referência à CinemachineCamera no ReferenceManager
     }
 
     // Método responsável por exibir o diálogo na tela
-    public void Speech(string[] txt, string actorName){
+    public void Speech(DialogueLine[] lines){
+        _typingSpeed = typingSpeed;
         canInteract = false; // Impede o jogador de interagir enquanto o diálogo está ativo
         _playerMovement.canMove = false; // Desativa a movimentação do jogador durante o diálogo
+        DisableCameraControl(); // Desativa o controle da câmera para evitar movimentos indesejados
         dialogueObj.SetActive(true); // Ativa a caixa de diálogo na tela
-        speechText.text = ""; // Garante que o texto será limpo antes de começar a digitação
-        _sentences = txt; // Define as falas do NPC
-        actorNameText.text = actorName; // Define o nome do NPC na caixa de diálogo
-        StartCoroutine(TypeSentence()); // Inicia a corrotina para exibir o texto gradualmente
+        _dialogueLines = lines; // Define as falas do NPC
+        _currentLineIndex = 0; // Reseta o índice da linha atual
+        DisplayCurrentLine(); // Exibe a primeira linha do diálogo
+    }
+
+    void DisplayCurrentLine(){
+        if (_currentLineIndex < _dialogueLines.Length)
+        {
+            DialogueLine currentLine = _dialogueLines[_currentLineIndex];
+            actorNameText.text = currentLine.actorName; // Atualiza o nome do personagem
+            StopAllCoroutines(); // Para todas as corrotinas em execução para evitar sobreposição de diálogos
+            _typingSpeed = typingSpeed; // Reseta a velocidade de digitação
+            TranslateText(currentLine.speechText); // Chama o método para traduzir o texto
+        }
+        else
+        {
+            EndDialogue(); // Finaliza o diálogo quando todas as falas foram exibidas
+        }
+    }
+
+    void TranslateText(Array speechTextArray){
+        _speechTranslate = new string[speechTextArray.Length]; // Inicializa o array com o tamanho correto
+        _indexSpeechTranslate = 0; // Reseta o índice da fala traduzida
+        
+        foreach(LocalizedString currentText in speechTextArray) // Converte a frase atual em um array de caracteres
+        { 
+            currentText.GetLocalizedStringAsync().Completed += handle =>
+            {
+                _speechTranslate[_indexSpeechTranslate] = handle.Result; // Atualiza o texto na tela com a tradução
+                _indexSpeechTranslate++; // Avança para a próxima fala traduzida
+            };
+        }
+       StartCoroutine(WaitForTranslationsAndType()); // Inicia a corrotina para exibir as letras do diálogo
+    }
+
+    IEnumerator WaitForTranslationsAndType()
+    {
+        while (_indexSpeechTranslate < _speechTranslate.Length)
+        {
+            yield return null; // Aguarda até que todas as traduções sejam carregadas
+        }
+
+        StartCoroutine(TypeSentence(_speechTranslate)); // Inicia a exibição do texto
     }
 
     // Corrotina para exibir as letras do diálogo uma por uma, simulando digitação
-    IEnumerator TypeSentence(){
-        foreach(char letter in _sentences[_index].ToCharArray()) // Converte a frase atual em um array de caracteres
+    IEnumerator TypeSentence(Array speechTextArray){
+        _isTyping = true; // Indica que o diálogo está sendo digitado
+        speechText.text = ""; // Limpa o texto antes de exibir a nova fala
+
+        foreach(string currentText in speechTextArray) // Converte a frase atual em um array de caracteres
         { 
-            speechText.text += letter; // Adiciona cada letra ao texto na tela
-            yield return new WaitForSeconds(typingSpeed); // Aguarda um pequeno intervalo entre as letras
+            foreach (char letter in currentText.ToCharArray()) // Converte a frase atual em um array de caracteres
+            {
+                speechText.text += letter; // Adiciona cada letra ao texto na tela
+                yield return new WaitForSeconds(_typingSpeed); // Aguarda um pequeno intervalo entre as letras
+
+                if(!_isTyping){
+                    _typingSpeed = 0f;
+                }
+            }
         }
+
+        _isTyping = false; // Indica que o diálogo não está mais sendo digitado
+    }
+
+    void EndDialogue(){
+        dialogueObj.SetActive(false); // Esconde a caixa de diálogo
+        canInteract = true; // Permite que o jogador interaja novamente
+        _playerMovement.canMove = true; // Reativa a movimentação do jogador
+        EnableCameraControl(); // Restaura o controle da câmera
+    }
+
+    void DisableCameraControl()
+    {
+       _cinemachineCameraIn.enabled = false; // Define uma prioridade baixa para desativar a câmera
+    }
+
+    void EnableCameraControl()
+    {
+        _cinemachineCameraIn.enabled = true; // Define uma prioridade alta para reativar a câmera
     }
 
     // Método chamado para avançar para a próxima frase do diálogo
     public void NextSentence()
     {
-        if(speechText.text == _sentences[_index]) // Verifica se a frase foi completamente exibida
-        { 
-            if(_index < _sentences.Length - 1) // Se ainda houver frases restantes
-            { 
-                _index++; // Passa para a próxima frase
-                speechText.text = ""; // Limpa o texto antes de exibir a nova frase
-                StartCoroutine(TypeSentence()); // Inicia a digitação da próxima frase
-            }else // Se todas as frases foram exibidas
-            { 
-                speechText.text = ""; // Limpa o texto
-                _index = 0; // Reseta o índice do diálogo
-                dialogueObj.SetActive(false); // Esconde a caixa de diálogo
-                canInteract = true; // Permite que o jogador interaja novamente
-                _playerMovement.canMove = true; // Reativa a movimentação do jogador
-            }
+        if(_isTyping){
+            _isTyping = false; // Se o diálogo ainda estiver sendo digitado, interrompe a digitação
+            return; // Retorna para evitar que a próxima linha seja exibida
         }
+
+        _currentLineIndex++; // Avança para a próxima linha
+        DisplayCurrentLine(); // Exibe a próxima linha
     }
 }
