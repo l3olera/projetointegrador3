@@ -10,6 +10,16 @@ public class InteractGate : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _interactText; // Referência ao texto de interação
     [SerializeField] private LocalizedString _textTranslateInteract; // Referência ao texto que vai traduzir na interação 
     [SerializeField] private ObjectivesController _objectivesController; // Referência ao ObjectivesController
+    private string _cachedTranslation; // Variável para armazenar a tradução em cache
+
+    void Start()
+    {
+        _textTranslateInteract.GetLocalizedStringAsync().Completed += handle => // Obtém o texto traduzido
+        {   
+            _cachedTranslation = handle.Result; // Armazena a tradução em cache
+        };   
+        
+    }
 
     void Update()
     {
@@ -26,14 +36,9 @@ public class InteractGate : MonoBehaviour
     {
         if (other.CompareTag("Gate")) // Verifica se o objeto que colidiu tem a tag "Player"
         {
-            if(_inventoryController.slot != null){ // Verifica se o slot do inventário não é nulo
-                if(_inventoryController.slot.itemID == 1){
-                    _gateController.canOpen = true; // Define que o portão pode ser aberto
-                    _textTranslateInteract.GetLocalizedStringAsync().Completed += handle => // Obtém o texto traduzido
-                    {
-                        _interactText.text = string.Format(handle.Result); // Atualiza o texto de interação
-                    };
-                }
+            if(_inventoryController.slot != null && _inventoryController.slot.itemID == 1){ // Verifica se o slot do inventário não é nulo
+                _gateController.canOpen = true; // Define que o portão pode ser aberto
+                _interactText.text = _cachedTranslation; // Atualiza o texto de interação
             }
         }
 

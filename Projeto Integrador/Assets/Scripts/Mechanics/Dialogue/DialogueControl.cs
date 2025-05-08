@@ -19,7 +19,7 @@ public class DialogueControl : MonoBehaviour
 
     void Start()
     {
-        ReferenceManager.Instance.dialogueControl = this; // Inicializa a referência ao DialogueControl no ReferenceManager
+        ReferenceManager.Instance.dialogueControl = this; // Inicializa a referência ao DialogueControl no ReferenceManager 
         _playerMovement = ReferenceManager.Instance.playerMovement; // Inicializa a referência ao PlayerMovement no ReferenceManager
     }
 

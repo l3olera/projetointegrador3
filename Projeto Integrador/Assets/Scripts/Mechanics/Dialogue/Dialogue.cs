@@ -10,12 +10,7 @@ public class Dialogue : MonoBehaviour
 
     private DialogueControl _dc; // Referência ao script que controla os diálogos
     private bool _onRadious; // Indica se o jogador está dentro do raio de interação
-
-    void Start()
-    {
-        _dc = ReferenceManager.Instance.dialogueControl; // Encontra automaticamente o objeto que contém DialogueControl na cena
-    }
-
+    
     void FixedUpdate()
     {
         Interact(); // Chama a verificação de interação com o NPC a cada atualização da física do jogo
@@ -23,6 +18,10 @@ public class Dialogue : MonoBehaviour
 
     void Update()
     {
+        if(_dc == null) // Verifica se o DialogueControl não foi encontrado
+        {
+            _dc = ReferenceManager.Instance.dialogueControl; // Tenta encontrar novamente o DialogueControl
+        }
         // Se o jogador pressionar "E" ou "Z", estiver no raio de interação e puder interagir
         if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Z)) && _onRadious && _dc.canInteract)
         {
