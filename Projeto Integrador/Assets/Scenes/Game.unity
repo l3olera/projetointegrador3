@@ -35544,7 +35544,7 @@ MonoBehaviour:
   durationAnimation: 1
   canChange: 1
   lightCircle: {fileID: 1134093070}
-  leverController: {fileID: 1486657278}
+  _leverController: {fileID: 0}
 --- !u!1001 &835522583
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37125,7 +37125,7 @@ MonoBehaviour:
   durationAnimation: 1
   canChange: 1
   lightCircle: {fileID: 228127407}
-  leverController: {fileID: 1486657278}
+  _leverController: {fileID: 0}
 --- !u!95 &865312142
 Animator:
   serializedVersion: 7
@@ -60075,7 +60075,7 @@ MonoBehaviour:
   durationAnimation: 1
   canChange: 1
   lightCircle: {fileID: 1531686997}
-  leverController: {fileID: 1486657278}
+  _leverController: {fileID: 0}
 --- !u!95 &1412450061
 Animator:
   serializedVersion: 7
@@ -64320,7 +64320,7 @@ MonoBehaviour:
   - {fileID: 941497236}
   - {fileID: 1926857450}
   - {fileID: 1956011317}
-  Door: {fileID: 643227142}
+  _door: {fileID: 643227142}
 --- !u!4 &1486657280
 Transform:
   m_ObjectHideFlags: 0

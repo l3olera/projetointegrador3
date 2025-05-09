@@ -15,12 +15,13 @@ public class LeverPuzzle : MonoBehaviour
     public GameObject[] levers;
     public LeverColor[] correctCode; // Código correto, ex: [Blue, Red, Green]
     public GameObject[] CorrectsLightCircle; // Referência aos objetos de luz que mostram o código correto 
-    private LeverColor[] actualCode;
-    [SerializeField] private GameObject Door; // Referência à porta que será aberta quando o puzzle for resolvido
+
+    private LeverColor[] _actualCode;
+    [SerializeField] private GameObject _door; // Referência à porta que será aberta quando o puzzle for resolvido
 
     void Start()
     {
-        actualCode = new LeverColor[correctCode.Length];
+        _actualCode = new LeverColor[correctCode.Length];
 
         // Gera código aleatório para partida (opcional)
         GenerateRandomCode();
@@ -76,7 +77,7 @@ public class LeverPuzzle : MonoBehaviour
     public void receiveSignal(GameObject go, LeverColor color){
         for(int i = 0; i < levers.Length; i++){
             if(go == levers[i]){
-                actualCode[i] = color;
+                _actualCode[i] = color;
                 break;
             }
         }
@@ -87,7 +88,7 @@ public class LeverPuzzle : MonoBehaviour
     void check(){
         bool correct = true;
         for(int i = 0; i < correctCode.Length; i++){
-            if(actualCode[i] != correctCode[i]){
+            if(_actualCode[i] != correctCode[i]){
                 correct = false;
                 break;
             }
@@ -98,8 +99,8 @@ public class LeverPuzzle : MonoBehaviour
             endPuzzle = true; // Código correto, puzzle resolvido
 
             //Provavelmente ficará assim, irei destruir a barreira temporariamente
-            //Door.GetComponent<Animator>().SetBool("Open", true); // Abre a porta
-            Destroy(Door); // Destroi a porta
+            //_door.GetComponent<Animator>().SetBool("Open", true); // Abre a porta
+            Destroy(_door); // Destroi a porta
         }
     }
 }
