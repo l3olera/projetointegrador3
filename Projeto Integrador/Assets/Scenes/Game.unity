@@ -3173,7 +3173,7 @@ Transform:
   m_GameObject: {fileID: 64170128}
   serializedVersion: 2
   m_LocalRotation: {x: 0.14265461, y: 5.217963e-15, z: -6.4495794e-16, w: 0.98977256}
-  m_LocalPosition: {x: 11.7, y: 1.392, z: 42.09}
+  m_LocalPosition: {x: 10.19, y: 1.392, z: 42.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -22758,7 +22758,7 @@ MonoBehaviour:
   - m_TableReference:
       m_TableCollectionName: GUID:29197b97bd2d11d4f8e2fb0f11400d1f
     m_TableEntryReference:
-      m_KeyId: 31
+      m_KeyId: 37
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -22767,7 +22767,7 @@ MonoBehaviour:
   - m_TableReference:
       m_TableCollectionName: GUID:29197b97bd2d11d4f8e2fb0f11400d1f
     m_TableEntryReference:
-      m_KeyId: 32
+      m_KeyId: 38
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -22776,7 +22776,7 @@ MonoBehaviour:
   - m_TableReference:
       m_TableCollectionName: GUID:29197b97bd2d11d4f8e2fb0f11400d1f
     m_TableEntryReference:
-      m_KeyId: 33
+      m_KeyId: 39
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -22785,7 +22785,7 @@ MonoBehaviour:
   - m_TableReference:
       m_TableCollectionName: GUID:29197b97bd2d11d4f8e2fb0f11400d1f
     m_TableEntryReference:
-      m_KeyId: 34
+      m_KeyId: 40
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -54893,7 +54893,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Nome
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -90429,7 +90429,7 @@ Transform:
   m_GameObject: {fileID: 2108195223}
   serializedVersion: 2
   m_LocalRotation: {x: 0.14265463, y: 5.233727e-15, z: -7.5433027e-16, w: 0.98977256}
-  m_LocalPosition: {x: 11.7, y: 1.392, z: 42.09}
+  m_LocalPosition: {x: 10.19, y: 1.392, z: 42.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -92293,7 +92293,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7069505520918420298, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -22.576
+      value: -22.65
       objectReference: {fileID: 0}
     - target: {fileID: 7069505520918420298, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
       propertyPath: m_LocalRotation.w
@@ -92347,6 +92347,10 @@ PrefabInstance:
       propertyPath: _interactText
       value: 
       objectReference: {fileID: 576304164}
+    - target: {fileID: 1648991623877270164, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
+      propertyPath: _textTranslateInteract.m_TableEntryReference.m_KeyId
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 3632731418509185694, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
       propertyPath: _interactText
       value: 
@@ -92363,6 +92367,10 @@ PrefabInstance:
       propertyPath: _objectivesController
       value: 
       objectReference: {fileID: 533138505}
+    - target: {fileID: 3632731418509185694, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
+      propertyPath: _textTranslateInteract.m_TableEntryReference.m_KeyId
+      value: 36
+      objectReference: {fileID: 0}
     - target: {fileID: 5804464794978002356, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.5
@@ -92381,7 +92389,7 @@ PrefabInstance:
       objectReference: {fileID: 64170133}
     - target: {fileID: 8238607859782025201, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.7
+      value: 10.19
       objectReference: {fileID: 0}
     - target: {fileID: 8238607859782025201, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
       propertyPath: m_LocalPosition.y

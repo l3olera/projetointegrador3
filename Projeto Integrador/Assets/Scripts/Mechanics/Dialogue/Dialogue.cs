@@ -42,12 +42,14 @@ public class Dialogue : MonoBehaviour
             if (!_ic.HasItemById(requiredIdItem))
             {
                 _dc.Speech(dialogueSequence[0].lines); // Passa o array de falas para o DialogueControl
-                _ic.RevoveItem(); // Remove o item do inventário
-                _oc.IncreaseActIndex(); // Aumenta o índice do ato atual
             }
             else
             {
                 _dc.Speech(dialogueSequence[1].lines); // Passa o array de falas para o DialogueControl
+                _ic.RevoveItem(); // Remove o item do inventário
+                _oc.IncreaseActIndex(); // Aumenta o índice do ato atual
+
+
             }
 
         }
