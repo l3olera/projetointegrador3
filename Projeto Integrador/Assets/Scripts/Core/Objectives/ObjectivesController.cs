@@ -33,4 +33,9 @@ public class ObjectivesController : MonoBehaviour
         CurrentObjective++; // Incrementa o índice do objetivo atual
         UpdateObjectivesText(); // Chama a função para atualizar o texto dos objetivos
     }
+
+    public bool CompareAct(int actIndex)
+    {
+        return CurrentObjective == actIndex; // Compara o índice do objetivo atual com o índice passado como parâmetro
+    }
 }
