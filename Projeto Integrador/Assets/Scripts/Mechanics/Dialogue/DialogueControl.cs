@@ -50,7 +50,7 @@ public class DialogueControl : MonoBehaviour
         if (_currentLineIndex < _dialogueLines.Length)
         {
             DialogueLine currentLine = _dialogueLines[_currentLineIndex];
-            actorNameText.text = currentLine.actorName; // Atualiza o nome do personagem
+            TranslateName(currentLine.actorName); // Atualiza o nome do personagem
             StopAllCoroutines(); // Para todas as corrotinas em execução para evitar sobreposição de diálogos
             _typingSpeed = typingSpeed; // Reseta a velocidade de digitação
             TranslateText(currentLine.speechText); // Chama o método para traduzir o texto
@@ -59,6 +59,16 @@ public class DialogueControl : MonoBehaviour
         {
             EndDialogue(); // Finaliza o diálogo quando todas as falas foram exibidas
         }
+    }
+
+    void TranslateName(LocalizedString actorNameText)
+    {
+        // Obtém o nome do personagem a partir do LocalizedString
+        actorNameText.GetLocalizedStringAsync().Completed += handle =>
+        {
+            actorNameText.text = handle.Result; // Retorna o texto atualizado
+        };
+
     }
 
     void TranslateText(Array speechTextArray)
