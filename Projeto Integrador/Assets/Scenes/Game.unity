@@ -8428,6 +8428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 064f02a16bba2bb4ea39d88f9542d921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slot: {fileID: 0}
   _slotImageUI: {fileID: 2013654632}
 --- !u!1001 &190817881
 PrefabInstance:
@@ -35544,7 +35545,7 @@ MonoBehaviour:
   durationAnimation: 1
   canChange: 1
   lightCircle: {fileID: 1134093070}
-  _leverController: {fileID: 0}
+  _leverController: {fileID: 1486657278}
 --- !u!1001 &835522583
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37125,7 +37126,7 @@ MonoBehaviour:
   durationAnimation: 1
   canChange: 1
   lightCircle: {fileID: 228127407}
-  _leverController: {fileID: 0}
+  _leverController: {fileID: 1486657278}
 --- !u!95 &865312142
 Animator:
   serializedVersion: 7
@@ -46653,7 +46654,7 @@ MonoBehaviour:
   dialogueObj: {fileID: 1155386787}
   speechText: {fileID: 738970345}
   actorNameText: {fileID: 1283505493}
-  typingSpeed: 0.09
+  typingSpeed: 0.028
   canInteract: 1
 --- !u!4 &1109224516
 Transform:
@@ -52293,6 +52294,7 @@ MonoBehaviour:
   dialogueControl: {fileID: 0}
   playerMovement: {fileID: 0}
   cinemachineCameraIn: {fileID: 64170129}
+  inventoryController: {fileID: 0}
 --- !u!1001 &1243024202
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60075,7 +60077,7 @@ MonoBehaviour:
   durationAnimation: 1
   canChange: 1
   lightCircle: {fileID: 1531686997}
-  _leverController: {fileID: 0}
+  _leverController: {fileID: 1486657278}
 --- !u!95 &1412450061
 Animator:
   serializedVersion: 7
@@ -90836,6 +90838,14 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
       propertyPath: dialogueLines.Array.data[0].actorName
       value: Lakshmi
       objectReference: {fileID: 0}
@@ -90856,6 +90866,14 @@ PrefabInstance:
       value: Lakshmi
       objectReference: {fileID: 0}
     - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[0].lines.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[1].lines.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
       propertyPath: dialogueLines.Array.data[0].speechText.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -90873,6 +90891,86 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
       propertyPath: dialogueLines.Array.data[4].speechText.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[0].lines.Array.data[0].actorName
+      value: Lakshmi
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[0].lines.Array.data[1].actorName
+      value: Salem
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[0].lines.Array.data[2].actorName
+      value: Lakshmi
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[0].lines.Array.data[3].actorName
+      value: Salem
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[0].lines.Array.data[4].actorName
+      value: Lakshmi
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[1].lines.Array.data[0].actorName
+      value: Lakshmi
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[1].lines.Array.data[1].actorName
+      value: Salem
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[1].lines.Array.data[2].actorName
+      value: Lakshmi
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[1].lines.Array.data[3].actorName
+      value: Salem
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[1].lines.Array.data[4].actorName
+      value: Lakshmi
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[0].lines.Array.data[0].speechText.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[0].lines.Array.data[1].speechText.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[0].lines.Array.data[2].speechText.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[0].lines.Array.data[3].speechText.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[0].lines.Array.data[4].speechText.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[1].lines.Array.data[0].speechText.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[1].lines.Array.data[1].speechText.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[1].lines.Array.data[2].speechText.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[1].lines.Array.data[3].speechText.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[1].lines.Array.data[4].speechText.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
@@ -90921,6 +91019,86 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
       propertyPath: dialogueLines.Array.data[4].speechText.Array.data[0].m_TableReference.m_TableCollectionName
+      value: GUID:29197b97bd2d11d4f8e2fb0f11400d1f
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[0].lines.Array.data[0].speechText.Array.data[0].m_TableEntryReference.m_KeyId
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[0].lines.Array.data[1].speechText.Array.data[0].m_TableEntryReference.m_KeyId
+      value: 61
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[0].lines.Array.data[2].speechText.Array.data[0].m_TableEntryReference.m_KeyId
+      value: 62
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[0].lines.Array.data[3].speechText.Array.data[0].m_TableEntryReference.m_KeyId
+      value: 63
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[0].lines.Array.data[4].speechText.Array.data[0].m_TableEntryReference.m_KeyId
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[1].lines.Array.data[0].speechText.Array.data[0].m_TableEntryReference.m_KeyId
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[1].lines.Array.data[1].speechText.Array.data[0].m_TableEntryReference.m_KeyId
+      value: 66
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[1].lines.Array.data[2].speechText.Array.data[0].m_TableEntryReference.m_KeyId
+      value: 67
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[1].lines.Array.data[3].speechText.Array.data[0].m_TableEntryReference.m_KeyId
+      value: 68
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[1].lines.Array.data[4].speechText.Array.data[0].m_TableEntryReference.m_KeyId
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[0].lines.Array.data[0].speechText.Array.data[0].m_TableReference.m_TableCollectionName
+      value: GUID:29197b97bd2d11d4f8e2fb0f11400d1f
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[0].lines.Array.data[1].speechText.Array.data[0].m_TableReference.m_TableCollectionName
+      value: GUID:29197b97bd2d11d4f8e2fb0f11400d1f
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[0].lines.Array.data[2].speechText.Array.data[0].m_TableReference.m_TableCollectionName
+      value: GUID:29197b97bd2d11d4f8e2fb0f11400d1f
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[0].lines.Array.data[3].speechText.Array.data[0].m_TableReference.m_TableCollectionName
+      value: GUID:29197b97bd2d11d4f8e2fb0f11400d1f
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[0].lines.Array.data[4].speechText.Array.data[0].m_TableReference.m_TableCollectionName
+      value: GUID:29197b97bd2d11d4f8e2fb0f11400d1f
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[1].lines.Array.data[0].speechText.Array.data[0].m_TableReference.m_TableCollectionName
+      value: GUID:29197b97bd2d11d4f8e2fb0f11400d1f
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[1].lines.Array.data[1].speechText.Array.data[0].m_TableReference.m_TableCollectionName
+      value: GUID:29197b97bd2d11d4f8e2fb0f11400d1f
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[1].lines.Array.data[2].speechText.Array.data[0].m_TableReference.m_TableCollectionName
+      value: GUID:29197b97bd2d11d4f8e2fb0f11400d1f
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[1].lines.Array.data[3].speechText.Array.data[0].m_TableReference.m_TableCollectionName
+      value: GUID:29197b97bd2d11d4f8e2fb0f11400d1f
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: dialogueSequence.Array.data[1].lines.Array.data[4].speechText.Array.data[0].m_TableReference.m_TableCollectionName
       value: GUID:29197b97bd2d11d4f8e2fb0f11400d1f
       objectReference: {fileID: 0}
     - target: {fileID: 1176560546751920114, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}

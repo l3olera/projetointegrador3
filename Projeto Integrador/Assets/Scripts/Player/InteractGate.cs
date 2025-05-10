@@ -15,39 +15,41 @@ public class InteractGate : MonoBehaviour
     void Start()
     {
         _textTranslateInteract.GetLocalizedStringAsync().Completed += handle => // Obtém o texto traduzido
-        {   
+        {
             _cachedTranslation = handle.Result; // Armazena a tradução em cache
-        };   
-        
+        };
+
     }
 
     void Update()
     {
-        if((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Z)) && _gateController.canOpen){ // Verifica se o jogador está interagindo com o objeto{
+        if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Z)) && _gateController.canOpen)
+        { // Verifica se o jogador está interagindo com o objeto{
             _gateController.OpenGate(); // Chama a função OpenGate do GateController
-            _inventoryController.slot = null; // Limpa o slot do inventário
-            _inventoryController.SlotImage = null; // Limpa a imagem do slot do inventário
+            _inventoryController.RevoveItem(); // Chama a função para remover o item do inventário
             _interactText.text = ""; // Limpa o texto de interação
             _gateController.canOpen = false; // Define que o portão não pode mais ser aberto
-        }    
+        }
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Gate")) // Verifica se o objeto que colidiu tem a tag "Player"
         {
-            if(_inventoryController.slot != null && _inventoryController.slot.itemID == 1){ // Verifica se o slot do inventário não é nulo
+            if (_inventoryController.slot != null && _inventoryController.slot.itemID == 1)
+            { // Verifica se o slot do inventário não é nulo
                 _gateController.canOpen = true; // Define que o portão pode ser aberto
                 _interactText.text = _cachedTranslation; // Atualiza o texto de interação
             }
         }
 
-        if(other.CompareTag("TriggerClose"))
+        if (other.CompareTag("TriggerClose"))
         {
             _gateController.CloseGate(); // Chama a função CloseGate do GateController
             _gateController.canOpen = false; // Define que o portão não pode mais ser aberto
-            
-            if(_objectivesController.CurrentObjective == 1){
+
+            if (_objectivesController.CurrentObjective == 1)
+            {
                 _objectivesController.IncreaseActIndex(); // Chama a função para aumentar o índice do objetivo atual. Trocando, assim, o ato.
             }
         }

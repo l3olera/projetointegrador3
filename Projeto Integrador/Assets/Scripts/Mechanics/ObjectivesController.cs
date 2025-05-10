@@ -1,18 +1,18 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.Localization;
-using Unity.VisualScripting;
-using UnityEngine.InputSystem.Utilities; // Importa a biblioteca TextMeshPro para manipulação de texto
 
 public class ObjectivesController : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _objectivesText; // Referência ao texto de objetivos
     [SerializeField] private LocalizedString[] _objectivesTranslate; // Referência ao texto traduzido dos objetivos
 
-    public int CurrentObjective {get; private set;} // variável privada que armazena o índice do objetivo atual
+    public int CurrentObjective { get; private set; } // variável privada que armazena o índice do objetivo atual
 
     void Start()
     {
+        ReferenceManager.Instance.objectivesController = this; // Inicializa a referência ao ObjectivesController no ReferenceManager
+
         CurrentObjective = 1; // Inicializa o índice do objetivo atual como 1
         UpdateObjectivesText(); // Chama a função para atualizar o texto dos objetivos ao iniciar o jogo   
     }
@@ -28,7 +28,8 @@ public class ObjectivesController : MonoBehaviour
         }
     }
 
-    public void IncreaseActIndex(){
+    public void IncreaseActIndex()
+    {
         CurrentObjective++; // Incrementa o índice do objetivo atual
         UpdateObjectivesText(); // Chama a função para atualizar o texto dos objetivos
     }

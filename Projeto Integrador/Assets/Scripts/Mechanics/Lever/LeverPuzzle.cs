@@ -27,9 +27,10 @@ public class LeverPuzzle : MonoBehaviour
         GenerateRandomCode();
     }
 
-    void GenerateRandomCode(){
+    void GenerateRandomCode()
+    {
         correctCode = new LeverColor[3];
-        
+
         // Cria uma lista com todas as cores possíveis
         List<LeverColor> availableColors = new List<LeverColor> {
             LeverColor.Red,
@@ -38,7 +39,8 @@ public class LeverPuzzle : MonoBehaviour
         };
 
         // Embaralha a lista
-        for (int i = 0; i < availableColors.Count; i++) {
+        for (int i = 0; i < availableColors.Count; i++)
+        {
             LeverColor temp = availableColors[i];
             int randomIndex = Random.Range(i, availableColors.Count);
             availableColors[i] = availableColors[randomIndex];
@@ -46,23 +48,29 @@ public class LeverPuzzle : MonoBehaviour
         }
 
         // Pega as 3 primeiras cores da lista embaralhada
-        for(int i = 0; i < correctCode.Length; i++) {
+        for (int i = 0; i < correctCode.Length; i++)
+        {
             correctCode[i] = availableColors[i];
         }
 
         // Exibir nas esferas do lado esquerdo
-        for(int i = 0; i < CorrectsLightCircle.Length; i++) {
-            if(CorrectsLightCircle[i] != null){
+        for (int i = 0; i < CorrectsLightCircle.Length; i++)
+        {
+            if (CorrectsLightCircle[i] != null)
+            {
                 Renderer lightRenderer = CorrectsLightCircle[i].GetComponent<Renderer>();
-                if(lightRenderer != null){
+                if (lightRenderer != null)
+                {
                     lightRenderer.material.color = GetColorFromLeverColor(correctCode[i]);
                 }
             }
         }
     }
 
-    Color GetColorFromLeverColor(LeverColor color){
-        switch(color){
+    Color GetColorFromLeverColor(LeverColor color)
+    {
+        switch (color)
+        {
             case LeverColor.Red:
                 return Color.red;
             case LeverColor.Green:
@@ -74,9 +82,12 @@ public class LeverPuzzle : MonoBehaviour
         }
     }
 
-    public void receiveSignal(GameObject go, LeverColor color){
-        for(int i = 0; i < levers.Length; i++){
-            if(go == levers[i]){
+    public void receiveSignal(GameObject go, LeverColor color)
+    {
+        for (int i = 0; i < levers.Length; i++)
+        {
+            if (go == levers[i])
+            {
                 _actualCode[i] = color;
                 break;
             }
@@ -85,17 +96,20 @@ public class LeverPuzzle : MonoBehaviour
         check();
     }
 
-    void check(){
+    void check()
+    {
         bool correct = true;
-        for(int i = 0; i < correctCode.Length; i++){
-            if(_actualCode[i] != correctCode[i]){
+        for (int i = 0; i < correctCode.Length; i++)
+        {
+            if (_actualCode[i] != correctCode[i])
+            {
                 correct = false;
                 break;
             }
         }
 
-        if(correct){
-            Debug.Log("Código correto! Porta será aberta.");
+        if (correct)
+        {
             endPuzzle = true; // Código correto, puzzle resolvido
 
             //Provavelmente ficará assim, irei destruir a barreira temporariamente
