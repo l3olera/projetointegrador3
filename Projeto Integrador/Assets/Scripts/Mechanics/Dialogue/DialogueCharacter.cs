@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DialogueCharacter : MonoBehaviour
 {
-    private TriggerSpeech _triggerSpeech = null; // Referência ao scriptable object TriggerSpeech
+    private UniqueDialogueTrigger _triggerSpeech = null; // Referência ao scriptable object TriggerSpeech
     [SerializeField] private DialogueControl _dc; // Referência ao script que controla os diálogos
     [SerializeField] private InventoryController _ic; // Referência ao script que controla o inventário
     [SerializeField] private ObjectivesController _oc; // Referência ao script que controla os objetivos
@@ -11,9 +11,9 @@ public class DialogueCharacter : MonoBehaviour
     {
         if (other.CompareTag("TriggerSpeech")) // Verifica se o objeto que entrou no trigger é o jogador
         {
-            _triggerSpeech = other.GetComponent<TriggerType>().triggerSpeech; // Obtém o TriggerSpeech do objeto
+            _triggerSpeech = other.GetComponent<UniqueDialogueTrigger>(); // Obtém o TriggerSpeech do objeto
 
-            if (_oc.CompareAct(_triggerSpeech.toAct) && !_triggerSpeech.isTriggered)
+            if (_oc.CompareAct(_triggerSpeech.toAct) && !_triggerSpeech.hasTriggered)
             {
                 if (!_ic.HasItemById(_triggerSpeech.requiredIdItem))
                 {
@@ -23,7 +23,7 @@ public class DialogueCharacter : MonoBehaviour
                 {
                     _dc.Speech(_triggerSpeech.dialogueSequence[1].lines); // Passa o array de falas para o DialogueControl
                 }
-                _triggerSpeech.isTriggered = true; // Marca o diálogo como acionado
+                _triggerSpeech.hasTriggered = true; // Define que o diálogo já foi ativado
             }
         }
     }

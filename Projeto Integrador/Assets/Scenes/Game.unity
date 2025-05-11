@@ -34714,6 +34714,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1962683921}
+  - {fileID: 1768823418}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &800364172
@@ -45585,6 +45586,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canOpen: 0
+  _triggerSpeech: {fileID: 1768823417}
   triggerOpen: {fileID: 1952607616}
 --- !u!4 &1061874494 stripped
 Transform:
@@ -77021,6 +77023,100 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20defdf087831834e9fe91491e024973, type: 3}
+--- !u!1 &1768823417
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1768823418}
+  - component: {fileID: 1768823420}
+  - component: {fileID: 1768823421}
+  m_Layer: 0
+  m_Name: TriggerOpenGate
+  m_TagString: TriggerSpeech
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1768823418
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1768823417}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.533, y: 5.23, z: -6.93}
+  m_LocalScale: {x: 1, y: 1, z: 3.1347}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 799629674}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1768823420
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1768823417}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.5214704, z: 3.209093}
+  m_Center: {x: 0, y: 0.2607352, z: 0.24107087}
+--- !u!114 &1768823421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1768823417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6163f5fc5ad251b49b0d23633c3c4e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueSequence:
+  - lines:
+    - actorName:
+        m_TableReference:
+          m_TableCollectionName: GUID:29197b97bd2d11d4f8e2fb0f11400d1f
+        m_TableEntryReference:
+          m_KeyId: 29
+          m_Key: 
+        m_FallbackState: 0
+        m_WaitForCompletion: 0
+        m_LocalVariables: []
+        text: 
+      speechText:
+      - m_TableReference:
+          m_TableCollectionName: GUID:29197b97bd2d11d4f8e2fb0f11400d1f
+        m_TableEntryReference:
+          m_KeyId: 44
+          m_Key: 
+        m_FallbackState: 0
+        m_WaitForCompletion: 0
+        m_LocalVariables: []
+        text: 
+  toAct: 1
+  requiredIdItem: -1
+  hasTriggered: 0
+  references:
+    version: 2
+    RefIds: []
 --- !u!1001 &1769027143
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -84955,7 +85051,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1962683921}
   - component: {fileID: 1962683923}
-  - component: {fileID: 1962683922}
+  - component: {fileID: 1962683924}
   m_Layer: 0
   m_Name: TriggerSpawn
   m_TagString: TriggerSpeech
@@ -84978,19 +85074,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 799629674}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1962683922
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1962683920}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6163f5fc5ad251b49b0d23633c3c4e44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerSpeech: {fileID: 11400000, guid: 492d2a062d77b9546833cb2e62821f3f, type: 2}
 --- !u!65 &1962683923
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -85012,6 +85095,46 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1962683924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962683920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6163f5fc5ad251b49b0d23633c3c4e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueSequence:
+  - lines:
+    - actorName:
+        m_TableReference:
+          m_TableCollectionName: GUID:29197b97bd2d11d4f8e2fb0f11400d1f
+        m_TableEntryReference:
+          m_KeyId: 29
+          m_Key: 
+        m_FallbackState: 0
+        m_WaitForCompletion: 0
+        m_LocalVariables: []
+        text: 
+      speechText:
+      - m_TableReference:
+          m_TableCollectionName: GUID:29197b97bd2d11d4f8e2fb0f11400d1f
+        m_TableEntryReference:
+          m_KeyId: 41
+          m_Key: 
+        m_FallbackState: 0
+        m_WaitForCompletion: 0
+        m_LocalVariables: []
+        text: 
+  toAct: 1
+  requiredIdItem: -1
+  hasTriggered: 0
+  references:
+    version: 2
+    RefIds: []
 --- !u!1001 &1964496953
 PrefabInstance:
   m_ObjectHideFlags: 0
