@@ -8,20 +8,15 @@ public class SmellTrail : MonoBehaviour
     public Transform target;
     public bool canDrawPath = false;
     [SerializeField] private LineRenderer _path;
-    [SerializeField] private float _pathHeightOffset = 1.25f;
+    [SerializeField] private float _pathHeightOffset;
     [SerializeField] private float _pathUpdateSpeed = 0.25f;
 
-    private NavMeshTriangulation _triangulation;
     private Coroutine drawPathCoroutine;
-
-    void Awake()
-    {
-        _triangulation = NavMesh.CalculateTriangulation();
-    }
 
     void Start()
     {
         ReferenceManager.Instance.smellTrail = this; // Define a instância do SmellTrail
+        _path.gameObject.SetActive(false); // Desativa o LineRenderer inicialmente
     }
 
     public void GenerateTrail()
@@ -31,24 +26,30 @@ public class SmellTrail : MonoBehaviour
             StopCoroutine(drawPathCoroutine);
         }
 
-        drawPathCoroutine = StartCoroutine(DrawPath());
+        if (canDrawPath)
+        {
+            _path.gameObject.SetActive(true);
+            drawPathCoroutine = StartCoroutine(DrawPath());
+        }
+        else
+        {
+            _path.gameObject.SetActive(false);
+        }
     }
 
     private IEnumerator DrawPath()
     {
         WaitForSeconds wait = new(_pathUpdateSpeed);
         NavMeshPath path = new();
-
         while (canDrawPath)
         {
             if (NavMesh.CalculatePath(player.position, target.position, NavMesh.AllAreas, path))
             {
                 _path.positionCount = path.corners.Length;
+
                 for (int i = 0; i < path.corners.Length; i++)
                 {
-                    Vector3 corner = path.corners[i];
-                    corner.y += _pathHeightOffset;
-                    _path.SetPosition(i, corner);
+                    _path.SetPosition(i, path.corners[i] + Vector3.up * _pathHeightOffset);
                 }
             }
             else
@@ -57,10 +58,5 @@ public class SmellTrail : MonoBehaviour
             }
             yield return wait;
         }
-    }
-
-    public void ClearTrail()
-    {
-
     }
 }
