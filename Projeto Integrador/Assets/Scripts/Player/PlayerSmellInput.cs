@@ -21,6 +21,7 @@ public class PlayerSmellInput : MonoBehaviour
         {
             trail.player = transform;
             trail.target = manager.GetCurrentTarget();
+            trail.canDrawPath = true;
             trail.GenerateTrail();
         }
     }

@@ -5,6 +5,7 @@ public class SmellTargetManager : MonoBehaviour
     public Transform[] act1Targets; // alvos para o ato 1
     public Transform[] act2Targets; // alvos para o ato 2
     public Transform[] act3Targets; // alvos para o ato 3
+    public Transform[] act4Targets; // alvos para o ato 4
 
     private int _currentTargetIndex = 0;
     private Transform[] _currentActTargets;

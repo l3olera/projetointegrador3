@@ -1,15 +1,23 @@
 using UnityEngine;
-using System.Collections.Generic;
+using UnityEngine.AI;
+using System.Collections;
 
 public class SmellTrail : MonoBehaviour
 {
     public Transform player;
     public Transform target;
-    public GameObject trailPrefab;
-    public float spacing = 1f;
-    public int maxSteps = 20;
+    public bool canDrawPath = false;
+    [SerializeField] private LineRenderer _path;
+    [SerializeField] private float _pathHeightOffset = 1.25f;
+    [SerializeField] private float _pathUpdateSpeed = 0.25f;
 
-    private List<GameObject> _trailSteps = new();
+    private NavMeshTriangulation _triangulation;
+    private Coroutine drawPathCoroutine;
+
+    void Awake()
+    {
+        _triangulation = NavMesh.CalculateTriangulation();
+    }
 
     void Start()
     {
@@ -18,26 +26,41 @@ public class SmellTrail : MonoBehaviour
 
     public void GenerateTrail()
     {
-        ClearTrail();
-
-        Vector3 direction = (target.position - player.position).normalized;
-        float distance = Vector3.Distance(player.position, target.position);
-        int steps = Mathf.Min(maxSteps, Mathf.FloorToInt(distance / spacing));
-
-        for (int i = 1; i <= steps; i++)
+        if (drawPathCoroutine != null)
         {
-            Vector3 pos = player.position + i * spacing * direction;
-            GameObject trail = Instantiate(trailPrefab, pos, Quaternion.identity);
-            _trailSteps.Add(trail);
+            StopCoroutine(drawPathCoroutine);
+        }
+
+        drawPathCoroutine = StartCoroutine(DrawPath());
+    }
+
+    private IEnumerator DrawPath()
+    {
+        WaitForSeconds wait = new(_pathUpdateSpeed);
+        NavMeshPath path = new();
+
+        while (canDrawPath)
+        {
+            if (NavMesh.CalculatePath(player.position, target.position, NavMesh.AllAreas, path))
+            {
+                _path.positionCount = path.corners.Length;
+                for (int i = 0; i < path.corners.Length; i++)
+                {
+                    Vector3 corner = path.corners[i];
+                    corner.y += _pathHeightOffset;
+                    _path.SetPosition(i, corner);
+                }
+            }
+            else
+            {
+                Debug.LogError($"Unable to calculate a path on the NavMesh from {player.position} to {target.position}!");
+            }
+            yield return wait;
         }
     }
 
     public void ClearTrail()
     {
-        foreach (var step in _trailSteps)
-        {
-            Destroy(step);
-        }
-        _trailSteps.Clear();
+
     }
 }
