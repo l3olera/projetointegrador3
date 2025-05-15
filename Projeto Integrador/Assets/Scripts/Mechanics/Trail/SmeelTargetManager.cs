@@ -2,31 +2,57 @@ using UnityEngine;
 
 public class SmellTargetManager : MonoBehaviour
 {
-    public Transform[] act1Targets; // controle, portão
-    public Transform[] act2Targets; // pombos, catatau, salem, lã, salem de novo
+    public Transform[] act1Targets; // alvos para o ato 1
+    public Transform[] act2Targets; // alvos para o ato 2
+    public Transform[] act3Targets; // alvos para o ato 3
 
-    private int currentTargetIndex = 0;
-    private Transform[] currentActTargets;
+    private int _currentTargetIndex = 0;
+    private Transform[] _currentActTargets;
+    private ObjectivesController _objectivesController;
 
     void Start()
     {
+        ReferenceManager.Instance.smellTargetManager = this; // Define a instância do SmellTargetManager
+
         // Começa com Ato 1
-        currentActTargets = act1Targets;
+        _currentActTargets = act1Targets;
     }
 
-    public Transform GetCurrentTarget() => currentActTargets[currentTargetIndex];
+    void Update()
+    {
+        if (_objectivesController == null)
+        {
+            _objectivesController = ReferenceManager.Instance.objectivesController;
+        }
+    }
+
+    public Transform GetCurrentTarget() => _currentActTargets[_currentTargetIndex];
 
     public void NextTarget()
     {
-        currentTargetIndex++;
-        if (currentTargetIndex >= currentActTargets.Length)
-            currentTargetIndex = currentActTargets.Length - 1;
+        _currentTargetIndex++;
+        if (_currentTargetIndex >= _currentActTargets.Length)
+            _currentTargetIndex = _currentActTargets.Length - 1;
     }
 
-    public void SwitchToAct2()
+    public void SwitchAct()
     {
-        currentActTargets = act2Targets;
-        currentTargetIndex = 0;
+        if (_objectivesController)
+        {
+            switch (_objectivesController.CurrentObjective)
+            {
+                case 1:
+                    _currentActTargets = act1Targets;
+                    break;
+                case 2:
+                    _currentActTargets = act2Targets;
+                    break;
+                case 3:
+                    _currentActTargets = act3Targets;
+                    break;
+            }
+        }
+        _currentTargetIndex = 0;
     }
 }
 

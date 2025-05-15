@@ -9,7 +9,12 @@ public class SmellTrail : MonoBehaviour
     public float spacing = 1f;
     public int maxSteps = 20;
 
-    private List<GameObject> trailSteps = new();
+    private List<GameObject> _trailSteps = new();
+
+    void Start()
+    {
+        ReferenceManager.Instance.smellTrail = this; // Define a instância do SmellTrail
+    }
 
     public void GenerateTrail()
     {
@@ -21,18 +26,18 @@ public class SmellTrail : MonoBehaviour
 
         for (int i = 1; i <= steps; i++)
         {
-            Vector3 pos = player.position + direction * spacing * i;
+            Vector3 pos = player.position + i * spacing * direction;
             GameObject trail = Instantiate(trailPrefab, pos, Quaternion.identity);
-            trailSteps.Add(trail);
+            _trailSteps.Add(trail);
         }
     }
 
     public void ClearTrail()
     {
-        foreach (var step in trailSteps)
+        foreach (var step in _trailSteps)
         {
             Destroy(step);
         }
-        trailSteps.Clear();
+        _trailSteps.Clear();
     }
 }

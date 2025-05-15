@@ -7,6 +7,16 @@ public class PlayerSmellInput : MonoBehaviour
 
     void Update()
     {
+        if (trail == null)
+        {
+            trail = ReferenceManager.Instance.smellTrail;
+        }
+
+        if (manager == null)
+        {
+            manager = ReferenceManager.Instance.smellTargetManager;
+        }
+
         if (Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.V))
         {
             trail.player = transform;

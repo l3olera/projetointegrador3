@@ -12,6 +12,8 @@ public class ReferenceManager : MonoBehaviour
     public CinemachineInputAxisController cinemachineCameraIn;
     public InventoryController inventoryController;
     public ObjectivesController objectivesController;
+    public SmellTargetManager smellTargetManager;
+    public SmellTrail smellTrail;
 
     void Awake()
     {
