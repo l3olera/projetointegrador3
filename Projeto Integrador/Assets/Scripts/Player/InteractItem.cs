@@ -12,6 +12,7 @@ public class InteractItem : MonoBehaviour
     [Header("Configurações de interação")]
     private GameObject _item; // Representa qual é o item do objeto
     private bool _isDestroyed = false; // Verifica se o objeto foi destruído
+    private SmellTargetManager smellManager; // Referência ao gerenciador de alvos de cheiro
     public bool isInteractable; // Verifica se o objeto está interagível
     void OnTriggerEnter(Collider other)
     {
@@ -44,7 +45,13 @@ public class InteractItem : MonoBehaviour
 
     void Update()
     {
-        if(_isDestroyed && !string.IsNullOrEmpty(_interactText.text)){ //Verifica se o objeto foi destruído e se há texto no interactText. Assim, não deixa o texto de interação ficar aparecendo. Já que pode dar um bug de ficar aparecendo o texto de interação mesmo depois do objeto ter sido destruído por conta da tabela de tradução fazer uma chamada assíncrona
+        if (smellManager == null)
+        {
+            smellManager = ReferenceManager.Instance.smellTargetManager; // Obtém a referência ao gerenciador de alvos de cheiro
+        }
+
+        if (_isDestroyed && !string.IsNullOrEmpty(_interactText.text))
+        { //Verifica se o objeto foi destruído e se há texto no interactText. Assim, não deixa o texto de interação ficar aparecendo. Já que pode dar um bug de ficar aparecendo o texto de interação mesmo depois do objeto ter sido destruído por conta da tabela de tradução fazer uma chamada assíncrona
             _isDestroyed = false; // Reseta a variável para impedir dessa estrutura ficar acontecendo
             _interactText.text = "";
         }
@@ -52,10 +59,11 @@ public class InteractItem : MonoBehaviour
         if (isInteractable && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Z))) // Verifica se o jogador está interagindo com o objeto
         {
             Interact(); // Chama a função de interação
-        }   
+        }
     }
 
-    void Interact(){
+    void Interact()
+    {
         if (_item != null) // Verifica se o tipo de item não é nulo
         {
             _ic.slot = _item.GetComponent<ItemType>().itemType; // Adiciona o item ao inventário
@@ -64,6 +72,7 @@ public class InteractItem : MonoBehaviour
             _isDestroyed = true; // Define que o objeto foi destruído
             _item = null; // Limpa o tipo de item após a interação
             _interactText.text = "";
+            smellManager.NextTarget(); // Chama a função de próximo alvo do gerenciador de alvos de cheiro
         }
     }
 }

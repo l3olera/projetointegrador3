@@ -33,11 +33,12 @@ public class SmellTargetManager : MonoBehaviour
     {
         _currentTargetIndex++;
         if (_currentTargetIndex >= _currentActTargets.Length)
-            _currentTargetIndex = _currentActTargets.Length - 1;
+            SwitchAct();
     }
 
     public void SwitchAct()
     {
+        _currentTargetIndex = 0;
         if (_objectivesController)
         {
             switch (_objectivesController.CurrentObjective)
@@ -51,9 +52,11 @@ public class SmellTargetManager : MonoBehaviour
                 case 3:
                     _currentActTargets = act3Targets;
                     break;
+                case 4:
+                    _currentActTargets = act4Targets;
+                    break;
             }
         }
-        _currentTargetIndex = 0;
     }
 }
 

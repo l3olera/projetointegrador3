@@ -10,6 +10,7 @@ public class InteractGate : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _interactText; // Referência ao texto de interação
     [SerializeField] private LocalizedString _textTranslateInteract; // Referência ao texto que vai traduzir na interação 
     [SerializeField] private ObjectivesController _objectivesController; // Referência ao ObjectivesController
+    private SmellTargetManager _smellManager; // Referência ao gerenciador de alvos de cheiro
     private string _cachedTranslation; // Variável para armazenar a tradução em cache
 
     void Start()
@@ -23,10 +24,15 @@ public class InteractGate : MonoBehaviour
 
     void Update()
     {
+        if (_smellManager == null)
+        {
+            _smellManager = ReferenceManager.Instance.smellTargetManager; // Obtém a referência ao gerenciador de alvos de cheiro
+        }
+
         if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Z)) && _gateController.canOpen)
-        { // Verifica se o jogador está interagindo com o objeto{
+        { // Verifica se o jogador está interagindo com o objeto
             _gateController.OpenGate(); // Chama a função OpenGate do GateController
-            _inventoryController.RevoveItem(); // Chama a função para remover o item do inventário
+            _inventoryController.RemoveItem(); // Chama a função para remover o item do inventário
             _interactText.text = ""; // Limpa o texto de interação
             _gateController.canOpen = false; // Define que o portão não pode mais ser aberto
         }
@@ -50,6 +56,7 @@ public class InteractGate : MonoBehaviour
 
             if (_objectivesController.CurrentObjective == 1)
             {
+                _smellManager.NextTarget(); // Chama a função para ir para o próximo alvo
                 _objectivesController.IncreaseActIndex(); // Chama a função para aumentar o índice do objetivo atual. Trocando, assim, o ato.
             }
         }

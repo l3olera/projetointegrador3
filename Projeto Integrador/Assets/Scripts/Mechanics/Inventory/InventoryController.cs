@@ -44,7 +44,7 @@ public class InventoryController : MonoBehaviour
         return false; // Retorna falso se o slot estiver vazio ou não contiver o item exato
     }
 
-    public void RevoveItem()
+    public void RemoveItem()
     {
         if (slot != null)
         {
