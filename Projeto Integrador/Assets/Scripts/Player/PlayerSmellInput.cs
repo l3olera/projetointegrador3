@@ -1,28 +1,36 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PlayerSmellInput : MonoBehaviour
 {
-    public SmellTrail trail;
-    public SmellTargetManager manager;
+    private NavMeshAgent _agent;
+    private SmellTrail _trail;
+    private SmellTargetManager _manager;
+
+    void Start()
+    {
+        _agent = GetComponent<NavMeshAgent>();
+    }
 
     void Update()
     {
-        if (trail == null)
+        if (_trail == null)
         {
-            trail = ReferenceManager.Instance.smellTrail;
+            _trail = ReferenceManager.Instance.smellTrail;
         }
 
-        if (manager == null)
+        if (_manager == null)
         {
-            manager = ReferenceManager.Instance.smellTargetManager;
+            _manager = ReferenceManager.Instance.smellTargetManager;
         }
 
+        //Se o jogador pressionar a tecla "C" ou "V", ativa o traço de cheiro
         if (Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.V))
         {
-            trail.player = transform;
-            trail.target = manager.GetCurrentTarget();
-            trail.canDrawPath = !trail.canDrawPath;
-            trail.GenerateTrail();
+            _trail.player = _agent; //Define o nav mesh agent do jogador
+            _trail.target = _manager.GetCurrentTarget(); //Define o alvo do traço de cheiro
+            _trail.canDrawPath = !_trail.canDrawPath; //Alterna o estado de desenho do traço
+            _trail.GenerateTrail(); //Gera o traço de cheiro
         }
     }
 }
