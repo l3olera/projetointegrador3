@@ -56,8 +56,8 @@ public class InteractGate : MonoBehaviour
 
             if (_objectivesController.CurrentObjective == 1)
             {
-                _smellManager.NextTarget(); // Chama a função para ir para o próximo alvo
                 _objectivesController.IncreaseActIndex(); // Chama a função para aumentar o índice do objetivo atual. Trocando, assim, o ato.
+                _smellManager.NextTarget(); // Chama a função para ir para o próximo alvo
             }
         }
     }

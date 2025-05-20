@@ -9,7 +9,7 @@ public class DialogueCharacter : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("TriggerSpeech")) // Verifica se o objeto que entrou no trigger é o jogador
+        if (other.CompareTag("TriggerSpeech")) // Verifica se o objeto que entrou no trigger é a caixa de trigger
         {
             _triggerSpeech = other.GetComponent<UniqueDialogueTrigger>(); // Obtém o TriggerSpeech do objeto
 
@@ -30,7 +30,7 @@ public class DialogueCharacter : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("TriggerSpeech")) // Verifica se o objeto que saiu do trigger é o jogador
+        if (other.CompareTag("TriggerSpeech")) // Verifica se o objeto que saiu do trigger é a caixa de trigger
         {
             _triggerSpeech = null; // Reseta o TriggerSpeech
         }

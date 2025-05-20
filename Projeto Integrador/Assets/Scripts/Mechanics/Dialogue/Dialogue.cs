@@ -5,7 +5,7 @@ public class Dialogue : MonoBehaviour
 {
     public DialogueSequence[] dialogueSequence; // Array de sequências de diálogos
 
-    public int requiredIdItem = 2; // ID do item necessário para continuar um próximo dialogo o diálogo
+    public int requiredIdItem = -1; // ID do item necessário para continuar um próximo dialogo o diálogo
     public LayerMask playerLayer; // Define a camada do jogador para detectar proximidade
     public float radious; // Raio da detecção de proximidade do NPC
 
@@ -13,7 +13,7 @@ public class Dialogue : MonoBehaviour
     private InventoryController _ic; // Referência ao script que controla o inventário
     private ObjectivesController _oc; // Referência ao script que controla os objetivos
     private SmellTargetManager _smellManager; // Referência ao gerenciador de alvos de cheiro
-    private bool _onRadious; // Indica se o jogador está dentro do raio de interação
+    [SerializeField] private bool _onRadious; // Indica se o jogador está dentro do raio de interação
     private bool[] _dialogueOccured; // Array para verificar se o diálogo já ocorreu
 
     void Start()
@@ -85,11 +85,13 @@ public class Dialogue : MonoBehaviour
     // Método que verifica se o jogador está dentro do raio de interação
     public void Interact()
     {
-        Collider[] hits = Physics.OverlapSphere(transform.position, radious, playerLayer); // Cria uma esfera invisível que detecta colisões dentro do raio definido
         _onRadious = false; // Assume que o jogador não está perto
+
+        Collider[] hits = Physics.OverlapSphere(transform.position, radious, playerLayer); // Cria uma esfera invisível que detecta colisões dentro do raio definido
 
         foreach (Collider hit in hits) // Percorre todos os objetos detectados na esfera
         {
+            Debug.Log(hit.tag);
             if (hit.CompareTag("Player")) // Verifica se o objeto detectado é o jogador
             {
                 _onRadious = true; // Marca que o jogador está dentro do raio

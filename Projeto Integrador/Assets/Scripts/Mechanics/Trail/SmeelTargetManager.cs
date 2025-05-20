@@ -7,9 +7,10 @@ public class SmellTargetManager : MonoBehaviour
     public Transform[] act3Targets; // alvos para o ato 3
     public Transform[] act4Targets; // alvos para o ato 4
 
-    private int _currentTargetIndex = 0;
+    [SerializeField] private int _currentTargetIndex = 0;
     private Transform[] _currentActTargets;
     private ObjectivesController _objectivesController;
+    private SmellTrail _smellTrail;
 
     void Start()
     {
@@ -25,6 +26,11 @@ public class SmellTargetManager : MonoBehaviour
         {
             _objectivesController = ReferenceManager.Instance.objectivesController;
         }
+
+        if (_smellTrail == null)
+        {
+            _smellTrail = ReferenceManager.Instance.smellTrail;
+        }
     }
 
     public Transform GetCurrentTarget() => _currentActTargets[_currentTargetIndex];
@@ -33,7 +39,11 @@ public class SmellTargetManager : MonoBehaviour
     {
         _currentTargetIndex++;
         if (_currentTargetIndex >= _currentActTargets.Length)
+        {
             SwitchAct();
+        }
+        _smellTrail.target = GetCurrentTarget(); // Atualiza o alvo do traço de cheiro
+        _smellTrail.GenerateTrail(); // Gera o traço de cheiro
     }
 
     public void SwitchAct()
