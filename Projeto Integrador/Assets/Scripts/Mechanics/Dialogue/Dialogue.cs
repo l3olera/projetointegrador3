@@ -91,7 +91,7 @@ public class Dialogue : MonoBehaviour
 
         foreach (Collider hit in hits) // Percorre todos os objetos detectados na esfera
         {
-            Debug.Log(hit.tag);
+
             if (hit.CompareTag("Player")) // Verifica se o objeto detectado é o jogador
             {
                 _onRadious = true; // Marca que o jogador está dentro do raio
@@ -103,6 +103,7 @@ public class Dialogue : MonoBehaviour
     // Método que desenha uma esfera no editor para visualizar a área de detecção do NPC    
     private void OnDrawGizmosSelected()
     {
+        Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, radious); // Desenha a esfera com o raio definido no editor
     }
 }

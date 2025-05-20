@@ -3222,7 +3222,7 @@ Transform:
   m_GameObject: {fileID: 64170128}
   serializedVersion: 2
   m_LocalRotation: {x: 0.14265461, y: 5.217963e-15, z: -6.4495794e-16, w: 0.98977256}
-  m_LocalPosition: {x: 0.248, y: 1.392, z: -10.784}
+  m_LocalPosition: {x: -10.68, y: 1.392, z: 63.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -30777,7 +30777,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
       propertyPath: radious
-      value: 1.3
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
       propertyPath: actorName
@@ -31358,6 +31358,10 @@ PrefabInstance:
     - target: {fileID: 1176560546751920114, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
       propertyPath: m_Name
       value: Doves
+      objectReference: {fileID: 0}
+    - target: {fileID: 1176560546751920114, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7069505520918420298, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
       propertyPath: m_LocalPosition.x
@@ -50111,7 +50115,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
       propertyPath: radious
-      value: 1.3
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
       propertyPath: actorName
@@ -50416,6 +50420,10 @@ PrefabInstance:
     - target: {fileID: 1176560546751920114, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
       propertyPath: m_Name
       value: Catatau
+      objectReference: {fileID: 0}
+    - target: {fileID: 1176560546751920114, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7069505520918420298, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
       propertyPath: m_LocalPosition.x
@@ -78669,7 +78677,7 @@ GameObject:
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1773488976
 Transform:
   m_ObjectHideFlags: 0
@@ -92338,7 +92346,7 @@ Transform:
   m_GameObject: {fileID: 2108195223}
   serializedVersion: 2
   m_LocalRotation: {x: 0.14265463, y: 5.233727e-15, z: -7.5433027e-16, w: 0.98977256}
-  m_LocalPosition: {x: 0.248, y: 1.392, z: -10.784}
+  m_LocalPosition: {x: -10.68, y: 1.392, z: 63.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -93858,7 +93866,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
       propertyPath: radious
-      value: 1.3
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
       propertyPath: actorName
@@ -94208,6 +94216,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Salem
       objectReference: {fileID: 0}
+    - target: {fileID: 1176560546751920114, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7069505520918420298, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
       propertyPath: m_LocalPosition.x
       value: -41.828
@@ -94300,13 +94312,17 @@ PrefabInstance:
       propertyPath: _objectivesController
       value: 
       objectReference: {fileID: 533138505}
+    - target: {fileID: 6613053740270026510, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 7733531302821105528, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
       propertyPath: _cinemachineCamera
       value: 
       objectReference: {fileID: 64170133}
     - target: {fileID: 8238607859782025201, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.248
+      value: -10.68
       objectReference: {fileID: 0}
     - target: {fileID: 8238607859782025201, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -94314,7 +94330,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8238607859782025201, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.474
+      value: 66.05
       objectReference: {fileID: 0}
     - target: {fileID: 8238607859782025201, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -94347,6 +94363,10 @@ PrefabInstance:
     - target: {fileID: 8423214076081959907, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
       propertyPath: m_Name
       value: Dog_Test
+      objectReference: {fileID: 0}
+    - target: {fileID: 8423214076081959907, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
