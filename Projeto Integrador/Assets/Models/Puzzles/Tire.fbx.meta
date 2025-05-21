@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 80c669457c502ec48a2bb03fb684ceac
+guid: 7723e7017f71c674992c7bf83ee82699
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,8 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: "L\xE3 azul"
-    second: {fileID: 2100000, guid: 52847df572c6da045b6369ce95d12ac2, type: 2}
+      name: Borracha
+    second: {fileID: 2100000, guid: 201baf5b3ce9e64488eeebad1258d0f0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Interno
+    second: {fileID: 2100000, guid: 89b7cf1eb44e4864589356e16a29fb1c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -81,7 +86,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 1
+  importAnimation: 0
   humanDescription:
     serializedVersion: 3
     human: []
@@ -100,7 +105,7 @@ ModelImporter:
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 80c669457c502ec48a2bb03fb684ceac
+guid: 5e6d38c1477e6024aa39ce08720c3c1f
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,8 +7,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: "L\xE3 azul"
-    second: {fileID: 2100000, guid: 52847df572c6da045b6369ce95d12ac2, type: 2}
+      name: Barras.001
+    second: {fileID: 2100000, guid: afd78be6e69da9e47abc58806f55ea2d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Preto Teto
+    second: {fileID: 2100000, guid: a5c473f7fd46a1a4b928d7a7129dff80, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Preto Teto.001
+    second: {fileID: 2100000, guid: c54a6409172f13e4899704854cf63b54, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -81,7 +91,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 1
+  importAnimation: 0
   humanDescription:
     serializedVersion: 3
     human: []
@@ -96,11 +106,11 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
