@@ -23,13 +23,23 @@ public class InventoryController : MonoBehaviour
     void Start()
     {
         ReferenceManager.Instance.inventoryController = this; // Inicializa a referência ao InventoryController no ReferenceManager
-
+        _slotImageUI.color = new Color(1, 1, 1, 0); // Totalmente invisível (alpha 0)
     }
 
     // Função chamada quando o valor de slotImage muda
     private void OnSlotImageChanged()
     {
+        if (_slotImage == null)
+        {
+            _slotImageUI.color = new Color(1, 1, 1, 0); // Totalmente invisível (alpha 0)
+        }
+        else
+        {
+            _slotImageUI.color = new Color(1, 1, 1, 1); // Totalmente visível (alpha 1)
+        }
+
         _slotImageUI.sprite = _slotImage; // Atualiza a imagem do slot na UI
+        _slotImageUI.SetNativeSize(); // Ajusta o tamanho da Image de acordo com a textura origina
     }
 
     public bool HasItemById(int id)

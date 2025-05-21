@@ -22,7 +22,8 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  itemSprite: {fileID: 21300000, guid: 626356f6c136fc748b5548a86f14fecc, type: 3}
+    text: 
+  itemSprite: {fileID: 21300000, guid: a7753a9dd596fdc44b0b3e346583c49b, type: 3}
   references:
     version: 2
     RefIds: []
