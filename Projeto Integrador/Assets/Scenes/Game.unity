@@ -1198,6 +1198,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cerca ATO 3 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.24435629
@@ -1768,6 +1772,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 2dbee28eacba7dd42845e0153c4da642, type: 3}
       propertyPath: m_Name
       value: Building_House_03_color03
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 2dbee28eacba7dd42845e0153c4da642, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2dbee28eacba7dd42845e0153c4da642, type: 3}
       propertyPath: m_LocalScale.x
@@ -2851,9 +2859,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1450690695}
     m_Modifications:
+    - target: {fileID: 100000, guid: fba5e236738a7c940b3a8d031c307794, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: fba5e236738a7c940b3a8d031c307794, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: fba5e236738a7c940b3a8d031c307794, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: fba5e236738a7c940b3a8d031c307794, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: fba5e236738a7c940b3a8d031c307794, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 100010, guid: fba5e236738a7c940b3a8d031c307794, type: 3}
       propertyPath: m_Name
       value: Vehicle_Taxi_separate
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: fba5e236738a7c940b3a8d031c307794, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: fba5e236738a7c940b3a8d031c307794, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2997,6 +3029,7 @@ GameObject:
   - component: {fileID: 64170131}
   - component: {fileID: 64170130}
   - component: {fileID: 64170129}
+  - component: {fileID: 64170135}
   m_Layer: 0
   m_Name: FreeLook Camera
   m_TagString: Untagged
@@ -3221,13 +3254,43 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 64170128}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14265461, y: 5.217963e-15, z: -6.4495794e-16, w: 0.98977256}
-  m_LocalPosition: {x: 0.296, y: 1.392, z: -10.85}
+  m_LocalRotation: {x: 0.14265446, y: -8.420616e-24, z: -1.0721466e-23, w: 0.98977256}
+  m_LocalPosition: {x: -46.724, y: 1.392, z: 42.62}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &64170135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64170128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca7de3aefa901374ba29464584a3109a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CameraRadius: 0.4
+  Decollision:
+    Enabled: 1
+    ObstacleLayers:
+      serializedVersion: 2
+      m_Bits: 1280
+    UseFollowTarget:
+      Enabled: 1
+      YOffset: 0
+    Damping: 1
+    SmoothingTime: 0.5
+  TerrainResolution:
+    Enabled: 0
+    TerrainLayers:
+      serializedVersion: 2
+      m_Bits: 1
+    MaximumRaycast: 10
+    Damping: 0.5
 --- !u!1001 &64765159
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3239,6 +3302,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
       propertyPath: m_Name
       value: Cerca ATO 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
       propertyPath: m_LocalScale.x
@@ -7832,7 +7899,7 @@ GameObject:
   - component: {fileID: 181740879}
   - component: {fileID: 181740878}
   - component: {fileID: 181740877}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Muro do condominio (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8686,7 +8753,7 @@ GameObject:
   - component: {fileID: 197603240}
   - component: {fileID: 197603239}
   - component: {fileID: 197603238}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Muro do condominio (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10618,7 +10685,7 @@ GameObject:
   - component: {fileID: 234986420}
   - component: {fileID: 234986419}
   - component: {fileID: 234986418}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Muro do condominio (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11420,6 +11487,10 @@ PrefabInstance:
     - target: {fileID: 8329679192468709426, guid: 47306f9326ee563408b420aa09b37e95, type: 3}
       propertyPath: m_Name
       value: Caixa d'agua
+      objectReference: {fileID: 0}
+    - target: {fileID: 8329679192468709426, guid: 47306f9326ee563408b420aa09b37e95, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8706346190003714696, guid: 47306f9326ee563408b420aa09b37e95, type: 3}
       propertyPath: m_LocalScale.x
@@ -14090,9 +14161,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1450690695}
     m_Modifications:
+    - target: {fileID: 100000, guid: fba5e236738a7c940b3a8d031c307794, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: fba5e236738a7c940b3a8d031c307794, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: fba5e236738a7c940b3a8d031c307794, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: fba5e236738a7c940b3a8d031c307794, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: fba5e236738a7c940b3a8d031c307794, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 100010, guid: fba5e236738a7c940b3a8d031c307794, type: 3}
       propertyPath: m_Name
       value: Vehicle_Taxi_separate (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: fba5e236738a7c940b3a8d031c307794, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: fba5e236738a7c940b3a8d031c307794, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16466,6 +16561,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Casa vermelha
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8c3b216cc2b6dc04496d15009bc913cd, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8c3b216cc2b6dc04496d15009bc913cd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -54.42456
@@ -16597,6 +16696,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cerca ATO 3 (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.24435629
@@ -16668,7 +16771,7 @@ GameObject:
   m_Component:
   - component: {fileID: 372400688}
   - component: {fileID: 372400689}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 'Pillar2Collider '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18772,6 +18875,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 260808cfd9b21994d8c3007a7bc9934c, type: 3}
       propertyPath: m_Name
       value: Posto de Gasolina
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 260808cfd9b21994d8c3007a7bc9934c, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 260808cfd9b21994d8c3007a7bc9934c, type: 3}
       propertyPath: m_LocalScale.y
@@ -23323,6 +23430,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
       propertyPath: m_Name
       value: Cerca ATO 3 (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
       propertyPath: m_LocalScale.x
@@ -29009,7 +29120,7 @@ GameObject:
   - component: {fileID: 672906478}
   - component: {fileID: 672906477}
   - component: {fileID: 672906476}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Muro do condominio (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32402,6 +32513,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Vehicle_Truck_color03
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 993432d7809c9bf489a5a96006618fef, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 993432d7809c9bf489a5a96006618fef, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.5556717
@@ -32524,9 +32639,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2268291853166280684, guid: 813df9801c30e63479934f054db68d12, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6053335324125489642, guid: 813df9801c30e63479934f054db68d12, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6452039197999972492, guid: 813df9801c30e63479934f054db68d12, type: 3}
       propertyPath: m_Name
       value: Police (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6452039197999972492, guid: 813df9801c30e63479934f054db68d12, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6685709738900195085, guid: 813df9801c30e63479934f054db68d12, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7347992844397126573, guid: 813df9801c30e63479934f054db68d12, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -32584,8 +32719,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -812, y: 83}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 7.8611, y: -12.365}
+  m_SizeDelta: {x: 1827.7, y: 240.7302}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &738970345
 MonoBehaviour:
@@ -32672,7 +32807,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -15.14856, y: 10.723541, z: -1660.9773, w: -206.68402}
+  m_margin: {x: -0.39746094, y: 2.2132874, z: -0.44729614, w: 2.715271}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -33765,7 +33900,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 768160468}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cercas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33950,6 +34085,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1450690695}
     m_Modifications:
+    - target: {fileID: 45026976394459481, guid: bf49b486ffae2c2429b4fd41e96023c3, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151257879967612850, guid: bf49b486ffae2c2429b4fd41e96023c3, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3756161127354694809, guid: bf49b486ffae2c2429b4fd41e96023c3, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946090439241302661, guid: bf49b486ffae2c2429b4fd41e96023c3, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4266165224925303483, guid: bf49b486ffae2c2429b4fd41e96023c3, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8109696731558045351, guid: bf49b486ffae2c2429b4fd41e96023c3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 53.94
@@ -33990,9 +34145,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8631077968458502330, guid: bf49b486ffae2c2429b4fd41e96023c3, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 9189002782948893723, guid: bf49b486ffae2c2429b4fd41e96023c3, type: 3}
       propertyPath: m_Name
       value: Truck (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189002782948893723, guid: bf49b486ffae2c2429b4fd41e96023c3, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -34716,6 +34879,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ala C escola
       objectReference: {fileID: 0}
+    - target: {fileID: 3101863424185786759, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -34769,17 +34936,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2268291853166280684, guid: 813df9801c30e63479934f054db68d12, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6053335324125489642, guid: 813df9801c30e63479934f054db68d12, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6452039197999972492, guid: 813df9801c30e63479934f054db68d12, type: 3}
       propertyPath: m_Name
       value: Police (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6452039197999972492, guid: 813df9801c30e63479934f054db68d12, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6685709738900195085, guid: 813df9801c30e63479934f054db68d12, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7347992844397126573, guid: 813df9801c30e63479934f054db68d12, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1348718573842630220, guid: 813df9801c30e63479934f054db68d12, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 942481246}
+    - targetCorrespondingSourceObject: {fileID: 1348718573842630220, guid: 813df9801c30e63479934f054db68d12, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 1172640418}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6452039197999972492, guid: 813df9801c30e63479934f054db68d12, type: 3}
       insertIndex: -1
       addedObject: {fileID: 781493685}
+    - targetCorrespondingSourceObject: {fileID: 6452039197999972492, guid: 813df9801c30e63479934f054db68d12, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 781493686}
   m_SourcePrefab: {fileID: 100100000, guid: 813df9801c30e63479934f054db68d12, type: 3}
 --- !u!4 &781493682 stripped
 Transform:
@@ -34807,6 +35003,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.3774698, y: 2.001599, z: 4.6715164}
   m_Center: {x: -0.0000014305115, y: 1.2696394, z: -0.22728789}
+--- !u!114 &781493686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167249310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd8a40e12a8e74e44815e5e45232d947, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redLight: {fileID: 1172640419}
+  blueLight: {fileID: 942481247}
+  flashSpeed: 0.5
 --- !u!1001 &783030839
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36087,6 +36298,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Building_Residential_color01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 921b4e33443ab5943afa3c4841e74cae, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 921b4e33443ab5943afa3c4841e74cae, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -36682,6 +36897,10 @@ PrefabInstance:
     - target: {fileID: 366980482748411765, guid: faa2dda313fb030449c71cd8213b654e, type: 3}
       propertyPath: m_Name
       value: "F\xF3rum"
+      objectReference: {fileID: 0}
+    - target: {fileID: 366980482748411765, guid: faa2dda313fb030449c71cd8213b654e, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1034726627151984079, guid: faa2dda313fb030449c71cd8213b654e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -38487,6 +38706,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cerca ATO 3 (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.24435629
@@ -38687,6 +38910,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1450690695}
     m_Modifications:
+    - target: {fileID: 938263979648159698, guid: 50bc8a305f45f224abedbbaaa3046911, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428896154806819881, guid: 50bc8a305f45f224abedbbaaa3046911, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1598880563783459702, guid: 50bc8a305f45f224abedbbaaa3046911, type: 3}
       propertyPath: m_LocalPosition.x
       value: 20.09
@@ -38727,9 +38958,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2447565566639454046, guid: 50bc8a305f45f224abedbbaaa3046911, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3570916386208818676, guid: 50bc8a305f45f224abedbbaaa3046911, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8924721617483827851, guid: 50bc8a305f45f224abedbbaaa3046911, type: 3}
       propertyPath: m_Name
       value: Towtruck
+      objectReference: {fileID: 0}
+    - target: {fileID: 8924721617483827851, guid: 50bc8a305f45f224abedbbaaa3046911, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -39907,51 +40150,55 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1424487637}
+    m_TransformParent: {fileID: 2076339070}
     m_Modifications:
     - target: {fileID: 1170094294046031062, guid: 2acf7b32fdd885840b74fbf901d40cdc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.4
+      value: -0.517
       objectReference: {fileID: 0}
     - target: {fileID: 1170094294046031062, guid: 2acf7b32fdd885840b74fbf901d40cdc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.177
+      value: 2.174
       objectReference: {fileID: 0}
     - target: {fileID: 1170094294046031062, guid: 2acf7b32fdd885840b74fbf901d40cdc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.328
+      value: -0.327
       objectReference: {fileID: 0}
     - target: {fileID: 1170094294046031062, guid: 2acf7b32fdd885840b74fbf901d40cdc, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6471374
+      value: -0.74852836
       objectReference: {fileID: 0}
     - target: {fileID: 1170094294046031062, guid: 2acf7b32fdd885840b74fbf901d40cdc, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.017301902
+      value: -0.00636265
       objectReference: {fileID: 0}
     - target: {fileID: 1170094294046031062, guid: 2acf7b32fdd885840b74fbf901d40cdc, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.7619047
+      value: 0.66256404
       objectReference: {fileID: 0}
     - target: {fileID: 1170094294046031062, guid: 2acf7b32fdd885840b74fbf901d40cdc, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.02037033
+      value: 0.025958119
       objectReference: {fileID: 0}
     - target: {fileID: 1170094294046031062, guid: 2acf7b32fdd885840b74fbf901d40cdc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 3.063
+      value: -1.425
       objectReference: {fileID: 0}
     - target: {fileID: 1170094294046031062, guid: 2acf7b32fdd885840b74fbf901d40cdc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -99.313
+      value: 277.00598
       objectReference: {fileID: 0}
     - target: {fileID: 1170094294046031062, guid: 2acf7b32fdd885840b74fbf901d40cdc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -2.711
       objectReference: {fileID: 0}
     - target: {fileID: 1170094294046122230, guid: 2acf7b32fdd885840b74fbf901d40cdc, type: 3}
       propertyPath: m_Name
       value: Red light
+      objectReference: {fileID: 0}
+    - target: {fileID: 1170094294046122230, guid: 2acf7b32fdd885840b74fbf901d40cdc, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1170094294056431064, guid: 2acf7b32fdd885840b74fbf901d40cdc, type: 3}
       propertyPath: m_Type
@@ -40191,6 +40438,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
       propertyPath: m_Name
       value: Cerca ATO 3 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
       propertyPath: m_LocalScale.x
@@ -42127,39 +42378,43 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 2076339070}
+    m_TransformParent: {fileID: 781493682}
     m_Modifications:
     - target: {fileID: 163178235555309841, guid: 6ed4b7cca1a964b4792b21eae2e88624, type: 3}
       propertyPath: m_Name
       value: Blue light
       objectReference: {fileID: 0}
+    - target: {fileID: 163178235555309841, guid: 6ed4b7cca1a964b4792b21eae2e88624, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 163178235555673393, guid: 6ed4b7cca1a964b4792b21eae2e88624, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -58.794
+      value: 0.39030868
       objectReference: {fileID: 0}
     - target: {fileID: 163178235555673393, guid: 6ed4b7cca1a964b4792b21eae2e88624, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.213
+      value: 2.2229946
       objectReference: {fileID: 0}
     - target: {fileID: 163178235555673393, guid: 6ed4b7cca1a964b4792b21eae2e88624, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -39.311
+      value: -0.17465048
       objectReference: {fileID: 0}
     - target: {fileID: 163178235555673393, guid: 6ed4b7cca1a964b4792b21eae2e88624, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.2569299
+      value: -0.6172167
       objectReference: {fileID: 0}
     - target: {fileID: 163178235555673393, guid: 6ed4b7cca1a964b4792b21eae2e88624, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.025170568
+      value: -0.034206267
       objectReference: {fileID: 0}
     - target: {fileID: 163178235555673393, guid: 6ed4b7cca1a964b4792b21eae2e88624, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.9641345
+      value: -0.78397185
       objectReference: {fileID: 0}
     - target: {fileID: 163178235555673393, guid: 6ed4b7cca1a964b4792b21eae2e88624, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.06162966
+      value: 0.057111327
       objectReference: {fileID: 0}
     - target: {fileID: 163178235555673393, guid: 6ed4b7cca1a964b4792b21eae2e88624, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -42600,6 +42855,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 63243ce2fd6113e4384abc2d949cb799, type: 3}
       propertyPath: m_Name
       value: Casa azul 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 63243ce2fd6113e4384abc2d949cb799, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 63243ce2fd6113e4384abc2d949cb799, type: 3}
       propertyPath: m_LocalPosition.x
@@ -44531,6 +44790,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cerca ATO 3 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.24435629
@@ -45016,6 +45279,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Apartamento 2
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 921b4e33443ab5943afa3c4841e74cae, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 921b4e33443ab5943afa3c4841e74cae, type: 3}
       propertyPath: m_LocalPosition.x
       value: -23.204557
@@ -45168,7 +45435,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1042717261}
   - component: {fileID: 1042717262}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pillar1Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47035,15 +47302,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 82119448668004983, guid: d69c58b3ae46fa945b4b7d640b234266, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -43.054028
+      value: -45.652496
       objectReference: {fileID: 0}
     - target: {fileID: 82119448668004983, guid: d69c58b3ae46fa945b4b7d640b234266, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -80.40383
+      value: 89.99999
       objectReference: {fileID: 0}
     - target: {fileID: 82119448668004983, guid: d69c58b3ae46fa945b4b7d640b234266, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 80.403854
+      value: -89.99999
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d69c58b3ae46fa945b4b7d640b234266, type: 3}
       propertyPath: m_Name
@@ -49056,6 +49323,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Vehicle_Car_color01
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a119eb0fa059db34bbaef286c1af1696, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a119eb0fa059db34bbaef286c1af1696, type: 3}
       propertyPath: m_LocalPosition.x
       value: 24.301105
@@ -49385,6 +49656,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
       propertyPath: m_Name
       value: Cerca ATO 3 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
       propertyPath: m_LocalScale.x
@@ -50073,6 +50348,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 66131d8838f42f545a30ce8606ce5365, type: 3}
       propertyPath: m_Name
       value: Casa azul
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 66131d8838f42f545a30ce8606ce5365, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 66131d8838f42f545a30ce8606ce5365, type: 3}
       propertyPath: m_LocalPosition.x
@@ -51698,35 +51977,35 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 2076339070}
+    m_TransformParent: {fileID: 781493682}
     m_Modifications:
     - target: {fileID: 1170094294046031062, guid: 2acf7b32fdd885840b74fbf901d40cdc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -58.672
+      value: -0.45214576
       objectReference: {fileID: 0}
     - target: {fileID: 1170094294046031062, guid: 2acf7b32fdd885840b74fbf901d40cdc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.155
+      value: 2.1649945
       objectReference: {fileID: 0}
     - target: {fileID: 1170094294046031062, guid: 2acf7b32fdd885840b74fbf901d40cdc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -38.469
+      value: -0.29343832
       objectReference: {fileID: 0}
     - target: {fileID: 1170094294046031062, guid: 2acf7b32fdd885840b74fbf901d40cdc, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9904119
+      value: 0.70153743
       objectReference: {fileID: 0}
     - target: {fileID: 1170094294046031062, guid: 2acf7b32fdd885840b74fbf901d40cdc, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.009085267
+      value: -0.019789135
       objectReference: {fileID: 0}
     - target: {fileID: 1170094294046031062, guid: 2acf7b32fdd885840b74fbf901d40cdc, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.13418901
+      value: -0.7118761
       objectReference: {fileID: 0}
     - target: {fileID: 1170094294046031062, guid: 2acf7b32fdd885840b74fbf901d40cdc, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.03154757
+      value: 0.02619506
       objectReference: {fileID: 0}
     - target: {fileID: 1170094294046031062, guid: 2acf7b32fdd885840b74fbf901d40cdc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -51743,6 +52022,10 @@ PrefabInstance:
     - target: {fileID: 1170094294046122230, guid: 2acf7b32fdd885840b74fbf901d40cdc, type: 3}
       propertyPath: m_Name
       value: Red light
+      objectReference: {fileID: 0}
+    - target: {fileID: 1170094294046122230, guid: 2acf7b32fdd885840b74fbf901d40cdc, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1170094294056431064, guid: 2acf7b32fdd885840b74fbf901d40cdc, type: 3}
       propertyPath: m_Type
@@ -54789,6 +55072,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2126122370}
     m_Modifications:
+    - target: {fileID: 1419998860113037823, guid: f40e52a0c26735a46b681671fb2baa40, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1807256897596988560, guid: f40e52a0c26735a46b681671fb2baa40, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.7336001
@@ -54841,9 +55128,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5115735495455736681, guid: f40e52a0c26735a46b681671fb2baa40, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6589659554022336100, guid: f40e52a0c26735a46b681671fb2baa40, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7606265029820296956, guid: f40e52a0c26735a46b681671fb2baa40, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7769690492283750692, guid: f40e52a0c26735a46b681671fb2baa40, type: 3}
       propertyPath: m_Name
       value: Hatchback
+      objectReference: {fileID: 0}
+    - target: {fileID: 7769690492283750692, guid: f40e52a0c26735a46b681671fb2baa40, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -55590,7 +55893,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1265982137}
   - component: {fileID: 1265982138}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MarketCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57295,6 +57598,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cerca ATO 3 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.24435629
@@ -58476,6 +58783,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cerca ATO 3 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.24435629
@@ -58623,6 +58934,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Entrada Escola
       objectReference: {fileID: 0}
+    - target: {fileID: 7674863563708117942, guid: bc4c98111a1d3884f9fcec8d2c53a76b, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -58645,6 +58960,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: d20839e362efa3d4baa3d2ce1b4f2df4, type: 3}
       propertyPath: m_Name
       value: Vehicle_Container_color03
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d20839e362efa3d4baa3d2ce1b4f2df4, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d20839e362efa3d4baa3d2ce1b4f2df4, type: 3}
       propertyPath: m_LocalScale.x
@@ -59164,6 +59483,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 81835658bbd378143a0f525b8552f557, type: 3}
       propertyPath: m_Name
       value: Vehicle_Car_color02
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 81835658bbd378143a0f525b8552f557, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 81835658bbd378143a0f525b8552f557, type: 3}
       propertyPath: m_LocalPosition.x
@@ -60997,6 +61320,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1450690695}
     m_Modifications:
+    - target: {fileID: 204101444302569888, guid: 350735ef3b951a54ba6ec49c663c667e, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 683930735519063769, guid: 350735ef3b951a54ba6ec49c663c667e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.6
@@ -61037,9 +61364,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3818333531529157001, guid: 350735ef3b951a54ba6ec49c663c667e, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6194196188313719325, guid: 350735ef3b951a54ba6ec49c663c667e, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7151311968345750782, guid: 350735ef3b951a54ba6ec49c663c667e, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 9181701585240893179, guid: 350735ef3b951a54ba6ec49c663c667e, type: 3}
       propertyPath: m_Name
       value: Van (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9181701585240893179, guid: 350735ef3b951a54ba6ec49c663c667e, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -62674,6 +63017,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cerca ATO 3 (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.24435629
@@ -63085,26 +63432,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2268291853166280684, guid: 813df9801c30e63479934f054db68d12, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6053335324125489642, guid: 813df9801c30e63479934f054db68d12, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6452039197999972492, guid: 813df9801c30e63479934f054db68d12, type: 3}
       propertyPath: m_Name
       value: Police
       objectReference: {fileID: 0}
+    - target: {fileID: 6452039197999972492, guid: 813df9801c30e63479934f054db68d12, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6685709738900195085, guid: 813df9801c30e63479934f054db68d12, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7347992844397126573, guid: 813df9801c30e63479934f054db68d12, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 1348718573842630220, guid: 813df9801c30e63479934f054db68d12, type: 3}
-      insertIndex: 0
-      addedObject: {fileID: 1480411856}
-    - targetCorrespondingSourceObject: {fileID: 1348718573842630220, guid: 813df9801c30e63479934f054db68d12, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 909059041}
+    m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6452039197999972492, guid: 813df9801c30e63479934f054db68d12, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1948609362}
-    - targetCorrespondingSourceObject: {fileID: 6452039197999972492, guid: 813df9801c30e63479934f054db68d12, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1948609365}
   m_SourcePrefab: {fileID: 100100000, guid: 813df9801c30e63479934f054db68d12, type: 3}
 --- !u!4 &1424487637 stripped
 Transform:
@@ -63185,7 +63543,7 @@ GameObject:
   - component: {fileID: 1427222878}
   - component: {fileID: 1427222877}
   - component: {fileID: 1427222876}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Muro do condominio (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65219,6 +65577,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Blue light
       objectReference: {fileID: 0}
+    - target: {fileID: 163178235555309841, guid: 6ed4b7cca1a964b4792b21eae2e88624, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 163178235555673393, guid: 6ed4b7cca1a964b4792b21eae2e88624, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.352
@@ -66279,11 +66641,15 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1424487637}
+    m_TransformParent: {fileID: 2076339070}
     m_Modifications:
     - target: {fileID: 163178235555309841, guid: 6ed4b7cca1a964b4792b21eae2e88624, type: 3}
       propertyPath: m_Name
       value: Blue light
+      objectReference: {fileID: 0}
+    - target: {fileID: 163178235555309841, guid: 6ed4b7cca1a964b4792b21eae2e88624, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 163178235555673393, guid: 6ed4b7cca1a964b4792b21eae2e88624, type: 3}
       propertyPath: m_LocalPosition.x
@@ -66291,39 +66657,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 163178235555673393, guid: 6ed4b7cca1a964b4792b21eae2e88624, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.152
+      value: 2.197
       objectReference: {fileID: 0}
     - target: {fileID: 163178235555673393, guid: 6ed4b7cca1a964b4792b21eae2e88624, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.342
+      value: -0.276
       objectReference: {fileID: 0}
     - target: {fileID: 163178235555673393, guid: 6ed4b7cca1a964b4792b21eae2e88624, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.6137311
+      value: 0.7309014
       objectReference: {fileID: 0}
     - target: {fileID: 163178235555673393, guid: 6ed4b7cca1a964b4792b21eae2e88624, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.005977733
+      value: 0.009395798
       objectReference: {fileID: 0}
     - target: {fileID: 163178235555673393, guid: 6ed4b7cca1a964b4792b21eae2e88624, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.789455
+      value: 0.6824135
       objectReference: {fileID: 0}
     - target: {fileID: 163178235555673393, guid: 6ed4b7cca1a964b4792b21eae2e88624, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.007689328
+      value: -0.0025647853
       objectReference: {fileID: 0}
     - target: {fileID: 163178235555673393, guid: 6ed4b7cca1a964b4792b21eae2e88624, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 1.806
+      value: 0.988
       objectReference: {fileID: 0}
     - target: {fileID: 163178235555673393, guid: 6ed4b7cca1a964b4792b21eae2e88624, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -270.678
+      value: 86.075
       objectReference: {fileID: 0}
     - target: {fileID: 163178235555673393, guid: 6ed4b7cca1a964b4792b21eae2e88624, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 0.52
       objectReference: {fileID: 0}
     - target: {fileID: 163178235565974579, guid: 6ed4b7cca1a964b4792b21eae2e88624, type: 3}
       propertyPath: m_Type
@@ -67614,7 +67980,7 @@ GameObject:
   - component: {fileID: 1514785916}
   - component: {fileID: 1514785915}
   - component: {fileID: 1514785914}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Muro do condominio (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71160,7 +71526,7 @@ GameObject:
   - component: {fileID: 1595529581}
   - component: {fileID: 1595529580}
   - component: {fileID: 1595529579}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Muro do condominio (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71326,6 +71692,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1450690695}
     m_Modifications:
+    - target: {fileID: 45026976394459481, guid: bf49b486ffae2c2429b4fd41e96023c3, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151257879967612850, guid: bf49b486ffae2c2429b4fd41e96023c3, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3756161127354694809, guid: bf49b486ffae2c2429b4fd41e96023c3, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946090439241302661, guid: bf49b486ffae2c2429b4fd41e96023c3, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4266165224925303483, guid: bf49b486ffae2c2429b4fd41e96023c3, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8109696731558045351, guid: bf49b486ffae2c2429b4fd41e96023c3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.6088943
@@ -71366,9 +71752,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8631077968458502330, guid: bf49b486ffae2c2429b4fd41e96023c3, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 9189002782948893723, guid: bf49b486ffae2c2429b4fd41e96023c3, type: 3}
       propertyPath: m_Name
       value: Truck
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189002782948893723, guid: bf49b486ffae2c2429b4fd41e96023c3, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -72579,6 +72973,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ala B escola
       objectReference: {fileID: 0}
+    - target: {fileID: 3101863424185786759, guid: 38a5fcee4e05f704ab5d33d3ceeddc64, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -73462,6 +73860,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Loja cruzamento
       objectReference: {fileID: 0}
+    - target: {fileID: 8585650954766913903, guid: 5c06f3174e1062d44b9caa19b044b217, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8965977058007075797, guid: 5c06f3174e1062d44b9caa19b044b217, type: 3}
       propertyPath: m_LocalPosition.x
       value: -51.99456
@@ -74290,6 +74692,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cerca ATO 3 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.24435629
@@ -74501,6 +74907,10 @@ PrefabInstance:
     - target: {fileID: 4276666684646190838, guid: c8609c11296447e4a973b0b95b22463c, type: 3}
       propertyPath: m_Name
       value: Apartamentos cruzamento
+      objectReference: {fileID: 0}
+    - target: {fileID: 4276666684646190838, guid: c8609c11296447e4a973b0b95b22463c, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -74880,6 +75290,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
       propertyPath: m_Name
       value: Cerca ATO 3 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
       propertyPath: m_LocalScale.x
@@ -75682,6 +76096,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 121f662ea65e2cf40a50c66470757a9e, type: 3}
       propertyPath: m_Name
       value: Oficina Mecanica
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 121f662ea65e2cf40a50c66470757a9e, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 121f662ea65e2cf40a50c66470757a9e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -76586,6 +77004,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cerca ATO 3 (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.24435629
@@ -77191,6 +77613,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Casa verde
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 142c9543c08ae014bad9d177ad54a989, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 142c9543c08ae014bad9d177ad54a989, type: 3}
       propertyPath: m_LocalPosition.x
       value: -54.52456
@@ -77482,7 +77908,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1753361827}
   - component: {fileID: 1753361828}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HouseBlueCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79948,6 +80374,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cerca ATO 3 (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.24435629
@@ -80103,6 +80533,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
       propertyPath: m_Name
       value: Cerca ATO 3 (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
       propertyPath: m_LocalScale.x
@@ -80718,6 +81152,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 8fa324388c16b5c4eac9846338b35b17, type: 3}
       propertyPath: m_Name
       value: Props_Bus Stop
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 8fa324388c16b5c4eac9846338b35b17, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8fa324388c16b5c4eac9846338b35b17, type: 3}
       propertyPath: m_LocalPosition.x
@@ -81650,6 +82088,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 979de0ac65f6d2b48a89e9088986637f, type: 3}
       propertyPath: m_Name
       value: Vehicle_Container_color01
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 979de0ac65f6d2b48a89e9088986637f, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 979de0ac65f6d2b48a89e9088986637f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -82886,6 +83328,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "Ventila\xE7\xE3o"
       objectReference: {fileID: 0}
+    - target: {fileID: 4865145186327678223, guid: a50b88962386bb845953bff01758eb7f, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5246596163166214069, guid: a50b88962386bb845953bff01758eb7f, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.66106963
@@ -83055,6 +83501,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 9500f0cdde0097a4aac35ced7c1935d7, type: 3}
       propertyPath: m_Name
       value: Vehicle_Bus_color01
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9500f0cdde0097a4aac35ced7c1935d7, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9500f0cdde0097a4aac35ced7c1935d7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -84565,6 +85015,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cerca ATO 3 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.24435629
@@ -85630,21 +86084,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.377471, y: 2.001599, z: 4.671519}
   m_Center: {x: 0.00000047683648, y: 1.2696394, z: -0.22728036}
---- !u!114 &1948609365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1948609359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd8a40e12a8e74e44815e5e45232d947, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  redLight: {fileID: 1253685672}
-  blueLight: {fileID: 1921332853}
-  flashSpeed: 0.5
 --- !u!1001 &1949655387
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -86219,7 +86658,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1955552380}
   - component: {fileID: 1955552381}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 'Pillar3Collider '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87072,6 +87511,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cerca ATO 3 (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.24435629
@@ -87165,6 +87608,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
       propertyPath: m_Name
       value: Cerca ATO 3 (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d2100f10c342364479e7a527f9ef5429, type: 3}
       propertyPath: m_LocalScale.x
@@ -87391,6 +87838,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 9b25e71fd5b7ac6469539d930c6dc2e6, type: 3}
       propertyPath: m_Name
       value: Vehicle_Ambulance
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9b25e71fd5b7ac6469539d930c6dc2e6, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9b25e71fd5b7ac6469539d930c6dc2e6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -88488,6 +88939,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Red light
       objectReference: {fileID: 0}
+    - target: {fileID: 1170094294046122230, guid: 2acf7b32fdd885840b74fbf901d40cdc, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1170094294056431064, guid: 2acf7b32fdd885840b74fbf901d40cdc, type: 3}
       propertyPath: m_Type
       value: 0
@@ -88724,6 +89179,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 9b25e71fd5b7ac6469539d930c6dc2e6, type: 3}
       propertyPath: m_Name
       value: Vehicle_Ambulance (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 9b25e71fd5b7ac6469539d930c6dc2e6, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9b25e71fd5b7ac6469539d930c6dc2e6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -89506,6 +89965,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: c98da428142c39c42bb62c454958cd1f, type: 3}
       propertyPath: m_Name
       value: Vehicle_Car_color03
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c98da428142c39c42bb62c454958cd1f, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c98da428142c39c42bb62c454958cd1f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -91191,19 +91654,39 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2268291853166280684, guid: 813df9801c30e63479934f054db68d12, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6053335324125489642, guid: 813df9801c30e63479934f054db68d12, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6452039197999972492, guid: 813df9801c30e63479934f054db68d12, type: 3}
       propertyPath: m_Name
       value: Police (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6452039197999972492, guid: 813df9801c30e63479934f054db68d12, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6685709738900195085, guid: 813df9801c30e63479934f054db68d12, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7347992844397126573, guid: 813df9801c30e63479934f054db68d12, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1348718573842630220, guid: 813df9801c30e63479934f054db68d12, type: 3}
-      insertIndex: 0
-      addedObject: {fileID: 942481246}
+      insertIndex: -1
+      addedObject: {fileID: 1480411856}
     - targetCorrespondingSourceObject: {fileID: 1348718573842630220, guid: 813df9801c30e63479934f054db68d12, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 1172640418}
+      insertIndex: -1
+      addedObject: {fileID: 909059041}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6452039197999972492, guid: 813df9801c30e63479934f054db68d12, type: 3}
       insertIndex: -1
@@ -91250,8 +91733,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd8a40e12a8e74e44815e5e45232d947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  redLight: {fileID: 1172640419}
-  blueLight: {fileID: 942481247}
+  redLight: {fileID: 1253685672}
+  blueLight: {fileID: 1921332853}
   flashSpeed: 0.5
 --- !u!1001 &2076407552
 PrefabInstance:
@@ -91455,7 +91938,7 @@ GameObject:
   - component: {fileID: 2081601510}
   - component: {fileID: 2081601509}
   - component: {fileID: 2081601508}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Muro do condominio (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92491,8 +92974,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2108195223}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14265463, y: 5.233727e-15, z: -7.5433027e-16, w: 0.98977256}
-  m_LocalPosition: {x: 0.296, y: 1.392, z: -10.85}
+  m_LocalRotation: {x: 0.1426545, y: -1.01773e-23, z: 1.4668393e-24, w: 0.98977256}
+  m_LocalPosition: {x: -46.724, y: 1.392, z: 42.62}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -94019,6 +94502,10 @@ PrefabInstance:
       value: Salem
       objectReference: {fileID: 0}
     - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: requiredIdItem
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
       propertyPath: dialogueLines.Array.size
       value: 5
       objectReference: {fileID: 0}
@@ -94368,7 +94855,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7069505520918420298, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -41.9
+      value: -41.838
       objectReference: {fileID: 0}
     - target: {fileID: 7069505520918420298, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
       propertyPath: m_LocalPosition.y
@@ -94463,12 +94950,20 @@ PrefabInstance:
       value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7733531302821105528, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
+      propertyPath: moveSpeedSide
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7733531302821105528, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
+      propertyPath: moveSpeedForward
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7733531302821105528, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
       propertyPath: _cinemachineCamera
       value: 
       objectReference: {fileID: 64170133}
     - target: {fileID: 8238607859782025201, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.296
+      value: -46.724
       objectReference: {fileID: 0}
     - target: {fileID: 8238607859782025201, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -94476,7 +94971,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8238607859782025201, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.54
+      value: 44.93
       objectReference: {fileID: 0}
     - target: {fileID: 8238607859782025201, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -94659,5 +95154,5 @@ SceneRoots:
   - {fileID: 5712051986480350450}
   - {fileID: 1818398346}
   - {fileID: 699620797}
-  - {fileID: 1056838541}
   - {fileID: 1890876373}
+  - {fileID: 1056838541}
