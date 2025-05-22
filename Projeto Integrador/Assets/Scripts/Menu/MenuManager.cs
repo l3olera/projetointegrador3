@@ -21,25 +21,33 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private Image _bgEnglish;
     [Tooltip("Referência ao Image do button_Portuguese")]
     [SerializeField] private Image _bgPortuguese;
+    [Tooltip("Referência ao AudioSource do botão de clique")]
+    [SerializeField] private AudioSource _audioSourceButtonClick;
 
     void Start()
     {
         //Verifica se créditos foi instanciado e se ele está ativo quando inicia a cena. Assim, escondendo-o caso for verdadeiro
-        if(_credits != null){
-            if(_credits.activeSelf){
+        if (_credits != null)
+        {
+            if (_credits.activeSelf)
+            {
                 _credits.SetActive(false);
                 _credits.GetComponent<TextOscillator>().enabled = false;
             }
-        }    
+        }
 
-        if(_popupControls != null){
-            if(_popupControls.activeSelf){
+        if (_popupControls != null)
+        {
+            if (_popupControls.activeSelf)
+            {
                 _popupControls.SetActive(false);
             }
         }
-        
-        if(_popupOptions != null){
-            if(_popupOptions.activeSelf){
+
+        if (_popupOptions != null)
+        {
+            if (_popupOptions.activeSelf)
+            {
                 _popupOptions.SetActive(false);
             }
         }
@@ -49,52 +57,70 @@ public class MenuManager : MonoBehaviour
         SetLanguage(savedLanguage);
     }
 
-    public void ButtonStart(){
+    public void ButtonStart()
+    {
+        PlaySoundButtonClick(); //Toca o som do botão de clique
         _sceneLoader.Transition(_nextSceneStart); //Responsável por fazer transição entre a tela de menu e o a cena do jogo
     }
 
     public void ButtonCredits()
     {
+        PlaySoundButtonClick(); //Toca o som do botão de clique
         //Verifica se créditos está instanciado e mostra e esconde os créditos
-        if(_credits != null){
-            if(!_credits.activeSelf){
+        if (_credits != null)
+        {
+            if (!_credits.activeSelf)
+            {
                 _credits.SetActive(true);
                 _credits.GetComponent<TextOscillator>().enabled = true;
-            }else{
+            }
+            else
+            {
                 _credits.SetActive(false);
                 _credits.GetComponent<TextOscillator>().enabled = false;
             }
-        }    
+        }
     }
 
-    public void ButtonExit(){
+    public void ButtonExit()
+    {
+        PlaySoundButtonClick(); //Toca o som do botão de clique
         // Exibe uma mensagem de log quando estamos no Editor e sai da aplicação na build
-        #if UNITY_EDITOR
-            Debug.Log("Jogo encerrado (simulação no Editor)");
-        #else
+#if UNITY_EDITOR
+        Debug.Log("Jogo encerrado (simulação no Editor)");
+#else
             Application.Quit();
-        #endif
+#endif
     }
 
-    public void OpenPopUp(GameObject objectPopUp){
+    public void OpenPopUp(GameObject objectPopUp)
+    {
+        PlaySoundButtonClick(); //Toca o som do botão de clique
         //Deixa ativo um gameObject que é um popUp
-        if(objectPopUp != null){
-            if(!objectPopUp.activeSelf){
+        if (objectPopUp != null)
+        {
+            if (!objectPopUp.activeSelf)
+            {
                 objectPopUp.SetActive(true);
             }
         }
     }
 
-    public void ClosePopUp(GameObject objectPopUp){
+    public void ClosePopUp(GameObject objectPopUp)
+    {
+        PlaySoundButtonClick(); //Toca o som do botão de clique
         //Deixa desativado um gameObject que é um popUp
-        if(objectPopUp != null){
-            if(objectPopUp.activeSelf){
+        if (objectPopUp != null)
+        {
+            if (objectPopUp.activeSelf)
+            {
                 objectPopUp.SetActive(false);
             }
         }
     }
 
-    public void SetLanguage(int languageIndex){
+    public void SetLanguage(int languageIndex)
+    {
         // Define o idioma na Unity Localization
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[languageIndex];
 
@@ -105,5 +131,13 @@ public class MenuManager : MonoBehaviour
         //Atualiza a aparência dos botões
         _bgEnglish.enabled = languageIndex == 1;
         _bgPortuguese.enabled = languageIndex == 0;
+    }
+
+    private void PlaySoundButtonClick()
+    {
+        if (_audioSourceButtonClick != null)
+        {
+            _audioSourceButtonClick.Play();
+        }
     }
 }
