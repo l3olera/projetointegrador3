@@ -13,17 +13,9 @@ public class DatabaseManager : MonoBehaviour
     {
         // Caminho para o arquivo do banco de dados no StreamingAssets
         string filePath = Path.Combine(Application.streamingAssetsPath, "LakshmiBarkventuresDB.db");
-        
+
         // String de conexão para o banco de dados
         dbPath = $"URI=file:{filePath}";
-    }
-
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.I))
-        {
-            ShowInventory();
-        }
     }
 
     //ITEMS
@@ -45,7 +37,8 @@ public class DatabaseManager : MonoBehaviour
         connection.Close();
     }
 
-    public void ShowItemsById(int id_item){
+    public void ShowItemsById(int id_item)
+    {
         using var connection = new SqliteConnection(dbPath);
         connection.Open();
         using (var command = connection.CreateCommand())
@@ -73,8 +66,8 @@ public class DatabaseManager : MonoBehaviour
             command.CommandText = "SELECT * FROM Inventory;";
             using IDataReader reader = command.ExecuteReader();
             while (reader.Read())
-            { 
-                int id_inventory = reader.GetInt32(0); 
+            {
+                int id_inventory = reader.GetInt32(0);
 
                 // Verifica o tipo da coluna id_item
                 object id_itemValue = reader.IsDBNull(1) ? null : reader.GetValue(1);
@@ -91,7 +84,7 @@ public class DatabaseManager : MonoBehaviour
         using (var command = connection.CreateCommand())
         {
             command.CommandText = "UPDATE Inventory SET id_item = @id_item WHERE id_inventory = @id_inventory;";
-            
+
             command.Parameters.Add(new SqliteParameter("@id_inventory", id_inventory));
             command.Parameters.Add(new SqliteParameter("@id_item", id_item ?? (object)DBNull.Value));
             command.ExecuteNonQuery();
