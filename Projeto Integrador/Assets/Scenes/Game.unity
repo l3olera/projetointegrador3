@@ -3254,8 +3254,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 64170128}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1426546, y: 0.00000003040535, z: -0.000000004382282, w: 0.98977256}
-  m_LocalPosition: {x: 0.13, y: 1.392, z: -10.68}
+  m_LocalRotation: {x: 0.14265458, y: 0.000000032979237, z: -0.000000004753253, w: 0.98977256}
+  m_LocalPosition: {x: 0.13, y: 1.392, z: 62.789997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -31197,6 +31197,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: _interactText
+      value: 
+      objectReference: {fileID: 576304164}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
       propertyPath: requiredIdItem
       value: -1
       objectReference: {fileID: 0}
@@ -31261,6 +31265,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: _textTranslateInteract.m_TableEntryReference.m_KeyId
+      value: 86
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
       propertyPath: dialogueSequence.Array.data[0].lines.Array.data[0].actorName
       value: Lakshmi
       objectReference: {fileID: 0}
@@ -31299,6 +31307,10 @@ PrefabInstance:
     - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
       propertyPath: dialogueSequence.Array.data[1].lines.Array.data[4].actorName
       value: Lakshmi
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: _textTranslateInteract.m_TableReference.m_TableCollectionName
+      value: GUID:29197b97bd2d11d4f8e2fb0f11400d1f
       objectReference: {fileID: 0}
     - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
       propertyPath: dialogueSequence.Array.data[0].lines.Array.data[0].speechText.Array.size
@@ -41525,7 +41537,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.083333336
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: bc75356d6e008ed4589d180b046ba6d2, type: 2}
+  m_NavMeshData: {fileID: 0}
   m_BuildHeightMesh: 0
 --- !u!4 &936631748
 Transform:
@@ -50548,6 +50560,10 @@ PrefabInstance:
       value: Salem
       objectReference: {fileID: 0}
     - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: _interactText
+      value: 
+      objectReference: {fileID: 576304164}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
       propertyPath: requiredIdItem
       value: -1
       objectReference: {fileID: 0}
@@ -50612,6 +50628,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: _textTranslateInteract.m_TableEntryReference.m_KeyId
+      value: 86
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
       propertyPath: dialogueSequence.Array.data[0].lines.Array.data[0].actorName
       value: Lakshmi
       objectReference: {fileID: 0}
@@ -50650,6 +50670,10 @@ PrefabInstance:
     - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
       propertyPath: dialogueSequence.Array.data[1].lines.Array.data[4].actorName
       value: Lakshmi
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: _textTranslateInteract.m_TableReference.m_TableCollectionName
+      value: GUID:29197b97bd2d11d4f8e2fb0f11400d1f
       objectReference: {fileID: 0}
     - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
       propertyPath: dialogueSequence.Array.data[0].lines.Array.data[0].speechText.Array.size
@@ -93108,8 +93132,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2108195223}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14265461, y: 0.00000003040535, z: -0.000000004382283, w: 0.98977256}
-  m_LocalPosition: {x: 0.13, y: 1.392, z: -10.68}
+  m_LocalRotation: {x: 0.1426546, y: 0.000000032979237, z: -0.0000000047532533, w: 0.98977256}
+  m_LocalPosition: {x: 0.13, y: 1.392, z: 62.789997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -94636,6 +94660,10 @@ PrefabInstance:
       value: Salem
       objectReference: {fileID: 0}
     - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: _interactText
+      value: 
+      objectReference: {fileID: 576304164}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
       propertyPath: requiredIdItem
       value: 2
       objectReference: {fileID: 0}
@@ -94700,6 +94728,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: _textTranslateInteract.m_TableEntryReference.m_KeyId
+      value: 86
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
       propertyPath: dialogueSequence.Array.data[0].lines.Array.data[0].actorName
       value: Lakshmi
       objectReference: {fileID: 0}
@@ -94738,6 +94770,10 @@ PrefabInstance:
     - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
       propertyPath: dialogueSequence.Array.data[1].lines.Array.data[4].actorName
       value: Lakshmi
+      objectReference: {fileID: 0}
+    - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
+      propertyPath: _textTranslateInteract.m_TableReference.m_TableCollectionName
+      value: GUID:29197b97bd2d11d4f8e2fb0f11400d1f
       objectReference: {fileID: 0}
     - target: {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
       propertyPath: dialogueSequence.Array.data[0].lines.Array.data[0].speechText.Array.size
@@ -95105,7 +95141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8238607859782025201, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.37
+      value: 65.1
       objectReference: {fileID: 0}
     - target: {fileID: 8238607859782025201, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
       propertyPath: m_LocalRotation.w

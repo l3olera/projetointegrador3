@@ -1,4 +1,6 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.Localization;
 
 public class Dialogue : MonoBehaviour
 {
@@ -8,12 +10,14 @@ public class Dialogue : MonoBehaviour
     public LayerMask playerLayer; // Define a camada do jogador para detectar proximidade
     public float radious; // Raio da detecção de proximidade do NPC
 
+    [SerializeField] private bool _onRadious; // Indica se o jogador está dentro do raio de interação
+    [SerializeField] private LocalizedString _textTranslateInteract; // Referência ao texto que vai traduzir na interação
+    private bool[] _dialogueOccured; // Array para verificar se o diálogo já ocorreu
+    [SerializeField] private TextMeshProUGUI _interactText; // Referência ao texto de interação
     private DialogueControl _dc; // Referência ao script que controla os diálogos
     private InventoryController _ic; // Referência ao script que controla o inventário
     private ObjectivesController _oc; // Referência ao script que controla os objetivos
     private SmellTargetManager _smellManager; // Referência ao gerenciador de alvos de cheiro
-    [SerializeField] private bool _onRadious; // Indica se o jogador está dentro do raio de interação
-    private bool[] _dialogueOccured; // Array para verificar se o diálogo já ocorreu
 
     void Start()
     {
@@ -51,33 +55,45 @@ public class Dialogue : MonoBehaviour
             _smellManager = ReferenceManager.Instance.smellTargetManager; // Tenta encontrar novamente o InventoryController
         }
 
-        // Se o jogador pressionar "E" ou "Z", estiver no raio de interação e puder interagir
-        if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Z)) && _onRadious && _dc.canInteract)
+        if (_onRadious && _dc.canInteract)
         {
-            if (!_ic.HasItemById(requiredIdItem))
+            _textTranslateInteract.GetLocalizedStringAsync().Completed += handle =>
             {
-                _dc.Speech(dialogueSequence[0].lines); // Passa o array de falas para o DialogueControl
-                if (!_dialogueOccured[0]) // Verifica se o diálogo já ocorreu
-                {
-                    _dialogueOccured[0] = true; // Se não ocorreu, então marca o diálogo como ocorrido
-                    _smellManager.NextTarget(); // Chama a função para ir para o próximo alvo
-                }
-            }
-            else
+                _interactText.text = handle.Result;
+            };
+
+            // Se o jogador pressionar "E" ou "Z", estiver no raio de interação e puder interagir
+            if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Z))
             {
-                _dc.Speech(dialogueSequence[1].lines); // Passa o array de falas para o DialogueControl
-
-                if (!_dialogueOccured[1]) // Verifica se o diálogo já ocorreu
+                if (!_ic.HasItemById(requiredIdItem))
                 {
-                    _dialogueOccured[1] = true; // Marca o diálogo como ocorrido
-                    _smellManager.NextTarget(); // Chama a função para ir para o próximo alvo
+                    _dc.Speech(dialogueSequence[0].lines); // Passa o array de falas para o DialogueControl
+                    if (!_dialogueOccured[0]) // Verifica se o diálogo já ocorreu
+                    {
+                        _dialogueOccured[0] = true; // Se não ocorreu, então marca o diálogo como ocorrido
+                        _smellManager.NextTarget(); // Chama a função para ir para o próximo alvo
+                    }
+                }
+                else
+                {
+                    _dc.Speech(dialogueSequence[1].lines); // Passa o array de falas para o DialogueControl
+
+                    if (!_dialogueOccured[1]) // Verifica se o diálogo já ocorreu
+                    {
+                        _dialogueOccured[1] = true; // Marca o diálogo como ocorrido
+                        _smellManager.NextTarget(); // Chama a função para ir para o próximo alvo
+                    }
+
+                    _ic.RemoveItem(); // Remove o item do inventário
+                    _oc.IncreaseActIndex(); // Aumenta o índice do ato atual
+
                 }
 
-                _ic.RemoveItem(); // Remove o item do inventário
-                _oc.IncreaseActIndex(); // Aumenta o índice do ato atual
-
             }
-
+        }
+        else
+        {
+            _interactText.text = ""; // Limpa o texto de interação se o jogador não estiver no raio ou não puder interagir
         }
     }
 

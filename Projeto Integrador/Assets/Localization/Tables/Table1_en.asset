@@ -375,6 +375,10 @@ MonoBehaviour:
     m_Localized: "I promise I\u2019ll never run away again\u2026 Maybe."
     m_Metadata:
       m_Items: []
+  - m_Id: 86
+    m_Localized: Press E or Z to talk
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

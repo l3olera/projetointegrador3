@@ -378,6 +378,10 @@ MonoBehaviour:
     m_Localized: Prometo que nunca mais fujo... Talvez.
     m_Metadata:
       m_Items: []
+  - m_Id: 86
+    m_Localized: Pressione E ou Z para conversar
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
