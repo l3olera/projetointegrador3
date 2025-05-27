@@ -7,11 +7,9 @@ public class Dialogue : MonoBehaviour
     public DialogueSequence[] dialogueSequence; // Array de sequências de diálogos
 
     public int requiredIdItem = -1; // ID do item necessário para continuar um próximo dialogo o diálogo
-    public LayerMask playerLayer; // Define a camada do jogador para detectar proximidade
-    public float radious; // Raio da detecção de proximidade do NPC
 
     [SerializeField] private bool _onRadious; // Indica se o jogador está dentro do raio de interação
-    [SerializeField] private LocalizedString _textTranslateInteract; // Referência ao texto que vai traduzir na interação
+    [SerializeField] private string _translateName; // Nome da tradução para o texto de interação
     private bool[] _dialogueOccured; // Array para verificar se o diálogo já ocorreu
     [SerializeField] private TextMeshProUGUI _interactText; // Referência ao texto de interação
     private DialogueControl _dc; // Referência ao script que controla os diálogos
@@ -26,11 +24,6 @@ public class Dialogue : MonoBehaviour
         {
             _dialogueOccured[i] = false;
         }
-    }
-
-    void FixedUpdate()
-    {
-        Interact(); // Chama a verificação de interação com o NPC a cada atualização da física do jogo
     }
 
     void Update()
@@ -57,10 +50,7 @@ public class Dialogue : MonoBehaviour
 
         if (_onRadious && _dc.canInteract)
         {
-            _textTranslateInteract.GetLocalizedStringAsync().Completed += handle =>
-            {
-                _interactText.text = handle.Result;
-            };
+            _interactText.text = LocalizationManager.Instance.GetTranslation(_translateName); // Atualiza o texto de interação com a tradução
 
             // Se o jogador pressionar "E" ou "Z", estiver no raio de interação e puder interagir
             if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Z))
@@ -97,28 +87,19 @@ public class Dialogue : MonoBehaviour
         }
     }
 
-    // Método que verifica se o jogador está dentro do raio de interação
-    public void Interact()
+    void OnTriggerEnter(Collider other)
     {
-        _onRadious = false; // Assume que o jogador não está perto
-
-        Collider[] hits = Physics.OverlapSphere(transform.position, radious, playerLayer); // Cria uma esfera invisível que detecta colisões dentro do raio definido
-
-        foreach (Collider hit in hits) // Percorre todos os objetos detectados na esfera
+        if (other.CompareTag("Player")) // Verifica se o objeto detectado é o jogador
         {
-
-            if (hit.CompareTag("Player")) // Verifica se o objeto detectado é o jogador
-            {
-                _onRadious = true; // Marca que o jogador está dentro do raio
-                break; // Sai do loop assim que encontrar o jogador, evitando verificações desnecessárias
-            }
+            _onRadious = true; // Marca que o jogador está dentro do raio
         }
     }
 
-    // Método que desenha uma esfera no editor para visualizar a área de detecção do NPC    
-    private void OnDrawGizmosSelected()
+    void OnTriggerExit(Collider other)
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, radious); // Desenha a esfera com o raio definido no editor
+        if (other.CompareTag("Player")) // Verifica se o objeto que saiu é o jogador
+        {
+            _onRadious = false; // Marca que o jogador saiu do raio
+        }
     }
 }
