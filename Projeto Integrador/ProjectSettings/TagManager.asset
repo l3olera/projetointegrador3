@@ -8,7 +8,6 @@ TagManager:
   - Gate
   - TriggerClose
   - TriggerSpeech
-  - Ground
   layers:
   - Default
   - TransparentFX
