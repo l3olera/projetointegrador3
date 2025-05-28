@@ -14,6 +14,7 @@ public class ReferenceManager : MonoBehaviour
     public ObjectivesController objectivesController;
     public SmellTargetManager smellTargetManager;
     public SmellTrail smellTrail;
+    public DialogueTextInteractManager dialogueTextInteractManager;
 
     void Awake()
     {

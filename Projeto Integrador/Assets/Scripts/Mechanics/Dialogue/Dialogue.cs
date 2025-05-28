@@ -16,6 +16,7 @@ public class Dialogue : MonoBehaviour
     private InventoryController _ic; // Referência ao script que controla o inventário
     private ObjectivesController _oc; // Referência ao script que controla os objetivos
     private SmellTargetManager _smellManager; // Referência ao gerenciador de alvos de cheiro
+    private DialogueTextInteractManager _dialogueTextInteract; // Referência ao gerenciador de texto de interação
 
     void Start()
     {
@@ -48,11 +49,20 @@ public class Dialogue : MonoBehaviour
             _smellManager = ReferenceManager.Instance.smellTargetManager; // Tenta encontrar novamente o InventoryController
         }
 
+        if (_dialogueTextInteract == null) // Verifica se o DialogueTextInteractManager não foi encontrado
+        {
+            _dialogueTextInteract = ReferenceManager.Instance.dialogueTextInteractManager; // Tenta encontrar novamente o DialogueTextInteractManager
+        }
+
         if (_onRadious && _dc.canInteract)
         {
-            _interactText.text = LocalizationManager.Instance.GetTranslation(_translateName); // Atualiza o texto de interação com a tradução
+            string interactText = LocalizationManager.Instance.GetTranslation(_translateName); // Obtém a tradução do texto de interação
 
-            // Se o jogador pressionar "E" ou "Z", estiver no raio de interação e puder interagir
+            if (_interactText.text != interactText && _dialogueTextInteract.canChangeText)
+            {
+                SetInteractText(interactText); // Atualiza o texto de interação
+            }
+
             if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Z))
             {
                 if (!_ic.HasItemById(requiredIdItem))
@@ -81,10 +91,16 @@ public class Dialogue : MonoBehaviour
 
             }
         }
-        else
+
+        if (_interactText.text != "" && !_dialogueTextInteract.canChangeText)
         {
-            _interactText.text = ""; // Limpa o texto de interação se o jogador não estiver no raio ou não puder interagir
+            SetInteractText("");
         }
+    }
+
+    void SetInteractText(string text)
+    {
+        _interactText.text = text;
     }
 
     void OnTriggerEnter(Collider other)
@@ -92,6 +108,8 @@ public class Dialogue : MonoBehaviour
         if (other.CompareTag("Player")) // Verifica se o objeto detectado é o jogador
         {
             _onRadious = true; // Marca que o jogador está dentro do raio
+
+            _dialogueTextInteract.canChangeText = true; // Permite que o jogador mude o texto de interação
         }
     }
 
@@ -100,6 +118,8 @@ public class Dialogue : MonoBehaviour
         if (other.CompareTag("Player")) // Verifica se o objeto que saiu é o jogador
         {
             _onRadious = false; // Marca que o jogador saiu do raio
+
+            _dialogueTextInteract.canChangeText = false; // Impede que o jogador mude o texto de interação
         }
     }
 }

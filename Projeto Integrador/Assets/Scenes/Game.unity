@@ -198,7 +198,7 @@ GameObject:
   m_Layer: 0
   m_Name: GameObjectsToDeleteBeforeBuild
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -211,7 +211,7 @@ Transform:
   m_GameObject: {fileID: 1728109}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.513454, y: 0.95513624, z: 65.25657}
+  m_LocalPosition: {x: -11.513454, y: 4.54, z: 65.25657}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -31864,7 +31864,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7069505520918420298, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
@@ -48580,6 +48581,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1109224516}
   - component: {fileID: 1109224515}
+  - component: {fileID: 1109224517}
   m_Layer: 0
   m_Name: DialogueControl
   m_TagString: Untagged
@@ -48619,6 +48621,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1938033617}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1109224517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109224514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df55c75a4a61d754d9e4a5b0cb959b1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canChangeText: 0
 --- !u!1001 &1109266400
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51016,7 +51031,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7069505520918420298, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
@@ -55041,6 +55057,7 @@ MonoBehaviour:
   objectivesController: {fileID: 0}
   smellTargetManager: {fileID: 0}
   smellTrail: {fileID: 0}
+  dialogueTextInteractManager: {fileID: 0}
 --- !u!1001 &1243024202
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -71448,7 +71465,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1575895323}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45312b8015459ec46921a59dddfc74e9, type: 3}
   m_Name: 
@@ -72970,7 +72987,6 @@ GameObject:
   - component: {fileID: 1604832721}
   - component: {fileID: 1604832720}
   - component: {fileID: 1604832719}
-  - component: {fileID: 1604832722}
   m_Layer: 5
   m_Name: HUD_Canvas
   m_TagString: Untagged
@@ -73064,38 +73080,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &1604832722
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1604832717}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SerializedVersion: 0
-  m_AgentTypeID: 0
-  m_CollectObjects: 0
-  m_Size: {x: 10, y: 10, z: 10}
-  m_Center: {x: 0, y: 2, z: 0}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_UseGeometry: 0
-  m_DefaultArea: 0
-  m_GenerateLinks: 0
-  m_IgnoreNavMeshAgent: 1
-  m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 0
-  m_TileSize: 256
-  m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.083333336
-  m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 0}
-  m_BuildHeightMesh: 0
 --- !u!4 &1608456309 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3581788051711781632, guid: 20defdf087831834e9fe91491e024973, type: 3}
@@ -93371,7 +93355,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2096058053}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45312b8015459ec46921a59dddfc74e9, type: 3}
   m_Name: 
@@ -95993,7 +95977,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 524309336310568420, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7069505520918420298, guid: 78ad17a8626c0d743817a70744a4bc04, type: 3}

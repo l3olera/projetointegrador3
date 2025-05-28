@@ -41,7 +41,6 @@ public class LocalizationManager : MonoBehaviour
             await handle.Task;
             var localizedString = handle.Result;
             _cachedTranslations[entry.key] = localizedString;
-            Debug.Log($"Tradução carregada: {entry.key} = {localizedString}");
         }
     }
 
@@ -53,7 +52,6 @@ public class LocalizationManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning($"Tradução não encontrada para a chave: {key}");
             return $"[{key}]";
         }
     }
