@@ -382,6 +382,10 @@ MonoBehaviour:
     m_Localized: Pressione E ou Z para conversar
     m_Metadata:
       m_Items: []
+  - m_Id: 87
+    m_Localized: Pressione E ou Z para interagir com a alavanca
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

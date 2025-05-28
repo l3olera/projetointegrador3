@@ -3291,8 +3291,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 64170128}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1426545, y: -0.000000001011092, z: 1.4572743e-10, w: 0.9897726}
-  m_LocalPosition: {x: -12.45, y: 1.392, z: 67.4}
+  m_LocalRotation: {x: 0.14265457, y: 2.447102e-16, z: -5.538177e-17, w: 0.98977256}
+  m_LocalPosition: {x: 0.2, y: 1.392, z: -10.914}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25112,6 +25112,8 @@ MonoBehaviour:
   canChange: 1
   lightCircle: {fileID: 439306324}
   _leverController: {fileID: 1486657278}
+  _interactText: {fileID: 0}
+  _translateName: Interact_Lever
 --- !u!95 &581910782
 Animator:
   serializedVersion: 7
@@ -38054,6 +38056,66 @@ PrefabInstance:
       propertyPath: m_Name
       value: LocalizationManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7238287167981281285, guid: 803fe5d281fd73840ac95078c356e671, type: 3}
+      propertyPath: translations.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7238287167981281285, guid: 803fe5d281fd73840ac95078c356e671, type: 3}
+      propertyPath: translations.Array.data[0].key
+      value: Item_GateControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 7238287167981281285, guid: 803fe5d281fd73840ac95078c356e671, type: 3}
+      propertyPath: translations.Array.data[1].key
+      value: Interact_BallOfWool
+      objectReference: {fileID: 0}
+    - target: {fileID: 7238287167981281285, guid: 803fe5d281fd73840ac95078c356e671, type: 3}
+      propertyPath: translations.Array.data[2].key
+      value: Interact_Item
+      objectReference: {fileID: 0}
+    - target: {fileID: 7238287167981281285, guid: 803fe5d281fd73840ac95078c356e671, type: 3}
+      propertyPath: translations.Array.data[3].key
+      value: Interact_Gate
+      objectReference: {fileID: 0}
+    - target: {fileID: 7238287167981281285, guid: 803fe5d281fd73840ac95078c356e671, type: 3}
+      propertyPath: translations.Array.data[4].key
+      value: Interact_Npc
+      objectReference: {fileID: 0}
+    - target: {fileID: 7238287167981281285, guid: 803fe5d281fd73840ac95078c356e671, type: 3}
+      propertyPath: translations.Array.data[5].key
+      value: Interact_Lever
+      objectReference: {fileID: 0}
+    - target: {fileID: 7238287167981281285, guid: 803fe5d281fd73840ac95078c356e671, type: 3}
+      propertyPath: translations.Array.data[0].localizedString.m_TableEntryReference.m_KeyId
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 7238287167981281285, guid: 803fe5d281fd73840ac95078c356e671, type: 3}
+      propertyPath: translations.Array.data[1].localizedString.m_TableEntryReference.m_KeyId
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 7238287167981281285, guid: 803fe5d281fd73840ac95078c356e671, type: 3}
+      propertyPath: translations.Array.data[2].localizedString.m_TableEntryReference.m_KeyId
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 7238287167981281285, guid: 803fe5d281fd73840ac95078c356e671, type: 3}
+      propertyPath: translations.Array.data[3].localizedString.m_TableEntryReference.m_KeyId
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 7238287167981281285, guid: 803fe5d281fd73840ac95078c356e671, type: 3}
+      propertyPath: translations.Array.data[4].localizedString.m_TableEntryReference.m_KeyId
+      value: 86
+      objectReference: {fileID: 0}
+    - target: {fileID: 7238287167981281285, guid: 803fe5d281fd73840ac95078c356e671, type: 3}
+      propertyPath: translations.Array.data[5].localizedString.m_TableEntryReference.m_KeyId
+      value: 87
+      objectReference: {fileID: 0}
+    - target: {fileID: 7238287167981281285, guid: 803fe5d281fd73840ac95078c356e671, type: 3}
+      propertyPath: translations.Array.data[4].localizedString.m_TableReference.m_TableCollectionName
+      value: GUID:29197b97bd2d11d4f8e2fb0f11400d1f
+      objectReference: {fileID: 0}
+    - target: {fileID: 7238287167981281285, guid: 803fe5d281fd73840ac95078c356e671, type: 3}
+      propertyPath: translations.Array.data[5].localizedString.m_TableReference.m_TableCollectionName
+      value: GUID:29197b97bd2d11d4f8e2fb0f11400d1f
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -47618,6 +47680,8 @@ MonoBehaviour:
   canChange: 1
   lightCircle: {fileID: 1134093070}
   _leverController: {fileID: 1486657278}
+  _interactText: {fileID: 0}
+  _translateName: Interact_Lever
 --- !u!95 &1082980548
 Animator:
   serializedVersion: 7
@@ -48722,7 +48786,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1109224516}
   - component: {fileID: 1109224515}
-  - component: {fileID: 1109224517}
   m_Layer: 0
   m_Name: DialogueControl
   m_TagString: Untagged
@@ -48762,19 +48825,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1938033617}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1109224517
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1109224514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df55c75a4a61d754d9e4a5b0cb959b1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canChangeText: 0
 --- !u!1001 &1109266400
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55225,7 +55275,7 @@ MonoBehaviour:
   objectivesController: {fileID: 0}
   smellTargetManager: {fileID: 0}
   smellTrail: {fileID: 0}
-  dialogueTextInteractManager: {fileID: 0}
+  textInteractManager: {fileID: 0}
 --- !u!1001 &1243024202
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -61331,7 +61381,6 @@ MonoBehaviour:
   requiredIdItem: -1
   _onRadious: 0
   _translateName: Interact_Npc
-  _interactText: {fileID: 576304164}
   references:
     version: 2
     RefIds: []
@@ -71772,7 +71821,6 @@ MonoBehaviour:
   requiredIdItem: -1
   _onRadious: 0
   _translateName: Interact_Npc
-  _interactText: {fileID: 576304164}
   references:
     version: 2
     RefIds: []
@@ -81382,6 +81430,8 @@ MonoBehaviour:
   canChange: 1
   lightCircle: {fileID: 1294990439}
   _leverController: {fileID: 1486657278}
+  _interactText: {fileID: 0}
+  _translateName: Interact_Lever
 --- !u!95 &1796505685
 Animator:
   serializedVersion: 7
@@ -82749,6 +82799,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8779466249516333714, guid: 42923c8587cff6c44a3d37a27cd05305, type: 3}
   m_PrefabInstance: {fileID: 1831760397}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1832778128
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1832778129}
+  - component: {fileID: 1832778130}
+  m_Layer: 0
+  m_Name: TextInteractManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1832778129
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832778128}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1938033617}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1832778130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832778128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df55c75a4a61d754d9e4a5b0cb959b1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textInteract: {fileID: 576304164}
+  canSetText: 0
 --- !u!1001 &1832842217
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -86858,6 +86954,7 @@ Transform:
   - {fileID: 1191514842}
   - {fileID: 1109224516}
   - {fileID: 1142228937}
+  - {fileID: 1832778129}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1938364610
@@ -93921,7 +94018,6 @@ MonoBehaviour:
   requiredIdItem: 2
   _onRadious: 0
   _translateName: Interact_Npc
-  _interactText: {fileID: 576304164}
   references:
     version: 2
     RefIds: []
@@ -94421,8 +94517,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2108195223}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14265451, y: -0.000000001011092, z: 1.4572724e-10, w: 0.98977256}
-  m_LocalPosition: {x: -12.45, y: 1.392, z: 67.4}
+  m_LocalRotation: {x: 0.1426546, y: 2.4175e-16, z: -3.4843107e-17, w: 0.98977256}
+  m_LocalPosition: {x: 0.2, y: 1.392, z: -10.914}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -96494,10 +96590,18 @@ PrefabInstance:
       propertyPath: _interactText
       value: 
       objectReference: {fileID: 576304164}
+    - target: {fileID: 1648991623877270164, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
+      propertyPath: _translateName
+      value: Interact_Item
+      objectReference: {fileID: 0}
     - target: {fileID: 3632731418509185694, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
       propertyPath: _interactText
       value: 
       objectReference: {fileID: 576304164}
+    - target: {fileID: 3632731418509185694, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
+      propertyPath: _translateName
+      value: Interact_Gate
+      objectReference: {fileID: 0}
     - target: {fileID: 3632731418509185694, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
       propertyPath: _gateController
       value: 
@@ -96568,7 +96672,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8238607859782025201, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.45
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8238607859782025201, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -96576,7 +96680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8238607859782025201, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 69.71
+      value: -8.604
       objectReference: {fileID: 0}
     - target: {fileID: 8238607859782025201, guid: 08467f259e5cbb54f98df4f85a4d775d, type: 3}
       propertyPath: m_LocalRotation.w

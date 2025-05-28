@@ -45,12 +45,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   translations:
+  - key: Interact_Item
+    localizedString:
+      m_TableReference:
+        m_TableCollectionName: GUID:29197b97bd2d11d4f8e2fb0f11400d1f
+      m_TableEntryReference:
+        m_KeyId: 35
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+      text: 
+  - key: Interact_Gate
+    localizedString:
+      m_TableReference:
+        m_TableCollectionName: GUID:29197b97bd2d11d4f8e2fb0f11400d1f
+      m_TableEntryReference:
+        m_KeyId: 36
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+      text: 
   - key: Interact_Npc
     localizedString:
       m_TableReference:
         m_TableCollectionName: GUID:29197b97bd2d11d4f8e2fb0f11400d1f
       m_TableEntryReference:
         m_KeyId: 86
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+      text: 
+  - key: Interact_Lever
+    localizedString:
+      m_TableReference:
+        m_TableCollectionName: GUID:29197b97bd2d11d4f8e2fb0f11400d1f
+      m_TableEntryReference:
+        m_KeyId: 87
         m_Key: 
       m_FallbackState: 0
       m_WaitForCompletion: 0

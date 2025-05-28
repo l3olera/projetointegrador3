@@ -379,6 +379,10 @@ MonoBehaviour:
     m_Localized: Press E or Z to talk
     m_Metadata:
       m_Items: []
+  - m_Id: 87
+    m_Localized: Press E or Z to use interact with the lever
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

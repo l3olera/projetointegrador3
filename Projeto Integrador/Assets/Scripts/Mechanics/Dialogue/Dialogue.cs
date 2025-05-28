@@ -11,12 +11,11 @@ public class Dialogue : MonoBehaviour
     [SerializeField] private bool _onRadious; // Indica se o jogador está dentro do raio de interação
     [SerializeField] private string _translateName; // Nome da tradução para o texto de interação
     private bool[] _dialogueOccured; // Array para verificar se o diálogo já ocorreu
-    [SerializeField] private TextMeshProUGUI _interactText; // Referência ao texto de interação
     private DialogueControl _dc; // Referência ao script que controla os diálogos
     private InventoryController _ic; // Referência ao script que controla o inventário
     private ObjectivesController _oc; // Referência ao script que controla os objetivos
     private SmellTargetManager _smellManager; // Referência ao gerenciador de alvos de cheiro
-    private DialogueTextInteractManager _dialogueTextInteract; // Referência ao gerenciador de texto de interação
+    private TextInteractManager _dialogueTextInteract; // Referência ao gerenciador de texto de interação
 
     void Start()
     {
@@ -49,19 +48,14 @@ public class Dialogue : MonoBehaviour
             _smellManager = ReferenceManager.Instance.smellTargetManager; // Tenta encontrar novamente o InventoryController
         }
 
-        if (_dialogueTextInteract == null) // Verifica se o DialogueTextInteractManager não foi encontrado
+        if (_dialogueTextInteract == null) // Verifica se o TextInteractManager não foi encontrado
         {
-            _dialogueTextInteract = ReferenceManager.Instance.dialogueTextInteractManager; // Tenta encontrar novamente o DialogueTextInteractManager
+            _dialogueTextInteract = ReferenceManager.Instance.textInteractManager; // Tenta encontrar novamente o TextInteractManager
         }
 
         if (_onRadious && _dc.canInteract)
         {
-            string interactText = LocalizationManager.Instance.GetTranslation(_translateName); // Obtém a tradução do texto de interação
-
-            if (_interactText.text != interactText && _dialogueTextInteract.canChangeText)
-            {
-                SetInteractText(interactText); // Atualiza o texto de interação
-            }
+            _dialogueTextInteract.SetText(LocalizationManager.Instance.GetTranslation(_translateName)); // Obtém a tradução do texto de interação); // Define o texto de interação
 
             if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Z))
             {
@@ -91,16 +85,6 @@ public class Dialogue : MonoBehaviour
 
             }
         }
-
-        if (_interactText.text != "" && !_dialogueTextInteract.canChangeText)
-        {
-            SetInteractText("");
-        }
-    }
-
-    void SetInteractText(string text)
-    {
-        _interactText.text = text;
     }
 
     void OnTriggerEnter(Collider other)
@@ -109,7 +93,7 @@ public class Dialogue : MonoBehaviour
         {
             _onRadious = true; // Marca que o jogador está dentro do raio
 
-            _dialogueTextInteract.canChangeText = true; // Permite que o jogador mude o texto de interação
+            _dialogueTextInteract.canSetText = true; // Permite que o jogador mude o texto de interação
         }
     }
 
@@ -119,7 +103,7 @@ public class Dialogue : MonoBehaviour
         {
             _onRadious = false; // Marca que o jogador saiu do raio
 
-            _dialogueTextInteract.canChangeText = false; // Impede que o jogador mude o texto de interação
+            _dialogueTextInteract.canSetText = false; // Impede que o jogador mude o texto de interação
         }
     }
 }

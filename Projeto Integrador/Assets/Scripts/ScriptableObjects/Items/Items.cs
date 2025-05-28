@@ -6,7 +6,8 @@ public class Items : ScriptableObject
 {
     public int itemID; //ID do item
 
-    public LocalizedString itemName;
+    [Tooltip("Nome do item que está no localizationManager para identificar sua tradução")]
+    public string itemName; //Nome do item que está no localizationManager para identificar sua tradução
 
     public Sprite itemSprite; //Sprite do item
 }
