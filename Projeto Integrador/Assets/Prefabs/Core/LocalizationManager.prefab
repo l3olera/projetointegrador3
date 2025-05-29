@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &968781121003002455
 Transform:
   m_ObjectHideFlags: 0
@@ -45,6 +45,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   translations:
+  - key: Item_GateControl
+    localizedString:
+      m_TableReference:
+        m_TableCollectionName: GUID:29197b97bd2d11d4f8e2fb0f11400d1f
+      m_TableEntryReference:
+        m_KeyId: 26
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+      text: 
+  - key: Interact_BallOfWool
+    localizedString:
+      m_TableReference:
+        m_TableCollectionName: GUID:29197b97bd2d11d4f8e2fb0f11400d1f
+      m_TableEntryReference:
+        m_KeyId: 27
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+      text: 
   - key: Interact_Item
     localizedString:
       m_TableReference:
