@@ -3290,7 +3290,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 64170128}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14265457, y: 2.447102e-16, z: -5.538177e-17, w: 0.98977256}
+  m_LocalRotation: {x: 0.14265461, y: 0.000000044246285, z: -0.0000000063771597, w: 0.98977256}
   m_LocalPosition: {x: 0.2, y: 1.392, z: -10.914}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3314,10 +3314,10 @@ MonoBehaviour:
     Enabled: 1
     ObstacleLayers:
       serializedVersion: 2
-      m_Bits: 1280
+      m_Bits: 1416
     UseFollowTarget:
-      Enabled: 1
-      YOffset: 0
+      Enabled: 0
+      YOffset: 1
     Damping: 1
     SmoothingTime: 0.5
   TerrainResolution:
@@ -36324,6 +36324,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: b96d00f00f49efb458f4d91a48364d0d, type: 2}
+    - target: {fileID: 6838641303824086895, guid: 51ed19930404371458e8d3152edbad78, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6909306594215196371, guid: 51ed19930404371458e8d3152edbad78, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.9458
@@ -94451,7 +94455,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2108195223}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1426546, y: 2.4175e-16, z: -3.4843107e-17, w: 0.98977256}
+  m_LocalRotation: {x: 0.14265463, y: 0.000000044246285, z: -0.0000000063771592, w: 0.98977256}
   m_LocalPosition: {x: 0.2, y: 1.392, z: -10.914}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
