@@ -9,6 +9,7 @@ public class InteractGate : MonoBehaviour
     [SerializeField] private InventoryController _inventoryController; // Referência ao InventoryController
     [SerializeField] private TextMeshProUGUI _interactText; // Referência ao texto de interação
     [SerializeField] private ObjectivesController _objectivesController; // Referência ao ObjectivesController
+    [SerializeField] private AudioSource _windSound; // Referência ao áudio de vento
     [SerializeField] private string _translateName; // Referência ao texto que vai traduzir na interação 
     private SmellTargetManager _smellManager; // Referência ao gerenciador de alvos de cheiro
     private TextInteractManager _textInteractManager; // Referência ao gerenciador de texto de interação
@@ -51,6 +52,9 @@ public class InteractGate : MonoBehaviour
         {
             _gateController.CloseGate(); // Chama a função CloseGate do GateController
             _gateController.canOpen = false; // Define que o portão não pode mais ser aberto
+
+            if (_windSound != null)
+                _windSound.Play(); // Toca o som de vento se a referência não for nula
 
             if (_objectivesController.CurrentObjective == 1)
             {

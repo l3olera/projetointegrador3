@@ -1,6 +1,4 @@
-using TMPro;
 using UnityEngine;
-using UnityEngine.Localization;
 
 public class Dialogue : MonoBehaviour
 {
@@ -71,7 +69,6 @@ public class Dialogue : MonoBehaviour
                 else
                 {
                     _dc.Speech(dialogueSequence[1].lines); // Passa o array de falas para o DialogueControl
-
                     if (!_dialogueOccured[1]) // Verifica se o diálogo já ocorreu
                     {
                         _dialogueOccured[1] = true; // Marca o diálogo como ocorrido

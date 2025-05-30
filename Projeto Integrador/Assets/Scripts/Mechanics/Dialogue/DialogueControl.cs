@@ -22,6 +22,7 @@ public class DialogueControl : MonoBehaviour
     private String[] _speechTranslate; // Array para armazenar as falas traduzidas
     private int _indexSpeechTranslate; // Índice da fala traduzida atual
     private int _currentLineIndex; // Índice da linha atual do diálogo
+    private AudioSource _playSoundAnimal; // Referência ao AudioSource que toca os sons dos animais
     private PlayerMovement _playerMovement; // Referência ao script que controla o movimento do jogador
     private CinemachineInputAxisController _cinemachineCameraIn; // Referência à câmera cinemática
 
@@ -30,6 +31,7 @@ public class DialogueControl : MonoBehaviour
         ReferenceManager.Instance.dialogueControl = this; // Inicializa a referência ao DialogueControl no ReferenceManager 
         _playerMovement = ReferenceManager.Instance.playerMovement; // Inicializa a referência ao PlayerMovement no ReferenceManager
         _cinemachineCameraIn = ReferenceManager.Instance.cinemachineCameraIn; // Inicializa a referência à CinemachineCamera no ReferenceManager
+        _playSoundAnimal = GetComponent<AudioSource>(); // Obtém o AudioSource do GameObject atual
     }
 
     // Método responsável por exibir o diálogo na tela
@@ -51,9 +53,10 @@ public class DialogueControl : MonoBehaviour
         {
             DialogueLine currentLine = _dialogueLines[_currentLineIndex];
             StopAllCoroutines(); // Para todas as corrotinas em execução para evitar sobreposição de diálogos
-            StartCoroutine(TranslateNameAndDisplay(currentLine.actorName)); // Atualiza o nome do personagem
+            StartCoroutine(TranslateNameAndDisplay(currentLine.actor.animalName)); // Atualiza o nome do personagem
             _typingSpeed = typingSpeed; // Reseta a velocidade de digitação
             TranslateText(currentLine.speechText); // Chama o método para traduzir o texto
+            PlaySoundAnimal(currentLine.actor); // Toca o som do animal correspondente
         }
         else
         {
@@ -117,6 +120,11 @@ public class DialogueControl : MonoBehaviour
         }
 
         _isTyping = false; // Indica que o diálogo não está mais sendo digitado
+    }
+
+    void PlaySoundAnimal(Animal animal)
+    {
+        animal.PlaySound(_playSoundAnimal); // Toca o som do animal usando o AudioSource
     }
 
     void EndDialogue()
