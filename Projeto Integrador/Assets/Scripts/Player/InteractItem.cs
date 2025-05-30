@@ -13,7 +13,6 @@ public class InteractItem : MonoBehaviour
 
     [Header("Configurações de interação")]
     private GameObject _item; // Representa qual é o item do objeto
-    private bool _isDestroyed = false; // Verifica se o objeto foi destruído
 
     public bool isInteractable; // Verifica se o objeto está interagível
 
@@ -28,13 +27,6 @@ public class InteractItem : MonoBehaviour
         {
             _textInteractManager = ReferenceManager.Instance.textInteractManager; // Obtém a referência ao gerenciador de texto de interação
         }
-
-        /*
-        if (_isDestroyed)
-        { //Verifica se o objeto foi destruído e se há texto no interactText. Assim, não deixa o texto de interação ficar aparecendo. Já que pode dar um bug de ficar aparecendo o texto de interação mesmo depois do objeto ter sido destruído por conta da tabela de tradução fazer uma chamada assíncrona
-            _isDestroyed = false; // Reseta a variável para impedir dessa estrutura ficar acontecendo
-        }
-        */
 
         if (isInteractable && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Z))) // Verifica se o jogador está interagindo com o objeto
         {
@@ -71,7 +63,6 @@ public class InteractItem : MonoBehaviour
             _ic.slot = _item.GetComponent<ItemType>().itemType; // Adiciona o item ao inventário
             _ic.SlotImage = _item.GetComponent<ItemType>().itemType.itemSprite; // Adiciona a imagem do item ao inventário
             Destroy(_item); // Destroi o objeto após a interação
-            _isDestroyed = true; // Define que o objeto foi destruído
             _item = null; // Limpa o tipo de item após a interação
             _textInteractManager.canSetText = false; // Limpa o texto de interação
             smellManager.NextTarget(); // Chama a função de próximo alvo do gerenciador de alvos de cheiro

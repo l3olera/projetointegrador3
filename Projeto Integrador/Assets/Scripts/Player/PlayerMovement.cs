@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Referências")]
     [SerializeField] private CinemachineCamera _cinemachineCamera; //Referência a cinemachine
-    [SerializeField] private Animator _anim; //Referência ao animator do personagem
+    private Animator _anim; //Referência ao animator do personagem
     private AudioSource _audioSource;
 
     [Header("Configurações de FOV")]
@@ -47,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
         ReferenceManager.Instance.playerMovement = this; // Inicializa a referência ao PlayerMovement no ReferenceManager
         _rb = GetComponent<Rigidbody>(); //Obtém o rigbody do player
         _audioSource = GetComponent<AudioSource>(); // Obtém o componente AudioSource do player
+        _anim = GetComponent<Animator>(); // Obtém o componente Animator do player
         _cameraTransform = Camera.main.transform; // Obtém a câmera principal
         _targetFOV = _normalFOV;
 
