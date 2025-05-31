@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
         _anim = GetComponent<Animator>(); // Obtém o componente Animator do player
         _cameraTransform = Camera.main.transform; // Obtém a câmera principal
         _targetFOV = _normalFOV;
-
+        LockMouse();
         //Coloca o fov normal na camera
         if (_cinemachineCamera != null)
         {
@@ -154,7 +154,19 @@ public class PlayerMovement : MonoBehaviour
             _audioSource.pitch = Random.Range(0.9f, 1.1f); // Pode ajustar para parecer mais natural
 
             // Tocar o som
-            _audioSource.PlayOneShot(clip);
+            //_audioSource.PlayOneShot(clip);
         }
+    }
+
+    public void FreeMouse()
+    {
+        Cursor.lockState = CursorLockMode.None; // Libera o mouse
+        Cursor.visible = true;                  // Torna o mouse visível
+    }
+
+    public void LockMouse()
+    {
+        Cursor.lockState = CursorLockMode.Locked; // Trava o cursor no centro da tela
+        Cursor.visible = false;                    // Deixa o cursor invisível
     }
 }

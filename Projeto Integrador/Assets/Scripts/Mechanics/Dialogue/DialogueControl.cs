@@ -40,6 +40,7 @@ public class DialogueControl : MonoBehaviour
         _typingSpeed = typingSpeed;
         canInteract = false; // Impede o jogador de interagir enquanto o diálogo está ativo
         _playerMovement.canMove = false; // Desativa a movimentação do jogador durante o diálogo
+        _playerMovement.FreeMouse();
         DisableCameraControl(); // Desativa o controle da câmera para evitar movimentos indesejados
         dialogueObj.SetActive(true); // Ativa a caixa de diálogo na tela
         _dialogueLines = lines; // Define as falas do NPC
@@ -132,6 +133,7 @@ public class DialogueControl : MonoBehaviour
         dialogueObj.SetActive(false); // Esconde a caixa de diálogo
         canInteract = true; // Permite que o jogador interaja novamente
         _playerMovement.canMove = true; // Reativa a movimentação do jogador
+        _playerMovement.LockMouse();
         EnableCameraControl(); // Restaura o controle da câmera
     }
 

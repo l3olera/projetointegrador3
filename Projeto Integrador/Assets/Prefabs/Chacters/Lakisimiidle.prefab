@@ -1342,7 +1342,6 @@ MonoBehaviour:
   isRunning: 0
   canMove: 1
   _cinemachineCamera: {fileID: 0}
-  _anim: {fileID: 0}
   _normalFOV: 70
   _speedFOV: 50
   _transitionSpeed: 3
