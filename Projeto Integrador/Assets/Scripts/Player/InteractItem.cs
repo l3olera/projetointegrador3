@@ -11,8 +11,6 @@ public class InteractItem : MonoBehaviour
 
     [Header("Configurações de interação")]
     private GameObject _item; // Representa qual é o item do objeto
-    private bool _isDestroyed = false;
-    private bool _interactionInProgress = false;
 
     public bool isInteractable; // Verifica se o objeto está interagível
 
@@ -29,15 +27,9 @@ public class InteractItem : MonoBehaviour
             _textInteractManager = ReferenceManager.Instance.textInteractManager; // Obtém a referência ao gerenciador de texto de interação
         }
 
-        if (_interactionInProgress) return;
-
-        if (isInteractable && !_isDestroyed && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Z))) // Verifica se o jogador está interagindo com o objeto
+        if (isInteractable && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Z))) // Verifica se o jogador está interagindo com o objeto
         {
-            _interactionInProgress = true;
-            Debug.Log(_isDestroyed);
-            _isDestroyed = true;
             Interact(); // Chama a função de interação
-            return;
         }
     }
 
@@ -67,11 +59,6 @@ public class InteractItem : MonoBehaviour
     {
         if (_item != null) // Verifica se o tipo de item não é nulo
         {
-            var collider = _item.GetComponent<Collider>();
-            if (collider != null) collider.enabled = false;
-            Debug.Log(gameObject);
-            Debug.Log($"INTERACT: {_isDestroyed}");
-            Debug.Log($"INTERACT: {_item}");
             _ic.slot = _item.GetComponent<ItemType>().itemType; // Adiciona o item ao inventário
             _ic.SlotImage = _item.GetComponent<ItemType>().itemType.itemSprite; // Adiciona a imagem do item ao inventário
             Destroy(_item); // Destroi o objeto após a interação
