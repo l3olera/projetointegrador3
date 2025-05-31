@@ -1292,6 +1292,7 @@ GameObject:
   - component: {fileID: 6235060171497910019}
   - component: {fileID: 7077653821315201357}
   - component: {fileID: 8077673509139317213}
+  - component: {fileID: 2955965696705268045}
   - component: {fileID: 5058935912023355460}
   - component: {fileID: 2661778615638208294}
   - component: {fileID: 9006263819165473823}
@@ -1398,6 +1399,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeb25dffb0d121245a9891676b71fdcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2955965696705268045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6193312128430327618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abd3edde575208e49b8373d5be89c845, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gateController: {fileID: 0}
+  _inventoryController: {fileID: 0}
+  _interactText: {fileID: 0}
+  _objectivesController: {fileID: 0}
+  _windSound: {fileID: 0}
+  _translateName: Interact_Gate
 --- !u!65 &5058935912023355460
 BoxCollider:
   m_ObjectHideFlags: 0
