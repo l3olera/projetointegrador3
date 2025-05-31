@@ -37,9 +37,8 @@ public class SmellTargetManager : MonoBehaviour
 
     public void NextTarget()
     {
-        Debug.Log("<color=red>Entrou no next</color>");
         _currentTargetIndex++;
-        Debug.Log($"<color=green>{_currentTargetIndex}</color>");
+
         if (_currentTargetIndex >= _currentActTargets.Length)
         {
             SwitchAct();
