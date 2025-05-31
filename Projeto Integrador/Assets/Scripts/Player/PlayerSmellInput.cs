@@ -29,7 +29,7 @@ public class PlayerSmellInput : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.V))
         {
             _trail.player = _agent; //Define o nav mesh agent do jogador
-            Debug.Log(_manager.GetCurrentTarget());
+
             _trail.target = _manager.GetCurrentTarget(); //Define o alvo do traço de cheiro
             _trail.canDrawPath = !_trail.canDrawPath; //Alterna o estado de desenho do traço
             _trail.GenerateTrail(); //Gera o traço de cheiro
