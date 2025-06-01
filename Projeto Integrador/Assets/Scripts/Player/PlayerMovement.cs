@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         ReferenceManager.Instance.playerMovement = this; // Inicializa a referência ao PlayerMovement no ReferenceManager
-        Debug.Log(ReferenceManager.Instance.playerMovement);
+
         _rb = GetComponent<Rigidbody>(); //Obtém o rigbody do player
         _audioSource = GetComponent<AudioSource>(); // Obtém o componente AudioSource do player
         _anim = GetComponent<Animator>(); // Obtém o componente Animator do player
