@@ -23,13 +23,12 @@ public class DialogueControl : MonoBehaviour
     private int _indexSpeechTranslate; // Índice da fala traduzida atual
     private int _currentLineIndex; // Índice da linha atual do diálogo
     private AudioSource _playSoundAnimal; // Referência ao AudioSource que toca os sons dos animais
-    private PlayerMovement _playerMovement; // Referência ao script que controla o movimento do jogador
+    [SerializeField] private PlayerMovement _playerMovement; // Referência ao script que controla o movimento do jogador
     private CinemachineInputAxisController _cinemachineCameraIn; // Referência à câmera cinemática
 
     void Start()
     {
         ReferenceManager.Instance.dialogueControl = this; // Inicializa a referência ao DialogueControl no ReferenceManager 
-        _playerMovement = ReferenceManager.Instance.playerMovement; // Inicializa a referência ao PlayerMovement no ReferenceManager
         _cinemachineCameraIn = ReferenceManager.Instance.cinemachineCameraIn; // Inicializa a referência à CinemachineCamera no ReferenceManager
         _playSoundAnimal = GetComponent<AudioSource>(); // Obtém o AudioSource do GameObject atual
     }

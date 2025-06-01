@@ -1,7 +1,5 @@
-using System.Threading;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Localization;
 
 public class InteractGate : MonoBehaviour
 {

@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 public enum TrafficLightState { Red, Yellow, Green }
 

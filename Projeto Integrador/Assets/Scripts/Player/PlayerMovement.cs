@@ -19,8 +19,6 @@ public class PlayerMovement : MonoBehaviour
     public bool isRunning; // Armazena se o jogador está correndo ou não
     public bool canMove = true; // Armazena se o jogador pode se mover ou não, útil para pausar o jogo ou desativar a movimentação em certas situações, como durante um diálogo
 
-
-
     private float speedMultiplier;
 
     private Rigidbody _rb;

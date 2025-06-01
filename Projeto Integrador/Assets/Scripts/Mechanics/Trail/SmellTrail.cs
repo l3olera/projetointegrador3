@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
-using System.IO;
 
 public class SmellTrail : MonoBehaviour
 {

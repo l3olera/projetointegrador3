@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PauseControl : MonoBehaviour
 {
@@ -23,16 +22,16 @@ public class PauseControl : MonoBehaviour
     void Pause()
     {
         Time.timeScale = 0;
-        _pm.FreeMouse();
         EnableCanvas(true);
+        _pm.FreeMouse();
     }
 
     //Despausa o jogo e esconde o canva do Pause
     void UnPause()
     {
         Time.timeScale = 1;
-        _pm.LockMouse();
         EnableCanvas(false);
+        _pm.LockMouse();
     }
 
     public void BackToMenu()

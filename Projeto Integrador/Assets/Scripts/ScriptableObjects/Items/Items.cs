@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Localization;
 
 [CreateAssetMenu(fileName = "New Item", menuName = "ScriptableObjects/Inventoy Items/Create New")]
 public class Items : ScriptableObject

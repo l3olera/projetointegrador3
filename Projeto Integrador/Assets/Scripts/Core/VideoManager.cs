@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using UnityEngine;
 using TMPro; // Importa TextMeshPro
@@ -43,57 +42,3 @@ public class VideoSettingsManager : MonoBehaviour
         Screen.fullScreen = !isWindowed;
     }
 }
-
-
-/*
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
-using UnityEngine.UIElements;
-
-public class VideoManager : MonoBehaviour
-{
-    public DropdownField ddpResolution;
-    public DropdownField ddpQuality;
-    public Toggle tgWindow;
-
-    private List<string> resolutions = new List<string>();
-    private List<string> quality = new List<string>();
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        Resolution[] arrResolution = Screen.resolutions;
-        foreach(Resolution r in arrResolution){
-            resolutions.Add(string.Format("{0} X {1}", r.width, r.height));
-        }
-
-        ddpResolution.choices = resolutions;
-        ddpResolution.value = resolutions.Last(); //Seleciona a maior resolução disponível
-
-        quality = QualitySettings.names.ToList<String>();
-        ddpQuality.choices = quality;
-        ddpQuality.value = quality[QualitySettings.GetQualityLevel()]; //Pega a o indice de qualidade atual
-    }
-
-    public void SetWindowMode(){
-        if(tgWindow.value){ //Retorna se o toogle estiver marcado
-            Screen.fullScreen = false;
-        }else{
-            Screen.fullScreen = true;
-        }
-    }
-
-    public void SetResolution(){
-        string[] res = resolutions[ddpResolution.index].Split('x');
-        int w = Convert.ToInt16(res[0].Trim());
-        int h = Convert.ToInt16(res[1].Trim());
-        Screen.SetResolution(w, h, Screen.fullScreen);
-    }
-
-    public void SetQuality(){
-        QualitySettings.SetQualityLevel(ddpQuality.index, true);
-    }
-}
-*/
