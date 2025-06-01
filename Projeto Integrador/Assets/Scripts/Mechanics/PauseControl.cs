@@ -8,12 +8,11 @@ public class PauseControl : MonoBehaviour
     public SceneLoader sceneLoader; //Instancia o sceneLoader
     public String nextScene; //Nome da próxima cena
     bool _isPause = false; //Armazena se o jogo está pausado ou não
-    private PlayerMovement _pm;
+    [SerializeField] private PlayerMovement _pm;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _pm = ReferenceManager.Instance.playerMovement;
         //Garante que o jogo não estará pausado ao iniciar
         EnableCanvas(false);
     }
