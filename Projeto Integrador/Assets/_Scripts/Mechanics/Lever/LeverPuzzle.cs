@@ -68,20 +68,16 @@ public class LeverPuzzle : MonoBehaviour
 
     Color GetColorFromLeverColor(LeverColor color)
     {
-        switch (color)
+        return color switch
         {
-            case LeverColor.Red:
-                return Color.red;
-            case LeverColor.Green:
-                return Color.green;
-            case LeverColor.Blue:
-                return Color.blue;
-            default:
-                return Color.white; // Cor padrão
-        }
+            LeverColor.Red => Color.red,
+            LeverColor.Green => Color.green,
+            LeverColor.Blue => Color.blue,
+            _ => Color.white,// Cor padrão
+        };
     }
 
-    public void receiveSignal(GameObject go, LeverColor color)
+    public void ReceiveSignal(GameObject go, LeverColor color)
     {
         for (int i = 0; i < levers.Length; i++)
         {
@@ -92,10 +88,10 @@ public class LeverPuzzle : MonoBehaviour
             }
         }
 
-        check();
+        Check();
     }
 
-    void check()
+    void Check()
     {
         bool correct = true;
         for (int i = 0; i < correctCode.Length; i++)
@@ -112,8 +108,7 @@ public class LeverPuzzle : MonoBehaviour
             endPuzzle = true; // Código correto, puzzle resolvido
 
             //Provavelmente ficará assim, irei destruir a barreira temporariamente
-            //_door.GetComponent<Animator>().SetBool("Open", true); // Abre a porta
-            Destroy(_door); // Destroi a porta
+            _door.GetComponent<Animator>().SetBool("canOpen", true); // Abre a porta
         }
     }
 }

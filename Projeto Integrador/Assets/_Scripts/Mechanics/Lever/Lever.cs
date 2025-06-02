@@ -90,7 +90,7 @@ public class Lever : MonoBehaviour
 
         _state = !_state;
         CycleColor(); // Altera cor da luz
-        _leverController.GetComponent<LeverPuzzle>().receiveSignal(gameObject, _currentColor);
+        _leverController.GetComponent<LeverPuzzle>().ReceiveSignal(gameObject, _currentColor);
 
         canChange = true;
     }
