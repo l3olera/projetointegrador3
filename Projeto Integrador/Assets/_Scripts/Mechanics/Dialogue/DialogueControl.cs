@@ -26,6 +26,11 @@ public class DialogueControl : MonoBehaviour
     [SerializeField] private PlayerMovement _playerMovement; // Referência ao script que controla o movimento do jogador
     private CinemachineInputAxisController _cinemachineCameraIn; // Referência à câmera cinemática
 
+    //DELETAR ISSO DPS DA DEMO/ALPHA
+    [Header("Demo/Alpha References")]
+    [Tooltip("APAGAR ISSO DEPOIS DA DEMO/ALPHA")]
+    [SerializeField] private ObjectivesController _oc;
+
     void Start()
     {
         ReferenceManager.Instance.dialogueControl = this; // Inicializa a referência ao DialogueControl no ReferenceManager 
@@ -134,6 +139,12 @@ public class DialogueControl : MonoBehaviour
         _playerMovement.canMove = true; // Reativa a movimentação do jogador
         _playerMovement.LockMouse();
         EnableCameraControl(); // Restaura o controle da câmera
+
+        //TIRAR ISSO DPS DA DEMO/ALPHA
+        if (_oc.CompareAct(3))
+        {
+            _oc.ShowDemoText(); // Se o objetivo atual for 3, exibe o texto de demonstração
+        }
     }
 
     void DisableCameraControl()

@@ -24,7 +24,7 @@ public class LocalizationManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Opcional: Mantém entre cenas
+            //DontDestroyOnLoad(gameObject); // Opcional: Mantém entre cenas
             await LoadAllTranslations();
         }
         else

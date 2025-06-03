@@ -66,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+            StopMovement(); // Para a movimentação se o jogador não puder se mover
             _anim.SetBool("isWalking", false); // Para a animação de andar se o jogador não puder se mover
         }
     }
@@ -155,6 +156,11 @@ public class PlayerMovement : MonoBehaviour
             // Tocar o som
             //_audioSource.PlayOneShot(clip);
         }
+    }
+
+    public void StopMovement()
+    {
+        _rb.linearVelocity = Vector3.zero; // Para a movimentação do Rigidbody
     }
 
     public void FreeMouse()

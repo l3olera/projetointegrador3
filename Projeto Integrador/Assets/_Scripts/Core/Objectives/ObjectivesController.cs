@@ -48,20 +48,18 @@ public class ObjectivesController : MonoBehaviour
     {
         CurrentObjective++; // Incrementa o índice do objetivo atual
         UpdateObjectivesText(); // Chama a função para atualizar o texto dos objetivos
-
-        //RETIRAR ISSO APÓS A DEMO/ALPHA
-        if (CurrentObjective >= 3)
-        {
-            _textPause.gameObject.SetActive(false); // Desativa o texto de pausa
-            _textDemo1.gameObject.SetActive(true); // Ativa o texto de demonstração 1
-            _textDemo2.gameObject.SetActive(true); // Ativa o texto de demonstração 2
-            _textDemo1.text = "THANK YOU FOR PLAYING THE ALPHA OF THE BARKVENTURES!";
-            _textDemo2.text = "GIVE US YOUR FEEDBACK ABOUT THE GAME AND HAVE FUN EXPLORING THE ENVIRONMENT!";
-            _pc.TooglePause();
-
-        }
     }
 
+    //DELETAR ISSO DPS DA DEMO/ALPHA
+    public void ShowDemoText()
+    {
+        _textPause.gameObject.SetActive(false); // Desativa o texto de pausa
+        _textDemo1.gameObject.SetActive(true); // Ativa o texto de demonstração 1
+        _textDemo2.gameObject.SetActive(true); // Ativa o texto de demonstração 2
+        _textDemo1.text = "THANK YOU FOR PLAYING THE ALPHA OF THE BARKVENTURES!";
+        _textDemo2.text = "GIVE US YOUR FEEDBACK ABOUT THE GAME AND HAVE FUN EXPLORING THE ENVIRONMENT!";
+        _pc.TooglePause();
+    }
     public bool CompareAct(int actIndex)
     {
         return CurrentObjective == actIndex; // Compara o índice do objetivo atual com o índice passado como parâmetro
