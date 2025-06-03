@@ -25,14 +25,6 @@ public class ObjectivesController : MonoBehaviour
         UpdateObjectivesText(); // Chama a função para atualizar o texto dos objetivos ao iniciar o jogo   
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.L)) // Verifica se a tecla ESC foi pressionada
-        {
-            IncreaseActIndex();
-        }
-    }
-
     void UpdateObjectivesText()
     {
         if (CurrentObjective <= _objectivesTranslate.Length) // Verifica se o índice do objetivo atual é menor que o tamanho do array de objetivos
