@@ -7,6 +7,14 @@ public class ObjectivesController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _objectivesText; // Referência ao texto de objetivos
     [SerializeField] private LocalizedString[] _objectivesTranslate; // Referência ao texto traduzido dos objetivos
 
+    //RETIRAR ISSO APÓS A DEMO/ALPHA
+
+    [Header("Demo/Alpha Texts")]
+    [SerializeField] private TextMeshProUGUI _textDemo1;
+    [SerializeField] private TextMeshProUGUI _textDemo2; // Referência ao texto de demonstração
+    [SerializeField] private TextMeshProUGUI _textPause;
+    [SerializeField] private PauseControl _pc;
+
     public int CurrentObjective { get; private set; } // variável privada que armazena o índice do objetivo atual
 
     void Start()
@@ -15,6 +23,14 @@ public class ObjectivesController : MonoBehaviour
 
         CurrentObjective = 1; // Inicializa o índice do objetivo atual como 1
         UpdateObjectivesText(); // Chama a função para atualizar o texto dos objetivos ao iniciar o jogo   
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.L)) // Verifica se a tecla ESC foi pressionada
+        {
+            IncreaseActIndex();
+        }
     }
 
     void UpdateObjectivesText()
@@ -32,6 +48,18 @@ public class ObjectivesController : MonoBehaviour
     {
         CurrentObjective++; // Incrementa o índice do objetivo atual
         UpdateObjectivesText(); // Chama a função para atualizar o texto dos objetivos
+
+        //RETIRAR ISSO APÓS A DEMO/ALPHA
+        if (CurrentObjective >= 3)
+        {
+            _textPause.gameObject.SetActive(false); // Desativa o texto de pausa
+            _textDemo1.gameObject.SetActive(true); // Ativa o texto de demonstração 1
+            _textDemo2.gameObject.SetActive(true); // Ativa o texto de demonstração 2
+            _textDemo1.text = "THANK YOU FOR PLAYING THE ALPHA OF THE BARKVENTURES!";
+            _textDemo2.text = "GIVE US YOUR FEEDBACK ABOUT THE GAME AND HAVE FUN EXPLORING THE ENVIRONMENT!";
+            _pc.TooglePause();
+
+        }
     }
 
     public bool CompareAct(int actIndex)

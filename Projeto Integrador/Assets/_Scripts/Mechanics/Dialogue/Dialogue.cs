@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class Dialogue : MonoBehaviour
@@ -77,7 +78,6 @@ public class Dialogue : MonoBehaviour
 
                     _ic.RemoveItem(); // Remove o item do inventário
                     _oc.IncreaseActIndex(); // Aumenta o índice do ato atual
-
                 }
 
             }
