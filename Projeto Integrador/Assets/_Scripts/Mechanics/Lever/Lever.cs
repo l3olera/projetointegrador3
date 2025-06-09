@@ -1,5 +1,4 @@
 using System.Collections;
-using TMPro;
 using UnityEngine;
 
 
@@ -9,21 +8,23 @@ public class Lever : MonoBehaviour
     public bool canChange = true;
 
     public GameObject lightCircle;     // Referência ao objeto da luz (pode ser um pequeno sphere ou emissive sprite)
+    public Lever[] linkedLevers; // Referência a outras alavancas que podem ser afetadas por esta
 
     private bool _state = false; // Estado da alavanca (abaixada ou levantada)
-    private LeverColor _currentColor = LeverColor.Red; // Começa em vermelho
+    [SerializeField] private LeverColor _currentColor = LeverColor.Red; // Começa em vermelho
     private bool _playerInRange = false; // Verifica se o jogador está na área de interação
 
     [SerializeField] private GameObject _leverController; // Referência ao puzzle (gerente)
-    [SerializeField] private TextMeshProUGUI _interactText; // Texto de interação
     [SerializeField] private string _translateName; // Nome da tradução para o texto de interação
     private Renderer _lightRenderer; // Para trocar cor via material
     private Animator _anim; // Para animação de abaixar e levantar
     private TextInteractManager _textInteractManager; // Para gerenciar texto de interação
+    private LeverPuzzle _leverPuzzle; // Referência ao script do puzzle
 
     void Start()
     {
         _anim = GetComponent<Animator>(); // Referência ao Animator da alavanca
+        _leverPuzzle = _leverController.GetComponent<LeverPuzzle>(); // Referência ao script do puzzle
 
         if (lightCircle != null)
         {
@@ -39,7 +40,7 @@ public class Lever : MonoBehaviour
             _textInteractManager = ReferenceManager.Instance.textInteractManager; // Tenta encontrar novamente o TextInteractManager
         }
 
-        if (_leverController.GetComponent<LeverPuzzle>().endPuzzle && canChange)
+        if (_leverPuzzle.endPuzzle && canChange)
         {
             canChange = false; //Impede o jogador de mudar a alavanca enquanto o puzzle não for resolvido
         }
@@ -51,19 +52,28 @@ public class Lever : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.E))
             {
                 canChange = false;
-
-                if (!_state)
+                SetOwnAnimation(); // Define a animação da própria alavanca
+                foreach (Lever lever in linkedLevers)
                 {
-                    _anim.SetBool("LeverToggle", true); // Alavanca levantada
+                    if (lever != null)
+                    {
+                        lever.SetAnimationState(!_state); // Atualiza o estado da animação das alavancas vinculadas
+                    }
                 }
-                else
-                {
-                    _anim.SetBool("LeverToggle", false); // Alavanca abaixada
-                }
-
-                StartCoroutine(ChangeAnimation());
             }
         }
+    }
+
+    public void SetAnimationState(bool state)
+    {
+        _anim.SetBool("LeverToggle", state); // Atualiza a animação de acordo com o estado
+        StartCoroutine(ChangeAnimation());
+    }
+
+    void SetOwnAnimation()
+    {
+        _anim.SetBool("LeverToggle", !_state); // Define a animação de acordo com o estado atual
+        canChange = true;
     }
 
     void OnTriggerEnter(Collider other)
@@ -90,14 +100,14 @@ public class Lever : MonoBehaviour
 
         _state = !_state;
         CycleColor(); // Altera cor da luz
-        _leverController.GetComponent<LeverPuzzle>().ReceiveSignal(gameObject, _currentColor);
+        _leverPuzzle.ReceiveSignal(gameObject, _currentColor);
 
         canChange = true;
     }
 
     void CycleColor()
     {
-        _currentColor = (LeverColor)(((int)_currentColor + 1) % 3); // Red → Green → Blue → Red...
+        _currentColor = (LeverColor)(((int)_currentColor + 1) % _leverPuzzle.lengthCode); // Red → Green → Blue → Purple → Yellow → Red...
         UpdateLightColor();
     }
 
@@ -110,6 +120,8 @@ public class Lever : MonoBehaviour
                 case LeverColor.Red: _lightRenderer.material.color = Color.red; break;
                 case LeverColor.Green: _lightRenderer.material.color = Color.green; break;
                 case LeverColor.Blue: _lightRenderer.material.color = Color.blue; break;
+                case LeverColor.Purple: _lightRenderer.material.color = new Color(0.5f, 0f, 0.5f); break; // Cor roxa
+                case LeverColor.Yellow: _lightRenderer.material.color = Color.yellow; break;
             }
         }
     }
