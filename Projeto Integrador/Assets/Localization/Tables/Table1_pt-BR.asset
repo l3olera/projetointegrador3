@@ -351,7 +351,7 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 79
     m_Localized: "Acho que ele ainda n\xE3o acordou... Vamos sair daqui antes que
-      ele..."
+      ele acorde"
     m_Metadata:
       m_Items: []
   - m_Id: 80
@@ -384,6 +384,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 87
     m_Localized: Pressione E ou Z para interagir com a alavanca
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88
+    m_Localized: Rufus
     m_Metadata:
       m_Items: []
   references:

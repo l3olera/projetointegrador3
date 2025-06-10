@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31c81eb9605323844b6188a419b3c70a, type: 3}
+  m_Name: Rufus
+  m_EditorClassIdentifier: 
+  animalName:
+    m_TableReference:
+      m_TableCollectionName: GUID:29197b97bd2d11d4f8e2fb0f11400d1f
+    m_TableEntryReference:
+      m_KeyId: 88
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+    text: 
+  animalSounds:
+  - {fileID: 8300000, guid: 14401f197a063444ab65da40741976d2, type: 3}
+  references:
+    version: 2
+    RefIds: []
