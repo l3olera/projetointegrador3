@@ -3,6 +3,8 @@ using UnityEngine;
 public class TruckController : MonoBehaviour
 {
     [SerializeField] private int targetPuzzleID = 2; // ID do puzzle que ativa o caminhão
+    private Animator _anim;
+    private SmellTargetManager _smellTargetManager;
 
     void OnEnable()
     {
@@ -12,6 +14,19 @@ public class TruckController : MonoBehaviour
     void OnDisable()
     {
         LeverPuzzle.OnPuzzleSolved -= CheckPuzzle;
+    }
+
+    void Start()
+    {
+        _anim = GetComponent<Animator>();
+    }
+
+    void Update()
+    {
+        if (_smellTargetManager == null)
+        {
+            _smellTargetManager = ReferenceManager.Instance.smellTargetManager;
+        }
     }
 
     void CheckPuzzle(int puzzleID)
@@ -24,6 +39,13 @@ public class TruckController : MonoBehaviour
 
     void ReleasePassage()
     {
-        // Implementação da liberação do caminhão
+        if (_anim != null)
+        {
+            _anim.SetTrigger("PlayMove");
+            if (_smellTargetManager != null)
+            {
+                _smellTargetManager.NextTarget(); // Avança para o próximo alvo
+            }
+        }
     }
 }
