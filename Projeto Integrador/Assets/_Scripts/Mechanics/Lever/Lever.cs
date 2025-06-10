@@ -10,7 +10,7 @@ public class Lever : MonoBehaviour
     public GameObject lightCircle;     // Referência ao objeto da luz (pode ser um pequeno sphere ou emissive sprite)
     public Lever[] linkedLevers; // Referência a outras alavancas que podem ser afetadas por esta
 
-    private bool _state = false; // Estado da alavanca (abaixada ou levantada)
+    public bool state = false; // Estado da alavanca (abaixada ou levantada)
     [SerializeField] private LeverColor _currentColor = LeverColor.Red; // Começa em vermelho
     private bool _playerInRange = false; // Verifica se o jogador está na área de interação
 
@@ -57,7 +57,7 @@ public class Lever : MonoBehaviour
                 {
                     if (lever != null)
                     {
-                        lever.SetAnimationState(!_state); // Atualiza o estado da animação das alavancas vinculadas
+                        lever.SetAnimationState(lever.state); // Atualiza o estado da animação das alavancas vinculadas
                     }
                 }
             }
@@ -66,13 +66,15 @@ public class Lever : MonoBehaviour
 
     public void SetAnimationState(bool state)
     {
+        Debug.Log($"SetAnimationState: {state}, Lever: {gameObject.name}");
         _anim.SetBool("LeverToggle", state); // Atualiza a animação de acordo com o estado
         StartCoroutine(ChangeAnimation());
     }
 
     void SetOwnAnimation()
     {
-        _anim.SetBool("LeverToggle", !_state); // Define a animação de acordo com o estado atual
+        _anim.SetBool("LeverToggle", state); // Define a animação de acordo com o estado atual
+        state = !state; // Inverte o estado da alavanca
         canChange = true;
     }
 
@@ -98,7 +100,7 @@ public class Lever : MonoBehaviour
     {
         yield return new WaitForSeconds(durationAnimation);
 
-        _state = !_state;
+        state = !state;
         CycleColor(); // Altera cor da luz
         _leverPuzzle.ReceiveSignal(gameObject, _currentColor);
 
@@ -115,13 +117,25 @@ public class Lever : MonoBehaviour
     {
         if (_lightRenderer != null)
         {
-            switch (_currentColor)
+            if (_leverPuzzle.lengthCode == 3)
             {
-                case LeverColor.Red: _lightRenderer.material.color = Color.red; break;
-                case LeverColor.Green: _lightRenderer.material.color = Color.green; break;
-                case LeverColor.Blue: _lightRenderer.material.color = Color.blue; break;
-                case LeverColor.Purple: _lightRenderer.material.color = new Color(0.5f, 0f, 0.5f); break; // Cor roxa
-                case LeverColor.Yellow: _lightRenderer.material.color = Color.yellow; break;
+                switch (_currentColor)
+                {
+                    case LeverColor.Red: _lightRenderer.material.color = Color.red; break;
+                    case LeverColor.Green: _lightRenderer.material.color = Color.green; break;
+                    case LeverColor.Blue: _lightRenderer.material.color = Color.blue; break;
+                }
+            }
+            else
+            {
+                switch (_currentColor)
+                {
+                    case LeverColor.Red: _lightRenderer.material.color = Color.red; break;
+                    case LeverColor.Green: _lightRenderer.material.color = Color.green; break;
+                    case LeverColor.Blue: _lightRenderer.material.color = Color.blue; break;
+                    case LeverColor.Purple: _lightRenderer.material.color = new Color(0.5f, 0f, 0.5f); break; // Cor roxa
+                    case LeverColor.Yellow: _lightRenderer.material.color = Color.yellow; break;
+                }
             }
         }
     }

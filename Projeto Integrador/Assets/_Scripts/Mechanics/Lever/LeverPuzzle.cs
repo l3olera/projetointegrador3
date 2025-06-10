@@ -76,16 +76,29 @@ public class LeverPuzzle : MonoBehaviour
     void GenerateRandomCode()
     {
         correctCode = new LeverColor[lengthCode];
+        List<LeverColor> availableColors;
 
-        // Cria uma lista com todas as cores possíveis
-        List<LeverColor> availableColors = new()
+        if (lengthCode == 3)
         {
-            LeverColor.Red,
-            LeverColor.Green,
-            LeverColor.Blue,
-            LeverColor.Purple,
-            LeverColor.Yellow
-        };
+            availableColors = new()
+            {
+                LeverColor.Red,
+                LeverColor.Green,
+                LeverColor.Blue,
+            };
+        }
+        // Cria uma lista com todas as cores possíveis
+        else
+        {
+            availableColors = new()
+            {
+                LeverColor.Red,
+                LeverColor.Green,
+                LeverColor.Blue,
+                LeverColor.Purple,
+                LeverColor.Yellow
+            };
+        }
 
         // Embaralha a lista
         for (int i = 0; i < availableColors.Count; i++)
