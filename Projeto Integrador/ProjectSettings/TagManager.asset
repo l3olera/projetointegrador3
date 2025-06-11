@@ -8,6 +8,7 @@ TagManager:
   - Gate
   - TriggerClose
   - TriggerSpeech
+  - TriggerPersecution
   layers:
   - Default
   - TransparentFX

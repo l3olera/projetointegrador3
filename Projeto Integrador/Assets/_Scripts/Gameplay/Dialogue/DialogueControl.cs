@@ -15,6 +15,7 @@ public class DialogueControl : MonoBehaviour
     [Header("Settings")] // Seção para configurações no Inspector
     public float typingSpeed; // Velocidade com que as letras aparecem na tela
     public bool canInteract = true; // Controla se o jogador pode interagir com o NPC para evitar que ele fica floodando o botão
+    public static event Action OnDialogueEnd; // Evento disparado quando o diálogo termina
 
     private bool _isTyping; // Indica se o diálogo está sendo digitado
     private float _typingSpeed; // Velocidade de digitação do texto privada para ser possível alterar a velocidade de digitação durante o código
@@ -129,6 +130,7 @@ public class DialogueControl : MonoBehaviour
 
     void EndDialogue()
     {
+        OnDialogueEnd?.Invoke(); // Dispara o evento de fim de diálogo
         dialogueObj.SetActive(false); // Esconde a caixa de diálogo
         canInteract = true; // Permite que o jogador interaja novamente
         _playerMovement.canMove = true; // Reativa a movimentação do jogador
