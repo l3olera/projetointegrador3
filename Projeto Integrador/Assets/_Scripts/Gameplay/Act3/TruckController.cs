@@ -3,6 +3,7 @@ using UnityEngine;
 public class TruckController : MonoBehaviour
 {
     [SerializeField] private int targetPuzzleID = 2; // ID do puzzle que ativa o caminhão
+    [SerializeField] private GameObject lights; // Referência ao GameObject que contém as luzes do caminhão
     private Animator _anim;
 
 
@@ -34,6 +35,7 @@ public class TruckController : MonoBehaviour
         if (_anim != null)
         {
             _anim.SetTrigger("PlayMove");
+            lights.SetActive(false); // Desativa as luzes do caminhão
         }
     }
 }

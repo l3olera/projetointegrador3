@@ -61,12 +61,17 @@ public class PersecutionController : MonoBehaviour
         timer = _persecutionTime;
         while (timer > 0)
         {
+            if (managedEscape)
+            {
+                yield break; // Sai do loop se o jogador conseguiu escapar
+            }
+
             _timerText.text = $"{timer:F1}";
             timer -= Time.deltaTime;
             yield return null;
         }
 
-
+        _timerText.text = ""; // Limpa o texto do temporizador quando o tempo acabar
         DontEscape(); // Chama o método para limpar o texto quando o tempo acabar
     }
 
@@ -74,7 +79,6 @@ public class PersecutionController : MonoBehaviour
     {
         if (!managedEscape)
         {
-            _timerText.text = "";
             _playerSpawn.SpawnPlayer(1); // Reinicia o jogador se ele não conseguiu escapar
         }
     }
