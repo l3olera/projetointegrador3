@@ -10,16 +10,13 @@ public class PersecutionController : MonoBehaviour
     [SerializeField] private UniqueDialogueTrigger _dialogueTriggerRuffus; // Referência ao UniqueDialogueTrigger para reativar o diálogo de perseguição, caso o jogador perca
     private InventoryController _ic; // Referência ao InventoryController
     private SmellTargetManager _smellTargetManager; // Referência ao SmellTargetManager
+    private ObjectivesController _oc; // Referência ao ObjectivesController
     private bool _isInTrigger = false; // Indica se o jogador está dentro do gatilho de perseguição
     private OccurrencesDialogue _occurrenceDialogue;
 
     public float timer;
     public bool managedEscape = false; // Indica se o jogador conseguiu escapar
-
-    void Start()
-    {
-        _occurrenceDialogue = OccurrencesDialogue.PersecutionStart; // Define o ID da perseguição
-    }
+    public int idSpawn = 2; // ID do spawn para reiniciar o jogador
 
     void OnEnable()
     {
@@ -31,17 +28,13 @@ public class PersecutionController : MonoBehaviour
         DialogueControl.OnDialogueEnd -= StartPersecution; // Cancela a inscrição no evento de fim de diálogo
     }
 
-    void Update()
+    void Start()
     {
-        if (_ic == null)
-        {
-            _ic = ReferenceManager.Instance.inventoryController; // Obtém a referência ao InventoryController do ReferenceManager
-        }
+        _ic = InventoryController.Instance; // Obtém a referência ao InventoryController
+        _oc = ObjectivesController.Instance; // Obtém a referência ao ObjectivesController
+        _smellTargetManager = SmellTargetManager.Instance; // Obtém a referência ao SmellTargetManager
 
-        if (_smellTargetManager == null)
-        {
-            _smellTargetManager = ReferenceManager.Instance.smellTargetManager; // Obtém a referência ao SmellTargetManager do ReferenceManager
-        }
+        _occurrenceDialogue = OccurrencesDialogue.PersecutionStart; // Define o ID da perseguição
     }
 
     void OnTriggerEnter(Collider other)
@@ -58,6 +51,7 @@ public class PersecutionController : MonoBehaviour
         {
             _isInTrigger = false; // Reseta o gatilho para evitar múltiplas ativações
             _smellTargetManager.NextTarget(); // Avança para o próximo objetivo
+            _oc.IncreaseActIndex(); // Incrementa o índice do objetivo atual
             StartCoroutine(PersecutionTimer());
         }
     }
@@ -87,7 +81,7 @@ public class PersecutionController : MonoBehaviour
     {
         if (!managedEscape)
         {
-            _playerSpawn.SpawnPlayer(1); // Reinicia o jogador se ele não conseguiu escapar
+            _playerSpawn.SpawnPlayer(idSpawn); // Reinicia o jogador se ele não conseguiu escapar
             _dialogueTriggerRuffus.hasTriggered = false; // Reseta o gatilho do diálogo de perseguição
         }
     }

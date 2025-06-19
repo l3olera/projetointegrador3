@@ -6,7 +6,7 @@ public class InteractItem : MonoBehaviour
 
     [SerializeField] private string _translateName; // Referência ao texto que vai traduzir na interação 
     [SerializeField] private InventoryController _ic;
-    private SmellTargetManager smellManager; // Referência ao gerenciador de alvos de cheiro
+    private SmellTargetManager _smellManager; // Referência ao gerenciador de alvos de cheiro
     private TextInteractManager _textInteractManager; // Referência ao gerenciador de texto de interação
 
     [Header("Configurações de interação")]
@@ -14,19 +14,14 @@ public class InteractItem : MonoBehaviour
 
     public bool isInteractable; // Verifica se o objeto está interagível
 
+    void Start()
+    {
+        _smellManager = SmellTargetManager.Instance; // Obtém a referência ao gerenciador de alvos de cheiro
+        _textInteractManager = TextInteractManager.Instance; // Obtém a referência ao gerenciador de texto de interação
+    }
 
     void Update()
     {
-        if (smellManager == null)
-        {
-            smellManager = ReferenceManager.Instance.smellTargetManager; // Obtém a referência ao gerenciador de alvos de cheiro
-        }
-
-        if (_textInteractManager == null)
-        {
-            _textInteractManager = ReferenceManager.Instance.textInteractManager; // Obtém a referência ao gerenciador de texto de interação
-        }
-
         if (isInteractable && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Z))) // Verifica se o jogador está interagindo com o objeto
         {
             Interact(); // Chama a função de interação
@@ -64,7 +59,7 @@ public class InteractItem : MonoBehaviour
             Destroy(_item); // Destroi o objeto após a interação
             _item = null; // Limpa o tipo de item após a interação
             _textInteractManager.canSetText = false; // Limpa o texto de interação
-            smellManager.NextTarget(); // Chama a função de próximo alvo do gerenciador de alvos de cheiro
+            _smellManager.NextTarget(); // Chama a função de próximo alvo do gerenciador de alvos de cheiro
         }
     }
 }

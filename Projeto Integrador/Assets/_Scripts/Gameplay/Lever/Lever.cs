@@ -25,6 +25,7 @@ public class Lever : MonoBehaviour
     {
         _anim = GetComponent<Animator>(); // Referência ao Animator da alavanca
         _leverPuzzle = _leverController.GetComponent<LeverPuzzle>(); // Referência ao script do puzzle
+        _textInteractManager = TextInteractManager.Instance; // Obtém a referência ao gerenciador de texto de interação
 
         if (lightCircle != null)
         {
@@ -35,10 +36,6 @@ public class Lever : MonoBehaviour
 
     void Update()
     {
-        if (_textInteractManager == null) // Verifica se o TextInteractManager não foi encontrado
-        {
-            _textInteractManager = ReferenceManager.Instance.textInteractManager; // Tenta encontrar novamente o TextInteractManager
-        }
 
         if (_leverPuzzle.endPuzzle && canChange)
         {

@@ -21,6 +21,7 @@ public class DialogueControl : MonoBehaviour
     public TextMeshProUGUI actorNameText; // Referência ao campo de texto onde aparecerá o nome do personagem
 
     [Header("Settings")] // Seção para configurações no Inspector
+    public static DialogueControl Instance { get; private set; } // Instância única do DialogueControl
     public float typingSpeed; // Velocidade com que as letras aparecem na tela
     public bool canInteract = true; // Controla se o jogador pode interagir com o NPC para evitar que ele fica floodando o botão
     public static event Action<OccurrencesDialogue> OnDialogueEnd; // Evento disparado quando o diálogo termina
@@ -34,12 +35,22 @@ public class DialogueControl : MonoBehaviour
     private int _currentLineIndex; // Índice da linha atual do diálogo
     private AudioSource _playSoundAnimal; // Referência ao AudioSource que toca os sons dos animais
     [SerializeField] private PlayerMovement _playerMovement; // Referência ao script que controla o movimento do jogador
+    [SerializeField] private CinemachineInputAxisController cinemachineCameraIn;
     private CinemachineInputAxisController _cinemachineCameraIn; // Referência à câmera cinemática
+
+    void Awake()
+    {
+        if (Instance != null && Instance != this) // Verifica se já existe uma instância do DialogueControl
+        {
+            Destroy(this.gameObject); // Destroi o objeto atual se já houver uma instância
+            return; // Retorna para evitar duplicação
+        }
+
+        Instance = this; // Inicializa a instância única do DialogueControl
+    }
 
     void Start()
     {
-        ReferenceManager.Instance.dialogueControl = this; // Inicializa a referência ao DialogueControl no ReferenceManager 
-        _cinemachineCameraIn = ReferenceManager.Instance.cinemachineCameraIn; // Inicializa a referência à CinemachineCamera no ReferenceManager
         _playSoundAnimal = GetComponent<AudioSource>(); // Obtém o AudioSource do GameObject atual
         ResetOccurrenceDialogue(); // Reseta a ocorrência do diálogo no início
     }

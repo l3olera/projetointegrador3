@@ -4,6 +4,7 @@ using System.Collections;
 
 public class SmellTrail : MonoBehaviour
 {
+    public static SmellTrail Instance { get; private set; } // Instância singleton da classe SmellTrail
     public NavMeshAgent player; // Referência ao agente NavMesh (jogador)
     public Transform target; // Referência ao alvo para onde o caminho será traçado
     public bool canDrawPath = false; // Controla se o caminho deve ser desenhado ou não
@@ -12,9 +13,18 @@ public class SmellTrail : MonoBehaviour
 
     private Coroutine drawPathCoroutine; // Referência à corrotina que desenha o caminho
 
+    void Awake()
+    {
+        if (Instance != null && Instance != this) // Verifica se já existe uma instância
+        {
+            Destroy(this.gameObject); // Destroi o objeto atual se já houver uma instância
+            return; // Sai do método para evitar duplicação
+        }
+        Instance = this; // Define a instância atual como a única instância
+    }
+
     void Start()
     {
-        ReferenceManager.Instance.smellTrail = this; // Registra esta instância no ReferenceManager
         _lineRenderer.gameObject.SetActive(false); // Desativa o LineRenderer no início
     }
 

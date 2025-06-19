@@ -12,19 +12,14 @@ public class InteractGate : MonoBehaviour
     private SmellTargetManager _smellManager; // Referência ao gerenciador de alvos de cheiro
     private TextInteractManager _textInteractManager; // Referência ao gerenciador de texto de interação
 
+    void Start()
+    {
+        _smellManager = SmellTargetManager.Instance; // Obtém a referência ao SmellTargetManager
+        _textInteractManager = TextInteractManager.Instance; // Obtém a referência ao TextInteractManager
+    }
 
     void Update()
     {
-        if (_smellManager == null)
-        {
-            _smellManager = ReferenceManager.Instance.smellTargetManager; // Obtém a referência ao gerenciador de alvos de cheiro
-        }
-
-        if (_textInteractManager == null)
-        {
-            _textInteractManager = ReferenceManager.Instance.textInteractManager; // Obtém a referência ao gerenciador de texto de interação
-        }
-
         if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Z)) && _gateController.canOpen)
         { // Verifica se o jogador está interagindo com o objeto
             _gateController.OpenGate(); // Chama a função OpenGate do GateController

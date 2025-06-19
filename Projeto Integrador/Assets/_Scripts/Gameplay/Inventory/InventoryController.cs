@@ -20,9 +20,17 @@ public class InventoryController : MonoBehaviour
 
     [SerializeField] private Image _slotImageUI; // Referência à UI do inventário
 
-    void Start()
+    public static InventoryController Instance { get; private set; }// Propriedade para acessar a instância única do InventoryController
+
+    void Awake()
     {
-        ReferenceManager.Instance.inventoryController = this; // Inicializa a referência ao InventoryController no ReferenceManager
+        if (Instance != null && Instance != this) // Verifica se já existe uma instância
+        {
+            Destroy(this.gameObject); // Destroi o objeto atual se já houver uma instância
+            return; // Sai do método para evitar duplicação
+        }
+        Instance = this; // Inicializa a instância única do InventoryController
+
         _slotImageUI.color = new Color(1, 1, 1, 0); // Totalmente invisível (alpha 0)
     }
 

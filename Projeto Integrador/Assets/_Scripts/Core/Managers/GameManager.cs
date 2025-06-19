@@ -20,22 +20,11 @@ public class GameManager : MonoBehaviour
         LeverPuzzle.OnPuzzleSolved -= CheckPuzzle;
     }
 
-    void Update()
+    void Start()
     {
-        if (_dialogueControl == null)
-        {
-            _dialogueControl = ReferenceManager.Instance.dialogueControl; // Obtém a referência ao DialogueControl do ReferenceManager
-        }
-
-        if (_smellTargetManager == null)
-        {
-            _smellTargetManager = ReferenceManager.Instance.smellTargetManager;
-        }
-
-        if (_ic == null)
-        {
-            _ic = ReferenceManager.Instance.inventoryController; // Obtém a referência ao InventoryController do ReferenceManager
-        }
+        _dialogueControl = DialogueControl.Instance; // Obtém a referência ao DialogueControl
+        _ic = InventoryController.Instance; // Obtém a referência ao InventoryController
+        _smellTargetManager = SmellTargetManager.Instance; // Obtém a referência ao SmellTargetManager
     }
 
     void CheckPuzzle(int puzzleID)
