@@ -14,15 +14,17 @@ public class DialogueCharacter : MonoBehaviour
         {
             _triggerSpeech = other.GetComponent<UniqueDialogueTrigger>(); // Obtém o TriggerSpeech do objeto
 
-            if (_oc.CompareAct(_triggerSpeech.toAct) && !_triggerSpeech.hasTriggered)
+            if (_oc.CompareAct(_triggerSpeech.dialogueData.toAct) && !_triggerSpeech.hasTriggered)
             {
-                if (!_ic.HasItemById(_triggerSpeech.requiredIdItem))
+                _dc.DefineOccurrenceDialogue(_triggerSpeech.dialogueData.occurrenceDialogue); // Define o diálogo atual
+                if (!_ic.HasItemById(_triggerSpeech.dialogueData.requiredIdItem))
                 {
-                    _dc.Speech(_triggerSpeech.dialogueSequence[0].lines); // Passa o array de falas para o DialogueControl
+                    _dc.Speech(_triggerSpeech.dialogueData.dialogueSequence[0].lines); // Passa o array de falas para o DialogueControl
                 }
                 else
                 {
-                    _dc.Speech(_triggerSpeech.dialogueSequence[1].lines); // Passa o array de falas para o DialogueControl
+
+                    _dc.Speech(_triggerSpeech.dialogueData.dialogueSequence[1].lines); // Passa o array de falas para o DialogueControl
                 }
                 _triggerSpeech.hasTriggered = true; // Define que o diálogo já foi ativado
             }

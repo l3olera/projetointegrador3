@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -11,9 +10,15 @@ public class PersecutionController : MonoBehaviour
     private InventoryController _ic; // Referência ao InventoryController
     private SmellTargetManager _smellTargetManager; // Referência ao SmellTargetManager
     private bool _isInTrigger = false; // Indica se o jogador está dentro do gatilho de perseguição
+    private OccurrencesDialogue _occurrenceDialogue;
 
     public float timer;
     public bool managedEscape = false; // Indica se o jogador conseguiu escapar
+
+    void Start()
+    {
+        _occurrenceDialogue = OccurrencesDialogue.PersecutionStart; // Define o ID da perseguição
+    }
 
     void OnEnable()
     {
@@ -46,9 +51,9 @@ public class PersecutionController : MonoBehaviour
         }
     }
 
-    void StartPersecution()
+    void StartPersecution(OccurrencesDialogue dialogueID)
     {
-        if (_isInTrigger)
+        if (_isInTrigger && dialogueID == _occurrenceDialogue)
         {
             _isInTrigger = false; // Reseta o gatilho para evitar múltiplas ativações
             _smellTargetManager.NextTarget(); // Avança para o próximo objetivo
@@ -63,6 +68,8 @@ public class PersecutionController : MonoBehaviour
         {
             if (managedEscape)
             {
+                _timerText.text = "";
+                _timerText.gameObject.SetActive(false); // Desativa o texto do temporizador se o jogador conseguiu escapar
                 yield break; // Sai do loop se o jogador conseguiu escapar
             }
 

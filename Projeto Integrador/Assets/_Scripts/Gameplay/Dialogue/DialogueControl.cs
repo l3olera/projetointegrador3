@@ -5,6 +5,14 @@ using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Localization;
 
+public enum OccurrencesDialogue
+{
+    None,
+    LeverPuzzleSolved, // Diálogo quando o puzzle da alavanca é resolvido
+    PersecutionStart, // Diálogo quando a perseguição começa
+}
+
+
 public class DialogueControl : MonoBehaviour
 {
     [Header("Components")] // Cria uma seção no Inspector para melhor organização
@@ -15,7 +23,8 @@ public class DialogueControl : MonoBehaviour
     [Header("Settings")] // Seção para configurações no Inspector
     public float typingSpeed; // Velocidade com que as letras aparecem na tela
     public bool canInteract = true; // Controla se o jogador pode interagir com o NPC para evitar que ele fica floodando o botão
-    public static event Action OnDialogueEnd; // Evento disparado quando o diálogo termina
+    public static event Action<OccurrencesDialogue> OnDialogueEnd; // Evento disparado quando o diálogo termina
+    public OccurrencesDialogue currentOccurrenceDialogue; // Referência ao scriptable object que contém as ocorrências do diálogo
 
     private bool _isTyping; // Indica se o diálogo está sendo digitado
     private float _typingSpeed; // Velocidade de digitação do texto privada para ser possível alterar a velocidade de digitação durante o código
@@ -32,6 +41,12 @@ public class DialogueControl : MonoBehaviour
         ReferenceManager.Instance.dialogueControl = this; // Inicializa a referência ao DialogueControl no ReferenceManager 
         _cinemachineCameraIn = ReferenceManager.Instance.cinemachineCameraIn; // Inicializa a referência à CinemachineCamera no ReferenceManager
         _playSoundAnimal = GetComponent<AudioSource>(); // Obtém o AudioSource do GameObject atual
+        ResetOccurrenceDialogue(); // Reseta a ocorrência do diálogo no início
+    }
+
+    public void DefineOccurrenceDialogue(OccurrencesDialogue occurrence)
+    {
+        currentOccurrenceDialogue = occurrence; // Define a ocorrência do diálogo atual
     }
 
     // Método responsável por exibir o diálogo na tela
@@ -90,6 +105,11 @@ public class DialogueControl : MonoBehaviour
         StartCoroutine(WaitForTranslationsAndType()); // Inicia a corrotina para exibir as letras do diálogo
     }
 
+    void PlaySoundAnimal(Animal animal)
+    {
+        animal.PlaySound(_playSoundAnimal); // Toca o som do animal usando o AudioSource
+    }
+
     IEnumerator WaitForTranslationsAndType()
     {
         while (_indexSpeechTranslate < _speechTranslate.Length)
@@ -123,14 +143,23 @@ public class DialogueControl : MonoBehaviour
         _isTyping = false; // Indica que o diálogo não está mais sendo digitado
     }
 
-    void PlaySoundAnimal(Animal animal)
+    // Método chamado para avançar para a próxima frase do diálogo, acelerando o processo
+    public void NextSentence()
     {
-        animal.PlaySound(_playSoundAnimal); // Toca o som do animal usando o AudioSource
+        if (_isTyping)
+        {
+            _isTyping = false; // Se o diálogo ainda estiver sendo digitado, interrompe a digitação
+            return; // Retorna para evitar que a próxima linha seja exibida
+        }
+
+        _currentLineIndex++; // Avança para a próxima linha
+        DisplayCurrentLine(); // Exibe a próxima linha
     }
 
     void EndDialogue()
     {
-        OnDialogueEnd?.Invoke(); // Dispara o evento de fim de diálogo
+        OnDialogueEnd?.Invoke(currentOccurrenceDialogue); // Dispara o evento de fim de diálogo
+        ResetOccurrenceDialogue(); // Reseta a ocorrência do diálogo
         dialogueObj.SetActive(false); // Esconde a caixa de diálogo
         canInteract = true; // Permite que o jogador interaja novamente
         _playerMovement.canMove = true; // Reativa a movimentação do jogador
@@ -148,16 +177,8 @@ public class DialogueControl : MonoBehaviour
         _cinemachineCameraIn.enabled = true; // Define uma prioridade alta para reativar a câmera
     }
 
-    // Método chamado para avançar para a próxima frase do diálogo
-    public void NextSentence()
+    void ResetOccurrenceDialogue()
     {
-        if (_isTyping)
-        {
-            _isTyping = false; // Se o diálogo ainda estiver sendo digitado, interrompe a digitação
-            return; // Retorna para evitar que a próxima linha seja exibida
-        }
-
-        _currentLineIndex++; // Avança para a próxima linha
-        DisplayCurrentLine(); // Exibe a próxima linha
+        currentOccurrenceDialogue = OccurrencesDialogue.None; // Reseta a ocorrência do diálogo
     }
 }

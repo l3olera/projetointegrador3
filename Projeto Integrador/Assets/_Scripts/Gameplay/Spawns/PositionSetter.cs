@@ -1,36 +1,49 @@
-using System;
 using System.Collections;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class PositionSetter : MonoBehaviour
 {
     [Header("Configuração do Spawn")]
-    public float rigidbodyResetDelay = 0.1f;
+    public float ResetDelay = 1f;
 
     private Rigidbody _rb;
+    [SerializeField] private CinemachineDecollider _cinemachineDecollider;
 
     public void Teleport(GameObject target)
     {
         if (target == null)
         {
-            Debug.LogWarning("Target Object não foi atribuído.");
             return;
         }
 
+        _rb = target.GetComponent<Rigidbody>();
+
+        if (_rb != null)
+            _rb.isKinematic = true;
+
+        if (_cinemachineDecollider != null)
+            _cinemachineDecollider.enabled = false; // Desativa o decollider antes de teleportar
+
         target.transform.SetPositionAndRotation(transform.position, target.transform.rotation);
 
-        _rb = target.GetComponent<Rigidbody>();
-        if (_rb != null)
-        {
-            _rb.isKinematic = true;
-            StartCoroutine(ResetKinematicAfterDelay());
-        }
+        StartCoroutine(CompareTeleporting(target));
+
     }
 
-    private IEnumerator ResetKinematicAfterDelay()
+    IEnumerator CompareTeleporting(GameObject target)
     {
-        yield return new WaitForSeconds(rigidbodyResetDelay);
+        // Aguarda até o objeto estar praticamente no mesmo ponto
+        while (Vector3.Distance(target.transform.position, transform.position) > 0.1f)
+        {
+            Debug.Log(Vector3.Distance(target.transform.position, transform.position));
+            yield return null; // Espera um frame
+        }
+
         if (_rb != null)
             _rb.isKinematic = false;
+
+        if (_cinemachineDecollider != null)
+            _cinemachineDecollider.enabled = true;
     }
 }

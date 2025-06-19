@@ -5,7 +5,8 @@ public class Dialogue : MonoBehaviour
 {
     public DialogueSequence[] dialogueSequence; // Array de sequências de diálogos
 
-    public int requiredIdItem = -1; // ID do item necessário para continuar um próximo dialogo o diálogo
+    public int requiredIdItem = -1; // ID do item necessário para continuar um próximo diálogo
+    public OccurrencesDialogue occurrenceDialogue; // ID do diálogo atual
 
     [SerializeField] private bool _onRadious; // Indica se o jogador está dentro do raio de interação
     [SerializeField] private string _translateName; // Nome da tradução para o texto de interação
@@ -58,6 +59,7 @@ public class Dialogue : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Z))
             {
+                _dc.DefineOccurrenceDialogue(occurrenceDialogue); // Define o diálogo atual no DialogueControl
                 if (!_ic.HasItemById(requiredIdItem))
                 {
                     _dc.Speech(dialogueSequence[0].lines); // Passa o array de falas para o DialogueControl
