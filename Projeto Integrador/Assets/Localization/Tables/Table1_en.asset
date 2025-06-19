@@ -348,7 +348,7 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 79
     m_Localized: "I think he\u2019s still asleep\u2026 Let\u2019s get out of here
-      before he\u2014"
+      before he wake up"
     m_Metadata:
       m_Items: []
   - m_Id: 80
@@ -381,6 +381,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 87
     m_Localized: Press E or Z to use interact with the lever
+    m_Metadata:
+      m_Items: []
+  - m_Id: 88
+    m_Localized: Rufus
     m_Metadata:
       m_Items: []
   references:
