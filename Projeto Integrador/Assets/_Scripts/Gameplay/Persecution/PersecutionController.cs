@@ -46,13 +46,7 @@ public class PersecutionController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        /*
         if (other.CompareTag("Player") && _ic.HasItemById(3)) // Verifica se o jogador entrou no gatilho de perseguição e possui o item com o pepito
-        {
-            _isInTrigger = true; // Marca que o jogador entrou no gatilho de perseguição
-        }
-        */
-        if (other.CompareTag("Player")) // Verifica se o jogador entrou no gatilho de perseguição
         {
             _isInTrigger = true; // Marca que o jogador entrou no gatilho de perseguição
         }
