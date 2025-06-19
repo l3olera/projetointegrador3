@@ -7,6 +7,7 @@ public class PersecutionController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _timerText; // Referência ao campo de texto que exibe o tempo restante
     [SerializeField] private float _persecutionTime = 90f; // Tempo total de perseguição em segundos
     [SerializeField] private PlayerSpawn _playerSpawn; // Referência ao PlayerSpawn para reiniciar o jogador
+    [SerializeField] private UniqueDialogueTrigger _dialogueTriggerRuffus; // Referência ao UniqueDialogueTrigger para reativar o diálogo de perseguição, caso o jogador perca
     private InventoryController _ic; // Referência ao InventoryController
     private SmellTargetManager _smellTargetManager; // Referência ao SmellTargetManager
     private bool _isInTrigger = false; // Indica se o jogador está dentro do gatilho de perseguição
@@ -45,7 +46,13 @@ public class PersecutionController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        /*
         if (other.CompareTag("Player") && _ic.HasItemById(3)) // Verifica se o jogador entrou no gatilho de perseguição e possui o item com o pepito
+        {
+            _isInTrigger = true; // Marca que o jogador entrou no gatilho de perseguição
+        }
+        */
+        if (other.CompareTag("Player")) // Verifica se o jogador entrou no gatilho de perseguição
         {
             _isInTrigger = true; // Marca que o jogador entrou no gatilho de perseguição
         }
@@ -87,6 +94,7 @@ public class PersecutionController : MonoBehaviour
         if (!managedEscape)
         {
             _playerSpawn.SpawnPlayer(1); // Reinicia o jogador se ele não conseguiu escapar
+            _dialogueTriggerRuffus.hasTriggered = false; // Reseta o gatilho do diálogo de perseguição
         }
     }
 }

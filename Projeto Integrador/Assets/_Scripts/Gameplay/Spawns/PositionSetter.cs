@@ -19,6 +19,16 @@ public class PositionSetter : MonoBehaviour
 
         _rb = target.GetComponent<Rigidbody>();
 
+        if (target.TryGetComponent<PlayerMovement>(out var playerMovement))
+        {
+            playerMovement.canMove = false; // Desativa a movimentação do jogador
+        }
+
+        if (target.TryGetComponent<NavAgentController>(out var navAgent))
+        {
+            navAgent.DisableAgent(); // Desativa o NavMeshAgent do jogador
+        }
+
         if (_rb != null)
             _rb.isKinematic = true;
 
@@ -45,5 +55,15 @@ public class PositionSetter : MonoBehaviour
 
         if (_cinemachineDecollider != null)
             _cinemachineDecollider.enabled = true;
+
+        if (target.TryGetComponent<PlayerMovement>(out var playerMovement))
+        {
+            playerMovement.canMove = true; // Reativa a movimentação do jogador
+        }
+
+        if (target.TryGetComponent<NavAgentController>(out var navAgent))
+        {
+            navAgent.EnableAgent(); // Reativa o NavMeshAgent do jogador
+        }
     }
 }

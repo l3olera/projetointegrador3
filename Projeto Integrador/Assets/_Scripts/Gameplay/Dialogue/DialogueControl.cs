@@ -54,6 +54,7 @@ public class DialogueControl : MonoBehaviour
     {
         _typingSpeed = typingSpeed;
         canInteract = false; // Impede o jogador de interagir enquanto o diálogo está ativo
+        _playerMovement.StopMovement(); // Para o movimento do jogador
         _playerMovement.canMove = false; // Desativa a movimentação do jogador durante o diálogo
         _playerMovement.FreeMouse();
         DisableCameraControl(); // Desativa o controle da câmera para evitar movimentos indesejados
