@@ -11,6 +11,7 @@ public enum OccurrencesDialogue
     EndAct2,
     LeverPuzzleSolved, // Diálogo quando o puzzle da alavanca é resolvido
     PersecutionStart, // Diálogo quando a perseguição começa
+    EndGame
 }
 
 

@@ -1,4 +1,3 @@
-using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 
@@ -44,7 +43,7 @@ public class InteractGate : MonoBehaviour
             }
         }
 
-        if (other.CompareTag("TriggerClose"))
+        if (other.CompareTag("TriggerClose") && _objectivesController.CompareAct(1))
         {
             _gateController.CloseGate(); // Chama a função CloseGate do GateController
             _gateController.canOpen = false; // Define que o portão não pode mais ser aberto
@@ -52,11 +51,8 @@ public class InteractGate : MonoBehaviour
             if (_windSound != null)
                 _windSound.Play(); // Toca o som de vento se a referência não for nula
 
-            if (_objectivesController.CurrentObjective == 1)
-            {
-                _objectivesController.IncreaseActIndex(); // Chama a função para aumentar o índice do objetivo atual. Trocando, assim, o ato.
-                _smellManager.NextTarget(); // Chama a função para ir para o próximo alvo
-            }
+            _objectivesController.IncreaseActIndex(); // Chama a função para aumentar o índice do objetivo atual. Trocando, assim, o ato.
+            _smellManager.NextTarget(); // Chama a função para ir para o próximo alvo
         }
     }
 
