@@ -5,7 +5,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int targetPuzzleID = 2; // ID do puzzle que ativa o dialogo
     [SerializeField] private UniqueDialogue _dialogueEndPuzzleAct3; // Referência ao diálogo que será ativado
     [SerializeField] private ItemType _pepitoItem; // Referência ao tipo de item que será verificado no inventário
-    [SerializeField] private PepitoManager _pepitoManager; // Referência ao PepitoManager
     private InventoryController _ic; // Referência ao InventoryController
     private DialogueControl _dialogueControl; // Referência ao script que controla os diálogos
     private SmellTargetManager _smellTargetManager;

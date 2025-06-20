@@ -3,7 +3,7 @@ using UnityEngine;
 public class CageController : MonoBehaviour
 {
     [SerializeField] private int targetPuzzleID = 2; // ID do puzzle que ativa a jaula
-    [SerializeField] private Animator _anim;
+    private Animator _anim;
 
     void OnEnable()
     {
@@ -13,6 +13,11 @@ public class CageController : MonoBehaviour
     void OnDisable()
     {
         LeverPuzzle.OnPuzzleSolved -= CheckPuzzle;
+    }
+
+    void Start()
+    {
+        _anim = GetComponent<Animator>();
     }
 
     void CheckPuzzle(int puzzleID)
@@ -27,7 +32,7 @@ public class CageController : MonoBehaviour
     {
         if (_anim != null)
         {
-            _anim.SetTrigger("OpenCage");
+            _anim.SetTrigger("Open");
         }
     }
 }

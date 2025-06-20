@@ -10,14 +10,11 @@ public class Lever : LeverBase
     [SerializeField] private LeverColor _currentColor = LeverColor.Red; // Começa em vermelho
     private LeverColor _defaultColor;
     private bool _dafaultState;
-    [SerializeField] private GameObject _leverController; // Referência ao puzzle (gerente)
     private Renderer _lightRenderer; // Para trocar cor via material
-    private LeverPuzzle _leverPuzzle; // Referência ao script do puzzle
 
     protected override void Start()
     {
         base.Start();
-        _leverPuzzle = _leverController.GetComponent<LeverPuzzle>(); // Referência ao script do puzzle
         _defaultColor = _currentColor;
         _dafaultState = state;
 

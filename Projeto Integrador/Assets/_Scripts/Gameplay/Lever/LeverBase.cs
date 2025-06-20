@@ -8,6 +8,7 @@ public abstract class LeverBase : MonoBehaviour
     protected InputManager _im;
     protected Animator _anim; // Para animação de abaixar e levantar
     [SerializeField] protected string _translateName; // Nome da tradução para o texto de interação
+    [SerializeField] protected LeverPuzzle _leverPuzzle; // Referência ao puzzle (gerente)
     private bool _playerInRange = false; // Verifica se o jogador está na área de interação
     public bool canChange = true;
     public bool state = false; // Estado da alavanca (abaixada ou levantada)
@@ -21,7 +22,7 @@ public abstract class LeverBase : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (canChange && _playerInRange)
+        if (canChange && _playerInRange && !_leverPuzzle.endPuzzle)
         {
             _textInteractManager.SetText(LocalizationManager.Instance.GetTranslation(_translateName)); // Define o texto de interação
 
