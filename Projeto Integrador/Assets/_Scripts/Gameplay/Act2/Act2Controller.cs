@@ -10,8 +10,6 @@ public class Act2Controller : MonoBehaviour
     [Header("Atributos")]
     [SerializeField] private OccurrencesDialogue _occurenceDialogue;
     [SerializeField] private int _idSpawn;
-    [SerializeField] private float _transitionFade = 2.5f;
-    [SerializeField] private float _transitionToChangeObjects = 2f;
 
     [Header("Objetos que mudarão para fase 3")]
     [SerializeField] private GameObject _trashCan;
@@ -19,6 +17,8 @@ public class Act2Controller : MonoBehaviour
     [SerializeField] private Quaternion _rotation;
 
     [SerializeField] private GameObject _fenceAct3;
+    [SerializeField] private GameObject _salem;
+    [SerializeField] private CatMissionDialogueHandler _catMission;
 
     void OnEnable()
     {
@@ -27,7 +27,7 @@ public class Act2Controller : MonoBehaviour
 
     void OnDisable()
     {
-        DialogueControl.OnDialogueEnd += StartTransitionToAct3;
+        DialogueControl.OnDialogueEnd -= StartTransitionToAct3;
     }
 
     void StartTransitionToAct3(OccurrencesDialogue dialogueId)
@@ -41,16 +41,17 @@ public class Act2Controller : MonoBehaviour
     IEnumerator MakeTransition()
     {
         _fc.StartFade();
-        StartCoroutine(ChangeObjects());
-        yield return new WaitForSeconds(_transitionFade);
+        yield return new WaitForSeconds(_fc.transitionDuration);
+        ChangeObjects();
         _fc.EndFade();
     }
 
-    IEnumerator ChangeObjects()
+    void ChangeObjects()
     {
-        yield return new WaitForSeconds(_transitionToChangeObjects);
+        _playerSpawn.SpawnPlayer(_idSpawn);
         _fenceAct3.SetActive(true);
         _trashCan.transform.SetPositionAndRotation(_position, _rotation);
-        _playerSpawn.SpawnPlayer(_idSpawn);
+        _catMission.DisableInteraction();
+        _salem.SetActive(false);
     }
 }

@@ -2,99 +2,52 @@ using System.Collections;
 using UnityEngine;
 
 
-public class Lever : MonoBehaviour
+public class Lever : LeverBase
 {
-    public float durationAnimation = 1f;
-    public bool canChange = true;
-
     public GameObject lightCircle;     // Referência ao objeto da luz (pode ser um pequeno sphere ou emissive sprite)
     public Lever[] linkedLevers; // Referência a outras alavancas que podem ser afetadas por esta
 
-    public bool state = false; // Estado da alavanca (abaixada ou levantada)
     [SerializeField] private LeverColor _currentColor = LeverColor.Red; // Começa em vermelho
-    private bool _playerInRange = false; // Verifica se o jogador está na área de interação
-
+    private LeverColor _defaultColor;
+    private bool _dafaultState;
     [SerializeField] private GameObject _leverController; // Referência ao puzzle (gerente)
-    [SerializeField] private string _translateName; // Nome da tradução para o texto de interação
     private Renderer _lightRenderer; // Para trocar cor via material
-    private Animator _anim; // Para animação de abaixar e levantar
-    private TextInteractManager _textInteractManager; // Para gerenciar texto de interação
     private LeverPuzzle _leverPuzzle; // Referência ao script do puzzle
 
-    void Start()
+    protected override void Start()
     {
-        _anim = GetComponent<Animator>(); // Referência ao Animator da alavanca
+        base.Start();
         _leverPuzzle = _leverController.GetComponent<LeverPuzzle>(); // Referência ao script do puzzle
-        _textInteractManager = TextInteractManager.Instance; // Obtém a referência ao gerenciador de texto de interação
+        _defaultColor = _currentColor;
+        _dafaultState = state;
 
         if (lightCircle != null)
         {
             _lightRenderer = lightCircle.GetComponent<Renderer>();
-            UpdateLightColor(); // Aplica a cor inicial
+
+            UpdateLightColor(ColorForLight(_currentColor)); // Aplica a cor inicial
         }
     }
 
-    void Update()
+    protected override void LeverEvent()
     {
-
-        if (_leverPuzzle.endPuzzle && canChange)
+        if (linkedLevers.Length > 1)
         {
-            canChange = false; //Impede o jogador de mudar a alavanca enquanto o puzzle não for resolvido
+            SetOwnAnimation(); // Define a animação da própria alavanca
         }
 
-        if (canChange && _playerInRange)
+        foreach (Lever lever in linkedLevers)
         {
-            _textInteractManager.SetText(LocalizationManager.Instance.GetTranslation(_translateName)); // Define o texto de interação
-
-            if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.E))
+            if (lever != null)
             {
-                canChange = false;
-
-                if (linkedLevers.Length > 1)
-                {
-                    SetOwnAnimation(); // Define a animação da própria alavanca
-                }
-
-                foreach (Lever lever in linkedLevers)
-                {
-                    if (lever != null)
-                    {
-                        lever.SetAnimationState(lever.state); // Atualiza o estado da animação das alavancas vinculadas
-                    }
-                }
+                lever.SetAnimationState(lever.state); // Atualiza o estado da animação das alavancas vinculadas
             }
         }
     }
-
     public void SetAnimationState(bool state)
     {
         _anim.SetBool("LeverToggle", state); // Atualiza a animação de acordo com o estado
         StartCoroutine(ChangeAnimation());
-    }
-
-    void SetOwnAnimation()
-    {
-        _anim.SetBool("LeverToggle", state); // Define a animação de acordo com o estado atual
-        state = !state; // Inverte o estado da alavanca
-        canChange = true;
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            _playerInRange = true; // Jogador entrou na área de interação
-            _textInteractManager.canSetText = true; // Permite que o texto de interação seja definido
-        }
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            _textInteractManager.canSetText = false; // Impede que o texto de interação seja definido
-            _playerInRange = false; // Jogador saiu da área de interação
-        }
     }
 
     IEnumerator ChangeAnimation()
@@ -104,40 +57,59 @@ public class Lever : MonoBehaviour
         state = !state;
         CycleColor(); // Altera cor da luz
         _leverPuzzle.ReceiveSignal(gameObject, _currentColor);
-
         canChange = true;
     }
 
     void CycleColor()
     {
         _currentColor = (LeverColor)(((int)_currentColor + 1) % _leverPuzzle.lengthCode); // Red → Green → Blue → Purple → Yellow → Red...
-        UpdateLightColor();
+
+        UpdateLightColor(ColorForLight(_currentColor));
     }
 
-    void UpdateLightColor()
+    Color ColorForLight(LeverColor lc)
     {
         if (_lightRenderer != null)
         {
             if (_leverPuzzle.lengthCode == 3)
             {
-                switch (_currentColor)
+                return lc switch
                 {
-                    case LeverColor.Red: _lightRenderer.material.color = Color.red; break;
-                    case LeverColor.Green: _lightRenderer.material.color = Color.green; break;
-                    case LeverColor.Blue: _lightRenderer.material.color = Color.blue; break;
-                }
+                    LeverColor.Red => Color.red,
+                    LeverColor.Green => Color.green,
+                    LeverColor.Blue => Color.blue,
+                    _ => Color.black,
+                };
             }
             else
             {
-                switch (_currentColor)
+                return lc switch
                 {
-                    case LeverColor.Red: _lightRenderer.material.color = Color.red; break;
-                    case LeverColor.Green: _lightRenderer.material.color = Color.green; break;
-                    case LeverColor.Blue: _lightRenderer.material.color = Color.blue; break;
-                    case LeverColor.Purple: _lightRenderer.material.color = new Color(0.5f, 0f, 0.5f); break; // Cor roxa
-                    case LeverColor.Yellow: _lightRenderer.material.color = Color.yellow; break;
-                }
+                    LeverColor.Red => Color.red,
+                    LeverColor.Green => Color.green,
+                    LeverColor.Blue => Color.blue,
+                    LeverColor.Purple => new Color(0.5f, 0f, 0.5f),// Cor roxa
+                    LeverColor.Yellow => Color.yellow,
+                    _ => Color.black,
+                };
             }
         }
+        return Color.black;
+    }
+
+    void UpdateLightColor(Color color)
+    {
+        _lightRenderer.material.color = color;
+    }
+
+    public void ResetToDefault()
+    {
+        canChange = true;
+
+        _currentColor = _defaultColor;
+        UpdateLightColor(ColorForLight(_defaultColor));
+
+        state = !_dafaultState;
+        SetOwnAnimation();
     }
 }
