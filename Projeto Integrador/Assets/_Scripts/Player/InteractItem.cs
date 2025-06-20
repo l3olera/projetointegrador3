@@ -8,6 +8,7 @@ public class InteractItem : MonoBehaviour
     [SerializeField] private InventoryController _ic;
     private SmellTargetManager _smellManager; // Referência ao gerenciador de alvos de cheiro
     private TextInteractManager _textInteractManager; // Referência ao gerenciador de texto de interação
+    private InputManager _im; // Referência ao gerenciador de entrada
 
     [Header("Configurações de interação")]
     private GameObject _item; // Representa qual é o item do objeto
@@ -18,11 +19,12 @@ public class InteractItem : MonoBehaviour
     {
         _smellManager = SmellTargetManager.Instance; // Obtém a referência ao gerenciador de alvos de cheiro
         _textInteractManager = TextInteractManager.Instance; // Obtém a referência ao gerenciador de texto de interação
+        _im = InputManager.Instance; // Obtém a instância do gerenciador de entrada
     }
 
     void Update()
     {
-        if (isInteractable && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Z))) // Verifica se o jogador está interagindo com o objeto
+        if (isInteractable && _im.IsInteractKeyPressed()) // Verifica se o jogador está interagindo com o objeto
         {
             Interact(); // Chama a função de interação
         }

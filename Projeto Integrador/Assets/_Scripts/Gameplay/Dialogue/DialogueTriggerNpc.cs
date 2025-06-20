@@ -1,37 +1,24 @@
 using UnityEngine;
 
-public class DialogueTriggerNpc : MonoBehaviour
+public abstract class DialogueTriggerNpc : MonoBehaviour
 {
     public DialogueSequence[] dialogueSequence;
-    public int requiredItemId = -1;
     public OccurrencesDialogue dialogueId;
 
-    private DialogueControl _dc;
-    private InventoryController _ic;
-    private ObjectivesController _oc;
-    private SmellTargetManager _smell;
+    protected DialogueControl _dc;
+    protected SmellTargetManager _smell;
     private TextInteractManager _textInteract; // Referência ao gerenciador de texto de interação
-    private bool[] _dialoguePlayed;
+    private InputManager _im; // Referência ao gerenciador de entrada
+
     private bool _canInteract;
     [SerializeField] private string _translateName; // Nome da tradução para o texto de interação
 
-    void Awake()
-    {
-        _dialoguePlayed = new bool[dialogueSequence.Length];
-
-        for (int i = 0; i < _dialoguePlayed.Length; i++)
-        {
-            _dialoguePlayed[i] = false;
-        }
-    }
-
-    void Start()
+    protected virtual void Start()
     {
         _dc = DialogueControl.Instance;
-        _ic = InventoryController.Instance;
-        _oc = ObjectivesController.Instance;
         _smell = SmellTargetManager.Instance;
         _textInteract = TextInteractManager.Instance; // Obtém a referência ao TextInteractManager
+        _im = InputManager.Instance; // Obtém a instância do InputManager
     }
 
     public void EnableInteraction()
@@ -39,6 +26,7 @@ public class DialogueTriggerNpc : MonoBehaviour
         _canInteract = true;
         _textInteract.canSetText = true; // Permite que o texto de interação seja definido
     }
+
     public void DisableInteraction()
     {
         _canInteract = false;
@@ -47,37 +35,16 @@ public class DialogueTriggerNpc : MonoBehaviour
 
     void Update()
     {
-        if (_canInteract && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Z)))
+        if (_canInteract)
         {
             _textInteract.SetText(LocalizationManager.Instance.GetTranslation(_translateName)); // Obtém a tradução do texto de interação
 
-            TryStartDialogue();
-        }
-    }
-    private void TryStartDialogue()
-    {
-        _dc.DefineOccurrenceDialogue(dialogueId);
-
-        if (!_ic.HasItemById(requiredItemId))
-        {
-            _dc.Speech(dialogueSequence[0].lines);
-            if (!_dialoguePlayed[0])
+            if (_im.IsInteractKeyPressed()) // Verifica se a tecla de interação foi pressionada
             {
-                _dialoguePlayed[0] = true;
-                _smell.NextTarget();
+                TryStartDialogue();
             }
         }
-        else
-        {
-            _dc.Speech(dialogueSequence[1].lines);
-            if (!_dialoguePlayed[1])
-            {
-                _dialoguePlayed[1] = true;
-                _smell.NextTarget();
-            }
-
-            _ic.RemoveItem();
-            _oc.IncreaseActIndex();
-        }
     }
+
+    protected abstract void TryStartDialogue();
 }

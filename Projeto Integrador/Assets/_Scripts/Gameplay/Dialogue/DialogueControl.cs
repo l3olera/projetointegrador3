@@ -8,6 +8,7 @@ using UnityEngine.Localization;
 public enum OccurrencesDialogue
 {
     None,
+    EndAct2,
     LeverPuzzleSolved, // Diálogo quando o puzzle da alavanca é resolvido
     PersecutionStart, // Diálogo quando a perseguição começa
 }
@@ -35,8 +36,7 @@ public class DialogueControl : MonoBehaviour
     private int _currentLineIndex; // Índice da linha atual do diálogo
     private AudioSource _playSoundAnimal; // Referência ao AudioSource que toca os sons dos animais
     [SerializeField] private PlayerMovement _playerMovement; // Referência ao script que controla o movimento do jogador
-    [SerializeField] private CinemachineInputAxisController cinemachineCameraIn;
-    private CinemachineInputAxisController _cinemachineCameraIn; // Referência à câmera cinemática
+    [SerializeField] private CinemachineInputAxisController _cinemachineCameraAxis; // Referência à câmera cinemática
 
     void Awake()
     {
@@ -181,12 +181,12 @@ public class DialogueControl : MonoBehaviour
 
     void DisableCameraControl()
     {
-        _cinemachineCameraIn.enabled = false; // Define uma prioridade baixa para desativar a câmera
+        _cinemachineCameraAxis.enabled = false; // Desativa a câmera
     }
 
     void EnableCameraControl()
     {
-        _cinemachineCameraIn.enabled = true; // Define uma prioridade alta para reativar a câmera
+        _cinemachineCameraAxis.enabled = true; // Ativa a câmera
     }
 
     void ResetOccurrenceDialogue()

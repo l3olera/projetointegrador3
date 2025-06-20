@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7069505520918420298}
   - component: {fileID: 5693006828475084089}
   - component: {fileID: 1074517393171591804}
-  - component: {fileID: 524309336310568420}
   - component: {fileID: 8828558926882501103}
   m_Layer: 0
   m_Name: NPC
@@ -88,26 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &524309336310568420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1176560546751920114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45312b8015459ec46921a59dddfc74e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueSequence: []
-  requiredIdItem: -1
-  _onRadious: 0
-  _translateName: 
-  _interactText: {fileID: 0}
-  references:
-    version: 2
-    RefIds: []
 --- !u!136 &8828558926882501103
 CapsuleCollider:
   m_ObjectHideFlags: 0

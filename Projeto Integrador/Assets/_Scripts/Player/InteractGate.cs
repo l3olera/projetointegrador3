@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 
@@ -11,16 +12,18 @@ public class InteractGate : MonoBehaviour
     [SerializeField] private string _translateName; // Referência ao texto que vai traduzir na interação 
     private SmellTargetManager _smellManager; // Referência ao gerenciador de alvos de cheiro
     private TextInteractManager _textInteractManager; // Referência ao gerenciador de texto de interação
+    private InputManager _im; // Referência ao gerenciador de entrada
 
     void Start()
     {
         _smellManager = SmellTargetManager.Instance; // Obtém a referência ao SmellTargetManager
         _textInteractManager = TextInteractManager.Instance; // Obtém a referência ao TextInteractManager
+        _im = InputManager.Instance; // Obtém a instância do InputManager
     }
 
     void Update()
     {
-        if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Z)) && _gateController.canOpen)
+        if (_im.IsInteractKeyPressed() && _gateController.canOpen)
         { // Verifica se o jogador está interagindo com o objeto
             _gateController.OpenGate(); // Chama a função OpenGate do GateController
             _inventoryController.RemoveItem(); // Chama a função para remover o item do inventário
