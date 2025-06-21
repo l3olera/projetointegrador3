@@ -24,9 +24,9 @@ public class CatMissionDialogueHandler : DialogueTriggerNpc
             _dc.currentOccurrenceDialogue = dialogueId;
             _dc.Speech(dialogueSequence[1].lines);
             _dialoguePlayed[1] = true;
-            _smell.NextTarget();
-            _ic.RemoveItem();
             _oc.IncreaseActIndex();
+            _ic.RemoveItem();
+            _smell.NextTarget();
 
         }
         else if (!_ic.HasItemById(requiredItemId) && !_dialoguePlayed[0])

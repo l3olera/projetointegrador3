@@ -50,8 +50,8 @@ public class PersecutionController : MonoBehaviour
         if (_isInTrigger && dialogueID == _occurrenceDialogue)
         {
             _isInTrigger = false; // Reseta o gatilho para evitar múltiplas ativações
-            _smellTargetManager.NextTarget(); // Avança para o próximo objetivo
             _oc.IncreaseActIndex(); // Incrementa o índice do objetivo atual
+            _smellTargetManager.NextTarget(); // Avança para o próximo objetivo
             StartCoroutine(PersecutionTimer());
         }
     }
