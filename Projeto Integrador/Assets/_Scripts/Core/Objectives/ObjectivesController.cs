@@ -22,7 +22,7 @@ public class ObjectivesController : MonoBehaviour
 
     void Start()
     {
-        CurrentObjective = 1; // Inicializa o índice do objetivo atual como 1
+        CurrentObjective = 4; // Inicializa o índice do objetivo atual como 1
         UpdateObjectivesText(); // Chama a função para atualizar o texto dos objetivos ao iniciar o jogo   
     }
 

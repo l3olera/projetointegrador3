@@ -27,6 +27,7 @@ public class LocalizationManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(this);
             await LoadAllTranslations();
         }
         else
