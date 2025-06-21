@@ -5,6 +5,7 @@ public class EndGameController : MonoBehaviour
     [Header("Componentes referenciados")]
     [SerializeField] private SceneLoader _sceneLoader;
     [SerializeField] private GateController _gateController;
+    [SerializeField] private PlayerMovement _player;
     private ObjectivesController _oc;
     private DialogueControl _dc;
 
@@ -27,6 +28,7 @@ public class EndGameController : MonoBehaviour
 
     void Start()
     {
+        _dc = DialogueControl.Instance;
         _oc = ObjectivesController.Instance;
     }
 
@@ -34,7 +36,7 @@ public class EndGameController : MonoBehaviour
     {
         if (_oc.CompareAct(_dialogueUnique.toAct))
         {
-            _gateController.CloseGate();
+            //_gateController.CloseGate();
             _dc.DefineOccurrenceDialogue(_dialogueUnique.occurrenceDialogue);
             _dc.Speech(_dialogueUnique.dialogueSequence[0].lines);
         }
@@ -44,8 +46,8 @@ public class EndGameController : MonoBehaviour
     {
         if (dialogueId == _occurenceDialogue)
         {
-            Debug.LogWarning("ACABOU!!!!");
-            //_sceneLoader.Transition(_sceneName);
+            _player.FreeMouse();
+            _sceneLoader.Transition(_sceneName);
         }
     }
 }
