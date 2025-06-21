@@ -6,7 +6,6 @@ public class DialogueCharacter : MonoBehaviour
     [SerializeField] private DialogueControl _dc; // Referência ao script que controla os diálogos
     [SerializeField] private InventoryController _ic; // Referência ao script que controla o inventário
     [SerializeField] private ObjectivesController _oc; // Referência ao script que controla os objetivos
-    [SerializeField] private AudioSource _barkAudioSource; // Referência ao audioSource responsável por emitir o latido de Lakshmi
 
     void OnTriggerEnter(Collider other)
     {

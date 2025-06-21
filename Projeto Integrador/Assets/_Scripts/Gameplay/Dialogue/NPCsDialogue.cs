@@ -9,11 +9,13 @@ public class NPCsDialogue : DialogueTriggerNpc
     {
         _dc.DefineOccurrenceDialogue(dialogueId);
 
-        foreach (var dialogue in dialogueSequence)
+        for (int i = 0; i < dialogueSequence.Length; i++)
         {
-            _dc.Speech(dialogue.lines);
-            _smell.NextTarget(); // Avança para o próximo alvo de cheiro após o diálogo
-            return; // Sai do método após iniciar o diálogo
+            _dc.Speech(dialogueSequence[i].lines);
+            if (!_dialoguePlayed[i])
+            {
+                _smell.NextTarget(); // Avança para o próximo alvo de cheiro após o diálogo
+            }
         }
     }
 }

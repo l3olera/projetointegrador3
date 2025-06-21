@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -102,6 +103,13 @@ public class CutsceneManager : MonoBehaviour
         _cmFreeLook.Priority = 20;
         _playerMovement.enabled = true;
         OnCutsceneEnd?.Invoke(currentName);
+        StartCoroutine(DisableCutscene(1f));
+    }
+
+    IEnumerator DisableCutscene(float durationToDisable)
+    {
+        yield return new WaitForSeconds(durationToDisable);
+
         _cutscenesObj.SetActive(false);
     }
 }
