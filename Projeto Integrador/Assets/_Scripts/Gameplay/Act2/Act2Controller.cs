@@ -51,11 +51,12 @@ public class Act2Controller : MonoBehaviour
 
     }
 
-    void FadeOutCutscene(CutscenesName _name)
+    void FadeOutCutscene(CutscenesName _name, GameObject _obj)
     {
         if (_name == _cutsceneName)
         {
             _fc.EndFade();
+            _obj.SetActive(false);
         }
     }
 

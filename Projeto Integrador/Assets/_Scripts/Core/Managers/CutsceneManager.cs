@@ -3,7 +3,6 @@ using System.Collections;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Playables;
-using UnityEngine.Timeline;
 
 public enum CutscenesName
 {
@@ -29,7 +28,7 @@ public class CutsceneManager : MonoBehaviour
     [SerializeField] private PlayerMovement _playerMovement; // ou script de movimento do player
     [SerializeField] private GameObject _hud;
     [SerializeField] private GameObject _cutscenesObj;
-    public static event Action<CutscenesName> OnCutsceneEnd;
+    public static event Action<CutscenesName, GameObject> OnCutsceneEnd;
     public CutscenesName currentName;
 
     void OnEnable()
@@ -102,14 +101,6 @@ public class CutsceneManager : MonoBehaviour
         camCut.Priority = 10;
         _cmFreeLook.Priority = 20;
         _playerMovement.enabled = true;
-        OnCutsceneEnd?.Invoke(currentName);
-        StartCoroutine(DisableCutscene(1f));
-    }
-
-    IEnumerator DisableCutscene(float durationToDisable)
-    {
-        yield return new WaitForSeconds(durationToDisable);
-
-        _cutscenesObj.SetActive(false);
+        OnCutsceneEnd?.Invoke(currentName, _cutscenesObj);
     }
 }
