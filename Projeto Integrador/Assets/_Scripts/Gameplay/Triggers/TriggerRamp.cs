@@ -22,6 +22,7 @@ public class TriggerRamp : MonoBehaviour
     {
         if (other.TryGetComponent<PlayerMovement>(out var playerMovement))
         {
+            playerMovement.StopMovement();
             playerMovement.canMove = false; // Desativa a movimentação do jogador
         }
 
