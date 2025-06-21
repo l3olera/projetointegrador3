@@ -1,23 +1,96 @@
+using System;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.Playables;
+using UnityEngine.Timeline;
+
+public enum CutscenesName
+{
+    Start,
+    Salem,
+    Final
+}
 
 public class CutsceneManager : MonoBehaviour
 {
-    [SerializeField] private CinemachineCamera _cmCutscene;
+    [Header("Cameras para referenciar")]
+    [SerializeField] private CinemachineCamera _cmCutsceneStart;
+    [SerializeField] private CinemachineCamera _cmCutsceneSalem;
+    [SerializeField] private CinemachineCamera _cmCutsceneFinal;
     [SerializeField] private CinemachineCamera _cmFreeLook;
-    [SerializeField] private PlayerMovement _playerMovement; // ou script de movimento do player
 
-    public void StartCutscene()
+    [Header("Timelines para referenciar")]
+    [SerializeField] private PlayableDirector _cutsceneStart;
+    [SerializeField] private PlayableDirector _cutsceneSalem;
+    [SerializeField] private PlayableDirector _cutsceneFinal;
+
+    [Header("Componente para referenciar")]
+    [SerializeField] private PlayerMovement _playerMovement; // ou script de movimento do player
+    [SerializeField] private GameObject _hud;
+    public static event Action<CutscenesName> OnCutsceneEnd;
+    public CutscenesName currentName;
+
+    void OnEnable()
     {
-        _cmCutscene.Priority = 20;
-        _cmFreeLook.Priority = 10;
-        _playerMovement.enabled = false;
+        _cutsceneStart.stopped += OnStartCutsceneEnd;
+        _cutsceneSalem.stopped += OnSalemCutsceneEnd;
+        _cutsceneFinal.stopped += OnFinalCutsceneEnd;
     }
 
-    public void EndCutscene()
+    void OnDisable()
     {
-        _cmCutscene.Priority = 10;
+        _cutsceneStart.stopped -= OnStartCutsceneEnd;
+        _cutsceneSalem.stopped -= OnSalemCutsceneEnd;
+        _cutsceneFinal.stopped -= OnFinalCutsceneEnd;
+    }
+
+    public void SelectCutscene(CutscenesName name)
+    {
+        currentName = name;
+        switch (name)
+        {
+            case CutscenesName.Start:
+                StartCutscene(_cmCutsceneStart, _cutsceneStart);
+                break;
+            case CutscenesName.Salem:
+                StartCutscene(_cmCutsceneSalem, _cutsceneSalem);
+                break;
+            case CutscenesName.Final:
+                StartCutscene(_cmCutsceneFinal, _cutsceneFinal);
+                break;
+        }
+    }
+
+    void StartCutscene(CinemachineCamera camCut, PlayableDirector timeline)
+    {
+        _hud.SetActive(false);
+        camCut.Priority = 20;
+        _cmFreeLook.Priority = 10;
+        _playerMovement.enabled = false;
+        timeline.Play();
+    }
+
+    void OnStartCutsceneEnd(PlayableDirector dir)
+    {
+        EndCutscene(_cmCutsceneStart);
+    }
+
+    void OnSalemCutsceneEnd(PlayableDirector dir)
+    {
+        EndCutscene(_cmCutsceneSalem);
+    }
+
+    void OnFinalCutsceneEnd(PlayableDirector dir)
+    {
+        EndCutscene(_cmCutsceneFinal);
+    }
+
+    void EndCutscene(CinemachineCamera camCut)
+    {
+        _hud.SetActive(true);
+        camCut.Priority = 10;
         _cmFreeLook.Priority = 20;
         _playerMovement.enabled = true;
+        OnCutsceneEnd?.Invoke(currentName);
     }
 }

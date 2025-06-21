@@ -19,15 +19,19 @@ public class Act2Controller : MonoBehaviour
     [SerializeField] private GameObject _fenceAct3;
     [SerializeField] private GameObject _salem;
     [SerializeField] private CatMissionDialogueHandler _catMission;
+    [SerializeField] private CutsceneManager _cutscene;
+    [SerializeField] private CutscenesName _cutsceneName;
 
     void OnEnable()
     {
         DialogueControl.OnDialogueEnd += StartTransitionToAct3;
+        CutsceneManager.OnCutsceneEnd += FadeOutCutscene;
     }
 
     void OnDisable()
     {
         DialogueControl.OnDialogueEnd -= StartTransitionToAct3;
+        CutsceneManager.OnCutsceneEnd -= FadeOutCutscene;
     }
 
     void StartTransitionToAct3(OccurrencesDialogue dialogueId)
@@ -42,8 +46,17 @@ public class Act2Controller : MonoBehaviour
     {
         _fc.StartFade();
         yield return new WaitForSeconds(_fc.transitionDuration);
+        _cutscene.SelectCutscene(_cutsceneName);
         ChangeObjects();
-        _fc.EndFade();
+
+    }
+
+    void FadeOutCutscene(CutscenesName _name)
+    {
+        if (_name == _cutsceneName)
+        {
+            _fc.EndFade();
+        }
     }
 
     void ChangeObjects()
