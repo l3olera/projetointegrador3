@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Localization.SmartFormat.PersistentVariables;
 
 public class TriggerRamp : MonoBehaviour
 {
@@ -28,11 +30,16 @@ public class TriggerRamp : MonoBehaviour
 
         if (other.TryGetComponent<NavAgentController>(out var navAgent))
         {
-
-            navAgent.DisableAgent(); // Desativa o NavMeshAgent do jogador
+            StartCoroutine(IntervalToDsableNavAgent(navAgent));
         }
 
         playerMovement.canMove = true; // Reativa a movimentação do jogador
+    }
+
+    IEnumerator IntervalToDsableNavAgent(NavAgentController navAgent)
+    {
+        yield return null;
+        navAgent.DisableAgent(); // Desativa o NavMeshAgent do jogador
     }
 
     void OnRampEnd(Collider other)
