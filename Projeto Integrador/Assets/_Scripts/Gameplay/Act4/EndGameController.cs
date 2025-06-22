@@ -51,16 +51,8 @@ public class EndGameController : MonoBehaviour
     {
         if (dialogueId == _occurenceDialogue)
         {
-            _fade.StartFade();
-            StartCoroutine(FadeTransition());
+            _cutscene.SelectCutscene(_cutName);
         }
-    }
-
-    IEnumerator FadeTransition()
-    {
-        yield return new WaitForSeconds(_fade.transitionDuration);
-        _fade.EndFade();
-        _cutscene.SelectCutscene(_cutName);
     }
 
     public void GoCredits()

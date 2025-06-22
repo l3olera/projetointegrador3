@@ -29,6 +29,7 @@ public class CutsceneManager : MonoBehaviour
     [SerializeField] private GameObject _hud;
     [SerializeField] private GameObject _cutscenesObj;
     [SerializeField] private SceneLoader _sceneLoader;
+    [SerializeField] private FadeController _fade;
 
     [Header("Atributos da cena final")]
     [SerializeField] private string _nextScene;
@@ -61,7 +62,15 @@ public class CutsceneManager : MonoBehaviour
 
     public void SelectCutscene(CutscenesName name)
     {
+        _fade.StartFade();
         currentName = name;
+        StartCoroutine(IntervalToChooseCut(currentName));
+    }
+
+    IEnumerator IntervalToChooseCut(CutscenesName name)
+    {
+        yield return new WaitForSeconds(_fade.transitionDuration);
+
         switch (name)
         {
             case CutscenesName.Start:
@@ -78,6 +87,7 @@ public class CutsceneManager : MonoBehaviour
 
     void StartCutscene(CinemachineCamera camCut, PlayableDirector timeline)
     {
+        _fade.EndFade();
         _cutscenesObj.SetActive(true);
         _hud.SetActive(false);
         camCut.Priority = 20;
@@ -103,6 +113,7 @@ public class CutsceneManager : MonoBehaviour
 
     void EndCutscene(CinemachineCamera camCut)
     {
+        _fade.EndFade();
         _hud.SetActive(true);
         camCut.Priority = 10;
         _cmFreeLook.Priority = 20;

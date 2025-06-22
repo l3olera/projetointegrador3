@@ -25,38 +25,26 @@ public class Act2Controller : MonoBehaviour
     void OnEnable()
     {
         DialogueControl.OnDialogueEnd += StartTransitionToAct3;
-        CutsceneManager.OnCutsceneEnd += FadeOutCutscene;
     }
 
     void OnDisable()
     {
         DialogueControl.OnDialogueEnd -= StartTransitionToAct3;
-        CutsceneManager.OnCutsceneEnd -= FadeOutCutscene;
     }
 
     void StartTransitionToAct3(OccurrencesDialogue dialogueId)
     {
         if (dialogueId == _occurenceDialogue)
         {
+            _cutscene.SelectCutscene(_cutsceneName);
             StartCoroutine(MakeTransition());
         }
     }
 
     IEnumerator MakeTransition()
     {
-        _fc.StartFade();
         yield return new WaitForSeconds(_fc.transitionDuration);
-        _cutscene.SelectCutscene(_cutsceneName);
         ChangeObjects();
-
-    }
-
-    void FadeOutCutscene(CutscenesName _name)
-    {
-        if (_name == _cutsceneName)
-        {
-            _fc.EndFade();
-        }
     }
 
     void ChangeObjects()
