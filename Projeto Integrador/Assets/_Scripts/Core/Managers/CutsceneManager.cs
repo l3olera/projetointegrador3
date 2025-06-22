@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -28,19 +27,19 @@ public class CutsceneManager : MonoBehaviour
     [SerializeField] private PlayerMovement _playerMovement; // ou script de movimento do player
     [SerializeField] private GameObject _hud;
     [SerializeField] private GameObject _cutscenesObj;
-    public static event Action<CutscenesName, GameObject> OnCutsceneEnd;
+    public static event Action<CutscenesName> OnCutsceneEnd;
     public CutscenesName currentName;
 
     void OnEnable()
     {
-        _cutsceneStart.stopped += OnStartCutsceneEnd;
+        //_cutsceneStart.stopped += OnStartCutsceneEnd;
         _cutsceneSalem.stopped += OnSalemCutsceneEnd;
         _cutsceneFinal.stopped += OnFinalCutsceneEnd;
     }
 
     void OnDisable()
     {
-        _cutsceneStart.stopped -= OnStartCutsceneEnd;
+        //_cutsceneStart.stopped -= OnStartCutsceneEnd;
         _cutsceneSalem.stopped -= OnSalemCutsceneEnd;
         _cutsceneFinal.stopped -= OnFinalCutsceneEnd;
     }
@@ -101,6 +100,7 @@ public class CutsceneManager : MonoBehaviour
         camCut.Priority = 10;
         _cmFreeLook.Priority = 20;
         _playerMovement.enabled = true;
-        OnCutsceneEnd?.Invoke(currentName, _cutscenesObj);
+        OnCutsceneEnd?.Invoke(currentName);
+        _cutscenesObj.SetActive(false);
     }
 }

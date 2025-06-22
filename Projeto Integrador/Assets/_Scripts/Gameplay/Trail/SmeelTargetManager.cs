@@ -11,6 +11,7 @@ public class SmellTargetManager : MonoBehaviour
     private Transform[] _currentActTargets;
     private ObjectivesController _oc;
     private SmellTrail _smellTrail;
+    private int _currentActInSmell;
 
     public static SmellTargetManager Instance { get; private set; } // Instância única do SmellTargetManager
 
@@ -31,6 +32,7 @@ public class SmellTargetManager : MonoBehaviour
 
         // Começa com Ato 1
         _currentActTargets = act1Targets;
+        _currentActInSmell = 1;
     }
 
     public Transform GetCurrentTarget() => _currentActTargets[_currentTargetIndex];
@@ -39,7 +41,7 @@ public class SmellTargetManager : MonoBehaviour
     {
         _currentTargetIndex++;
 
-        if (_currentTargetIndex >= _currentActTargets.Length)
+        if (_currentTargetIndex >= _currentActTargets.Length || !_oc.CompareAct(_currentActInSmell))
         {
             SwitchAct();
         }
@@ -56,15 +58,19 @@ public class SmellTargetManager : MonoBehaviour
             {
                 case 1:
                     _currentActTargets = act1Targets;
+                    _currentActInSmell = 1;
                     break;
                 case 2:
                     _currentActTargets = act2Targets;
+                    _currentActInSmell = 2;
                     break;
                 case 3:
                     _currentActTargets = act3Targets;
+                    _currentActInSmell = 3;
                     break;
                 case 4:
                     _currentActTargets = act4Targets;
+                    _currentActInSmell = 4;
                     break;
             }
         }

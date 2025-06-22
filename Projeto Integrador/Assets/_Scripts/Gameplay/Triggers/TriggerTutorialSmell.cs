@@ -37,6 +37,6 @@ public class TriggerTutorialSmell : MonoBehaviour
     void PlayDialogue()
     {
         _dc.Speech(_dialogueSequence[0].lines); // Inicia o diálogo após pressionar o botão de cheiro
-        Destroy(gameObject); // Destroi o objeto do tutorial após o diálogo
+        Destroy(this); // Destroi o objeto do tutorial após o diálogo
     }
 }

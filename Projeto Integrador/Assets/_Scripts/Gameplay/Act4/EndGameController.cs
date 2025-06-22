@@ -65,12 +65,11 @@ public class EndGameController : MonoBehaviour
         _cutscene.SelectCutscene(_cutName);
     }
 
-    void GoCredits(CutscenesName _name, GameObject _obj)
+    void GoCredits(CutscenesName _name)
     {
         if (_name == _cutName)
         {
             _player.FreeMouse();
-            _obj.SetActive(false);
             _sceneLoader.Transition(_sceneName);
         }
 
