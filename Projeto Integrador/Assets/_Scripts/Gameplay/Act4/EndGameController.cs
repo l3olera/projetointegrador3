@@ -5,7 +5,6 @@ public class EndGameController : MonoBehaviour
 {
     [Header("Componentes referenciados")]
     [SerializeField] private SceneLoader _sceneLoader;
-    [SerializeField] private GateController _gateController;
     [SerializeField] private PlayerMovement _player;
     private ObjectivesController _oc;
     private DialogueControl _dc;
@@ -25,13 +24,11 @@ public class EndGameController : MonoBehaviour
     void OnEnable()
     {
         DialogueControl.OnDialogueEnd += EndGame;
-        CutsceneManager.OnCutsceneEnd += GoCredits;
     }
 
     void OnDisable()
     {
         DialogueControl.OnDialogueEnd -= EndGame;
-        CutsceneManager.OnCutsceneEnd -= GoCredits;
     }
 
     void Start()
@@ -62,16 +59,13 @@ public class EndGameController : MonoBehaviour
     IEnumerator FadeTransition()
     {
         yield return new WaitForSeconds(_fade.transitionDuration);
+        _fade.EndFade();
         _cutscene.SelectCutscene(_cutName);
     }
 
-    void GoCredits(CutscenesName _name)
+    public void GoCredits()
     {
-        if (_name == _cutName)
-        {
-            _player.FreeMouse();
-            _sceneLoader.Transition(_sceneName);
-        }
-
+        _player.FreeMouse();
+        _sceneLoader.Transition(_sceneName);
     }
 }

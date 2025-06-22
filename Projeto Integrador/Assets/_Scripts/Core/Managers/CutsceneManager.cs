@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -27,8 +28,14 @@ public class CutsceneManager : MonoBehaviour
     [SerializeField] private PlayerMovement _playerMovement; // ou script de movimento do player
     [SerializeField] private GameObject _hud;
     [SerializeField] private GameObject _cutscenesObj;
-    public static event Action<CutscenesName> OnCutsceneEnd;
+    [SerializeField] private SceneLoader _sceneLoader;
+
+    [Header("Atributos da cena final")]
+    [SerializeField] private string _nextScene;
+
+    [Header("Atributo da Cutscene")]
     public CutscenesName currentName;
+    public static event Action<CutscenesName> OnCutsceneEnd;
 
     void OnEnable()
     {
