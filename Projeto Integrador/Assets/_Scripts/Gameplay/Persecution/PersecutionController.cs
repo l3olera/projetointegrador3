@@ -8,6 +8,7 @@ public class PersecutionController : MonoBehaviour
     [SerializeField] private float _persecutionTime = 90f; // Tempo total de perseguição em segundos
     [SerializeField] private PlayerSpawn _playerSpawn; // Referência ao PlayerSpawn para reiniciar o jogador
     [SerializeField] private UniqueDialogueTrigger _dialogueTriggerRuffus; // Referência ao UniqueDialogueTrigger para reativar o diálogo de perseguição, caso o jogador perca
+    [SerializeField] private GameObject _rufus;
     private InventoryController _ic; // Referência ao InventoryController
     private SmellTargetManager _smellTargetManager; // Referência ao SmellTargetManager
     private ObjectivesController _oc; // Referência ao ObjectivesController
@@ -49,6 +50,7 @@ public class PersecutionController : MonoBehaviour
     {
         if (_isInTrigger && dialogueID == _occurrenceDialogue)
         {
+            _rufus.SetActive(false);
             _isInTrigger = false; // Reseta o gatilho para evitar múltiplas ativações
             _oc.IncreaseActIndex(); // Incrementa o índice do objetivo atual
             _smellTargetManager.NextTarget(); // Avança para o próximo objetivo
