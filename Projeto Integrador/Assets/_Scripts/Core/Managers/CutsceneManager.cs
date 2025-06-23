@@ -40,24 +40,21 @@ public class CutsceneManager : MonoBehaviour
 
     void OnEnable()
     {
-        //_cutsceneStart.stopped += OnStartCutsceneEnd;
+        _cutsceneStart.stopped += OnStartCutsceneEnd;
         _cutsceneSalem.stopped += OnSalemCutsceneEnd;
         _cutsceneFinal.stopped += OnFinalCutsceneEnd;
     }
 
     void OnDisable()
     {
-        //_cutsceneStart.stopped -= OnStartCutsceneEnd;
+        _cutsceneStart.stopped -= OnStartCutsceneEnd;
         _cutsceneSalem.stopped -= OnSalemCutsceneEnd;
         _cutsceneFinal.stopped -= OnFinalCutsceneEnd;
     }
 
     void Start()
     {
-        if (_cutscenesObj.activeSelf)
-        {
-            _cutscenesObj.SetActive(false);
-        }
+        _hud.SetActive(false);
     }
 
     public void SelectCutscene(CutscenesName name)

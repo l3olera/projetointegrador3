@@ -20,7 +20,7 @@ public class PauseControl : MonoBehaviour
     //Pausa o jogo e mostra o canva do Pause
     void Pause()
     {
-        Time.timeScale = 0;
+        StopGame();
         EnableCanvas(true);
         _pm.FreeMouse();
     }
@@ -28,9 +28,19 @@ public class PauseControl : MonoBehaviour
     //Despausa o jogo e esconde o canva do Pause
     void UnPause()
     {
-        Time.timeScale = 1;
+        ReturnGame();
         EnableCanvas(false);
         _pm.LockMouse();
+    }
+
+    public void StopGame()
+    {
+        Time.timeScale = 0;
+    }
+
+    public void ReturnGame()
+    {
+        Time.timeScale = 1;
     }
 
     public void BackToMenu()

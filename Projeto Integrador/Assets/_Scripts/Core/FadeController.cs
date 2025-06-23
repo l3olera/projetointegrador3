@@ -9,6 +9,7 @@ public class FadeController : MonoBehaviour
     void Start()
     {
         _anim = GetComponent<Animator>();
+        _anim.updateMode = AnimatorUpdateMode.UnscaledTime;
     }
 
     public void StartFade()

@@ -528,7 +528,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: CinemachineCameraSalem
+    m_DisplayName: CinemachineCameraStart
   m_Markers:
     m_Objects: []
   TrackPriority: 0
