@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Localization.SmartFormat.PersistentVariables;
 
 public class TriggerRamp : MonoBehaviour
 {

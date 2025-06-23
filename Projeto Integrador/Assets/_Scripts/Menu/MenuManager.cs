@@ -85,11 +85,11 @@ public class MenuManager : MonoBehaviour
     public void ButtonExit()
     {
         PlaySoundButtonClick(); //Toca o som do botão de clique
-        // Exibe uma mensagem de log quando estamos no Editor e sai da aplicação na build
+                                // Exibe uma mensagem de log quando estamos no Editor e sai da aplicação na build
 #if UNITY_EDITOR
         Debug.Log("Jogo encerrado (simulação no Editor)");
 #else
-            Application.Quit();
+                    Application.Quit();
 #endif
     }
 
