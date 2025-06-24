@@ -11,6 +11,10 @@ TagManager:
   - TriggerPersecution
   - Ramp/Begin
   - Ramp/End
+<<<<<<< HEAD
+=======
+  - TriggerEndGame
+>>>>>>> Development
   layers:
   - Default
   - TransparentFX

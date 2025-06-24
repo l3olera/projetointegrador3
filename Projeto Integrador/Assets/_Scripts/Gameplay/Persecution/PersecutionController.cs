@@ -8,18 +8,29 @@ public class PersecutionController : MonoBehaviour
     [SerializeField] private float _persecutionTime = 90f; // Tempo total de perseguição em segundos
     [SerializeField] private PlayerSpawn _playerSpawn; // Referência ao PlayerSpawn para reiniciar o jogador
     [SerializeField] private UniqueDialogueTrigger _dialogueTriggerRuffus; // Referência ao UniqueDialogueTrigger para reativar o diálogo de perseguição, caso o jogador perca
+<<<<<<< HEAD
     private InventoryController _ic; // Referência ao InventoryController
     private SmellTargetManager _smellTargetManager; // Referência ao SmellTargetManager
+=======
+    [SerializeField] private GameObject _rufus;
+    private InventoryController _ic; // Referência ao InventoryController
+    private SmellTargetManager _smellTargetManager; // Referência ao SmellTargetManager
+    private ObjectivesController _oc; // Referência ao ObjectivesController
+>>>>>>> Development
     private bool _isInTrigger = false; // Indica se o jogador está dentro do gatilho de perseguição
     private OccurrencesDialogue _occurrenceDialogue;
 
     public float timer;
     public bool managedEscape = false; // Indica se o jogador conseguiu escapar
+<<<<<<< HEAD
 
     void Start()
     {
         _occurrenceDialogue = OccurrencesDialogue.PersecutionStart; // Define o ID da perseguição
     }
+=======
+    public int idSpawn = 2; // ID do spawn para reiniciar o jogador
+>>>>>>> Development
 
     void OnEnable()
     {
@@ -31,6 +42,7 @@ public class PersecutionController : MonoBehaviour
         DialogueControl.OnDialogueEnd -= StartPersecution; // Cancela a inscrição no evento de fim de diálogo
     }
 
+<<<<<<< HEAD
     void Update()
     {
         if (_ic == null)
@@ -42,6 +54,15 @@ public class PersecutionController : MonoBehaviour
         {
             _smellTargetManager = ReferenceManager.Instance.smellTargetManager; // Obtém a referência ao SmellTargetManager do ReferenceManager
         }
+=======
+    void Start()
+    {
+        _ic = InventoryController.Instance; // Obtém a referência ao InventoryController
+        _oc = ObjectivesController.Instance; // Obtém a referência ao ObjectivesController
+        _smellTargetManager = SmellTargetManager.Instance; // Obtém a referência ao SmellTargetManager
+
+        _occurrenceDialogue = OccurrencesDialogue.PersecutionStart; // Define o ID da perseguição
+>>>>>>> Development
     }
 
     void OnTriggerEnter(Collider other)
@@ -56,7 +77,13 @@ public class PersecutionController : MonoBehaviour
     {
         if (_isInTrigger && dialogueID == _occurrenceDialogue)
         {
+<<<<<<< HEAD
             _isInTrigger = false; // Reseta o gatilho para evitar múltiplas ativações
+=======
+            _rufus.SetActive(false);
+            _isInTrigger = false; // Reseta o gatilho para evitar múltiplas ativações
+            _oc.IncreaseActIndex(); // Incrementa o índice do objetivo atual
+>>>>>>> Development
             _smellTargetManager.NextTarget(); // Avança para o próximo objetivo
             StartCoroutine(PersecutionTimer());
         }
@@ -87,7 +114,11 @@ public class PersecutionController : MonoBehaviour
     {
         if (!managedEscape)
         {
+<<<<<<< HEAD
             _playerSpawn.SpawnPlayer(1); // Reinicia o jogador se ele não conseguiu escapar
+=======
+            _playerSpawn.SpawnPlayer(idSpawn); // Reinicia o jogador se ele não conseguiu escapar
+>>>>>>> Development
             _dialogueTriggerRuffus.hasTriggered = false; // Reseta o gatilho do diálogo de perseguição
         }
     }

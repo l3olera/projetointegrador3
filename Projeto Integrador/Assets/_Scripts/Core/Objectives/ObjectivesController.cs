@@ -8,11 +8,20 @@ public class ObjectivesController : MonoBehaviour
     [SerializeField] private LocalizedString[] _objectivesTranslate; // Referência ao texto traduzido dos objetivos
 
     public int CurrentObjective { get; private set; } // variável privada que armazena o índice do objetivo atual
+    public static ObjectivesController Instance { get; private set; } // Instância única do ObjectivesController
+
+    void Awake()
+    {
+        if (Instance != null && Instance != this) // Verifica se já existe uma instância do ObjectivesController
+        {
+            Destroy(this.gameObject); // Destroi o objeto atual se já houver uma instância
+            return; // Retorna para evitar duplicação
+        }
+        Instance = this;
+    }
 
     void Start()
     {
-        ReferenceManager.Instance.objectivesController = this; // Inicializa a referência ao ObjectivesController no ReferenceManager
-
         CurrentObjective = 1; // Inicializa o índice do objetivo atual como 1
         UpdateObjectivesText(); // Chama a função para atualizar o texto dos objetivos ao iniciar o jogo   
     }

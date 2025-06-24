@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -14,17 +15,19 @@ public class LocalizationManager : MonoBehaviour
         public LocalizedString localizedString; // Referência ao LocalizedString no inspector
     }
 
+    public static event Action OnFinishTranslations;
+
     [Header("Lista de Traduções")]
     public List<TranslationEntry> translations;
 
-    private Dictionary<string, string> _cachedTranslations = new Dictionary<string, string>();
+    private Dictionary<string, string> _cachedTranslations = new();
 
     private async void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            //DontDestroyOnLoad(gameObject); // Opcional: Mantém entre cenas
+            DontDestroyOnLoad(this);
             await LoadAllTranslations();
         }
         else
@@ -42,6 +45,7 @@ public class LocalizationManager : MonoBehaviour
             var localizedString = handle.Result;
             _cachedTranslations[entry.key] = localizedString;
         }
+        OnFinishTranslations?.Invoke();
     }
 
     public string GetTranslation(string key)

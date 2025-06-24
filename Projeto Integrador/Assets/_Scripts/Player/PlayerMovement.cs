@@ -42,8 +42,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        ReferenceManager.Instance.playerMovement = this; // Inicializa a referência ao PlayerMovement no ReferenceManager
-
         _rb = GetComponent<Rigidbody>(); //Obtém o rigbody do player
         _audioSource = GetComponent<AudioSource>(); // Obtém o componente AudioSource do player
         _anim = GetComponent<Animator>(); // Obtém o componente Animator do player
@@ -67,7 +65,6 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             StopMovement(); // Para a movimentação se o jogador não puder se mover
-            _anim.SetBool("isWalking", false); // Para a animação de andar se o jogador não puder se mover
         }
     }
 
@@ -161,6 +158,7 @@ public class PlayerMovement : MonoBehaviour
     public void StopMovement()
     {
         _rb.linearVelocity = Vector3.zero; // Para a movimentação do Rigidbody
+        _anim.SetBool("isWalking", false); // Para a animação de andar se o jogador não puder se mover
     }
 
     public void FreeMouse()

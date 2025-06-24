@@ -8,8 +8,15 @@ using UnityEngine.Localization;
 public enum OccurrencesDialogue
 {
     None,
+<<<<<<< HEAD
     LeverPuzzleSolved, // Diálogo quando o puzzle da alavanca é resolvido
     PersecutionStart, // Diálogo quando a perseguição começa
+=======
+    EndAct2,
+    LeverPuzzleSolved, // Diálogo quando o puzzle da alavanca é resolvido
+    PersecutionStart, // Diálogo quando a perseguição começa
+    EndGame
+>>>>>>> Development
 }
 
 
@@ -21,6 +28,7 @@ public class DialogueControl : MonoBehaviour
     public TextMeshProUGUI actorNameText; // Referência ao campo de texto onde aparecerá o nome do personagem
 
     [Header("Settings")] // Seção para configurações no Inspector
+    public static DialogueControl Instance { get; private set; } // Instância única do DialogueControl
     public float typingSpeed; // Velocidade com que as letras aparecem na tela
     public bool canInteract = true; // Controla se o jogador pode interagir com o NPC para evitar que ele fica floodando o botão
     public static event Action<OccurrencesDialogue> OnDialogueEnd; // Evento disparado quando o diálogo termina
@@ -34,12 +42,24 @@ public class DialogueControl : MonoBehaviour
     private int _currentLineIndex; // Índice da linha atual do diálogo
     private AudioSource _playSoundAnimal; // Referência ao AudioSource que toca os sons dos animais
     [SerializeField] private PlayerMovement _playerMovement; // Referência ao script que controla o movimento do jogador
-    private CinemachineInputAxisController _cinemachineCameraIn; // Referência à câmera cinemática
+    [SerializeField] private CinemachineInputAxisController _cinemachineCameraAxis; // Referência à câmera cinemática
 
+<<<<<<< HEAD
+=======
+    void Awake()
+    {
+        if (Instance != null && Instance != this) // Verifica se já existe uma instância do DialogueControl
+        {
+            Destroy(this.gameObject); // Destroi o objeto atual se já houver uma instância
+            return; // Retorna para evitar duplicação
+        }
+
+        Instance = this; // Inicializa a instância única do DialogueControl
+    }
+
+>>>>>>> Development
     void Start()
     {
-        ReferenceManager.Instance.dialogueControl = this; // Inicializa a referência ao DialogueControl no ReferenceManager 
-        _cinemachineCameraIn = ReferenceManager.Instance.cinemachineCameraIn; // Inicializa a referência à CinemachineCamera no ReferenceManager
         _playSoundAnimal = GetComponent<AudioSource>(); // Obtém o AudioSource do GameObject atual
         ResetOccurrenceDialogue(); // Reseta a ocorrência do diálogo no início
     }
@@ -53,9 +73,13 @@ public class DialogueControl : MonoBehaviour
     public void Speech(DialogueLine[] lines)
     {
         _typingSpeed = typingSpeed;
+<<<<<<< HEAD
         canInteract = false; // Impede o jogador de interagir enquanto o diálogo está ativo
+=======
+>>>>>>> Development
         _playerMovement.StopMovement(); // Para o movimento do jogador
         _playerMovement.canMove = false; // Desativa a movimentação do jogador durante o diálogo
+        canInteract = false; // Impede o jogador de interagir enquanto o diálogo está ativo
         _playerMovement.FreeMouse();
         DisableCameraControl(); // Desativa o controle da câmera para evitar movimentos indesejados
         dialogueObj.SetActive(true); // Ativa a caixa de diálogo na tela
@@ -146,6 +170,7 @@ public class DialogueControl : MonoBehaviour
 
     // Método chamado para avançar para a próxima frase do diálogo, acelerando o processo
     public void NextSentence()
+<<<<<<< HEAD
     {
         if (_isTyping)
         {
@@ -176,6 +201,34 @@ public class DialogueControl : MonoBehaviour
     void EnableCameraControl()
     {
         _cinemachineCameraIn.enabled = true; // Define uma prioridade alta para reativar a câmera
+    }
+
+    void ResetOccurrenceDialogue()
+=======
+>>>>>>> Development
+    {
+        currentOccurrenceDialogue = OccurrencesDialogue.None; // Reseta a ocorrência do diálogo
+    }
+
+    void EndDialogue()
+    {
+        OnDialogueEnd?.Invoke(currentOccurrenceDialogue); // Dispara o evento de fim de diálogo
+        ResetOccurrenceDialogue(); // Reseta a ocorrência do diálogo
+        dialogueObj.SetActive(false); // Esconde a caixa de diálogo
+        canInteract = true; // Permite que o jogador interaja novamente
+        _playerMovement.canMove = true; // Reativa a movimentação do jogador
+        _playerMovement.LockMouse();
+        EnableCameraControl(); // Restaura o controle da câmera
+    }
+
+    void DisableCameraControl()
+    {
+        _cinemachineCameraAxis.enabled = false; // Desativa a câmera
+    }
+
+    void EnableCameraControl()
+    {
+        _cinemachineCameraAxis.enabled = true; // Ativa a câmera
     }
 
     void ResetOccurrenceDialogue()

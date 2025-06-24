@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+using System.Collections;
+>>>>>>> Development
 using UnityEngine;
 
 public class TriggerRamp : MonoBehaviour
@@ -22,18 +26,35 @@ public class TriggerRamp : MonoBehaviour
     {
         if (other.TryGetComponent<PlayerMovement>(out var playerMovement))
         {
+<<<<<<< HEAD
+=======
+            playerMovement.StopMovement();
+>>>>>>> Development
             playerMovement.canMove = false; // Desativa a movimentação do jogador
         }
 
         if (other.TryGetComponent<NavAgentController>(out var navAgent))
         {
+<<<<<<< HEAD
 
             navAgent.DisableAgent(); // Desativa o NavMeshAgent do jogador
+=======
+            StartCoroutine(IntervalToDsableNavAgent(navAgent));
+>>>>>>> Development
         }
 
         playerMovement.canMove = true; // Reativa a movimentação do jogador
     }
 
+<<<<<<< HEAD
+=======
+    IEnumerator IntervalToDsableNavAgent(NavAgentController navAgent)
+    {
+        yield return null;
+        navAgent.DisableAgent(); // Desativa o NavMeshAgent do jogador
+    }
+
+>>>>>>> Development
     void OnRampEnd(Collider other)
     {
         if (other.TryGetComponent<NavAgentController>(out var navAgent))

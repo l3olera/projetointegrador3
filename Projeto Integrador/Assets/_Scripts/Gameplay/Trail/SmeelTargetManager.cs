@@ -9,28 +9,30 @@ public class SmellTargetManager : MonoBehaviour
 
     [SerializeField] private int _currentTargetIndex = 0;
     private Transform[] _currentActTargets;
-    private ObjectivesController _objectivesController;
+    private ObjectivesController _oc;
     private SmellTrail _smellTrail;
+    private int _currentActInSmell;
+
+    public static SmellTargetManager Instance { get; private set; } // Instância única do SmellTargetManager
+
+    void Awake()
+    {
+        if (Instance != null && Instance != this) // Verifica se já existe uma instância
+        {
+            Destroy(this.gameObject); // Destroi o objeto atual se já houver uma instância
+            return; // Sai do método para evitar duplicação
+        }
+        Instance = this; // Inicializa a instância única do SmellTargetManager   
+    }
 
     void Start()
     {
-        ReferenceManager.Instance.smellTargetManager = this; // Define a instância do SmellTargetManager
+        _oc = ObjectivesController.Instance; // Obtém a referência ao ObjectivesController
+        _smellTrail = SmellTrail.Instance; // Obtém a referência ao SmellTrail
 
         // Começa com Ato 1
         _currentActTargets = act1Targets;
-    }
-
-    void Update()
-    {
-        if (_objectivesController == null)
-        {
-            _objectivesController = ReferenceManager.Instance.objectivesController;
-        }
-
-        if (_smellTrail == null)
-        {
-            _smellTrail = ReferenceManager.Instance.smellTrail;
-        }
+        _currentActInSmell = 1;
     }
 
     public Transform GetCurrentTarget() => _currentActTargets[_currentTargetIndex];
@@ -39,7 +41,7 @@ public class SmellTargetManager : MonoBehaviour
     {
         _currentTargetIndex++;
 
-        if (_currentTargetIndex >= _currentActTargets.Length)
+        if (_currentTargetIndex >= _currentActTargets.Length || !_oc.CompareAct(_currentActInSmell))
         {
             SwitchAct();
         }
@@ -50,21 +52,25 @@ public class SmellTargetManager : MonoBehaviour
     public void SwitchAct()
     {
         _currentTargetIndex = 0;
-        if (_objectivesController)
+        if (_oc)
         {
-            switch (_objectivesController.CurrentObjective)
+            switch (_oc.CurrentObjective)
             {
                 case 1:
                     _currentActTargets = act1Targets;
+                    _currentActInSmell = 1;
                     break;
                 case 2:
                     _currentActTargets = act2Targets;
+                    _currentActInSmell = 2;
                     break;
                 case 3:
                     _currentActTargets = act3Targets;
+                    _currentActInSmell = 3;
                     break;
                 case 4:
                     _currentActTargets = act4Targets;
+                    _currentActInSmell = 4;
                     break;
             }
         }

@@ -5,10 +5,16 @@ public class TextInteractManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _textInteract; // Referência ao componente de texto de interação
     public bool canSetText = false; // Controla se é possível mudar o texto de interação
+    public static TextInteractManager Instance { get; private set; } // Instância única do TextInteractManager
 
-    void Start()
+    void Awake()
     {
-        ReferenceManager.Instance.textInteractManager = this; // Define esta instância como o gerenciador de texto de interação
+        if (Instance != null && Instance != this) // Verifica se já existe uma instância
+        {
+            Destroy(this.gameObject); // Destroi o objeto atual se já houver uma instância
+            return; // Sai do método para evitar duplicação
+        }
+        Instance = this; // Define a instância atual como a única instância
     }
 
     void Update()
